@@ -1,0 +1,599 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.jsx';
+---
+
+<Layout title="Contact - Azorean Studios">
+  <Navigation client:load />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label">GET IN TOUCH</span>
+          <h1>Let's Create Together</h1>
+          <p class="hero-description">
+            Ready to explore the intersection of technology, sound, and consciousness? 
+            We'd love to hear about your vision and discuss how we can collaborate.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-content">
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <h2>Start a Conversation</h2>
+            <form action="#" method="POST" class="form">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="project-type">Project Type</label>
+                <select id="project-type" name="project-type" required>
+                  <option value="">Select a project type</option>
+                  <option value="technology">Technology & Apps</option>
+                  <option value="music">Music & Audio</option>
+                  <option value="events">Events & Community</option>
+                  <option value="studio">Studio Recording</option>
+                  <option value="other">Other Collaboration</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Tell us about your vision</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Share your ideas, goals, and what you're hoping to create..."></textarea>
+              </div>
+              
+              <button type="submit" class="submit-button">
+                Send Message
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M18 2L9 11L4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+          
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <h3>Ways to Connect</h3>
+            
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="method-icon">📧</div>
+                <div class="method-content">
+                  <h4>Email</h4>
+                  <p>hello@azorean.io</p>
+                  <span>Best for project inquiries</span>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="method-icon">🎵</div>
+                <div class="method-content">
+                  <h4>Studio Bookings</h4>
+                  <p>studio@azorean.io</p>
+                  <span>Recording & audio services</span>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="method-icon">🌟</div>
+                <div class="method-content">
+                  <h4>Community Events</h4>
+                  <p>events@segundosol.com</p>
+                  <span>Gatherings & collaborations</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="response-time">
+              <h4>Response Time</h4>
+              <p>We typically respond within 24-48 hours. For urgent studio bookings, please mention this in your message.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collaboration Areas -->
+    <section class="collaboration">
+      <div class="container">
+        <h2 class="section-title">Collaboration Opportunities</h2>
+        
+        <div class="collab-grid">
+          <div class="collab-card">
+            <h3>Technology Partners</h3>
+            <p>Working with purpose-driven tech companies, startups, and organizations building mindful digital experiences.</p>
+            <ul>
+              <li>App development & UX design</li>
+              <li>AI/ML for wellness applications</li>
+              <li>Digital meditation tools</li>
+              <li>Community platform development</li>
+            </ul>
+          </div>
+          
+          <div class="collab-card">
+            <h3>Artists & Musicians</h3>
+            <p>Collaborating with conscious creators, sound healers, and artists who share our vision of transformative experiences.</p>
+            <ul>
+              <li>Album production & mixing</li>
+              <li>Sound design projects</li>
+              <li>Healing arts integration</li>
+              <li>Experimental audio research</li>
+            </ul>
+          </div>
+          
+          <div class="collab-card">
+            <h3>Event Organizers</h3>
+            <p>Supporting intentional gatherings, retreats, and transformative events with our full range of services.</p>
+            <ul>
+              <li>Sound system design</li>
+              <li>Ambient music curation</li>
+              <li>Technology integration</li>
+              <li>Community building tools</li>
+            </ul>
+          </div>
+          
+          <div class="collab-card">
+            <h3>Research & Education</h3>
+            <p>Partnering with institutions exploring consciousness, wellness technology, and the intersection of sound and healing.</p>
+            <ul>
+              <li>Academic research projects</li>
+              <li>Educational content creation</li>
+              <li>Workshop facilitation</li>
+              <li>Innovation partnerships</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+      <div class="container">
+        <div class="values-content">
+          <div class="values-text">
+            <span class="section-label">Our Values</span>
+            <h2>What Guides Our Work</h2>
+            <p>
+              Every collaboration begins with alignment on shared values. We believe in creating 
+              work that serves human flourishing, supports conscious evolution, and contributes 
+              to a more connected and compassionate world.
+            </p>
+            
+            <div class="value-points">
+              <div class="value-point">
+                <span class="point-marker">•</span>
+                <span>Authenticity over perfection</span>
+              </div>
+              <div class="value-point">
+                <span class="point-marker">•</span>
+                <span>Long-term relationships over one-time projects</span>
+              </div>
+              <div class="value-point">
+                <span class="point-marker">•</span>
+                <span>Impact and meaning over pure profit</span>
+              </div>
+              <div class="value-point">
+                <span class="point-marker">•</span>
+                <span>Sustainable practices in all our work</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="values-visual">
+            <div class="connection-animation">
+              <div class="connection-node"></div>
+              <div class="connection-node"></div>
+              <div class="connection-node"></div>
+              <div class="connection-line"></div>
+              <div class="connection-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    text-align: center;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-form h2 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition);
+    background: white;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: var(--transition);
+    justify-self: start;
+  }
+
+  .submit-button:hover {
+    background: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(74, 144, 164, 0.3);
+  }
+
+  .submit-button svg {
+    transition: var(--transition);
+  }
+
+  .submit-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  .contact-info h3 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-method {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .method-icon {
+    font-size: 2rem;
+    min-width: 3rem;
+  }
+
+  .method-content h4 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .method-content p {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .method-content span {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  .response-time {
+    background: var(--color-bg-soft);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .response-time h4 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .response-time p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .collaboration {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-bg-soft);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--color-primary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .collab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .collab-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+  }
+
+  .collab-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(74, 144, 164, 0.15);
+  }
+
+  .collab-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .collab-card p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .collab-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .collab-card li {
+    padding: 0.5rem 0;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .collab-card li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .values {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .values-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .values-text h2 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .values-text p {
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+  }
+
+  .value-points {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .value-point {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  .point-marker {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    min-width: 1rem;
+  }
+
+  .values-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+
+  .connection-animation {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  .connection-node {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    animation: node-pulse 3s ease-in-out infinite;
+  }
+
+  .connection-node:nth-child(1) {
+    top: 20px;
+    left: 80px;
+    animation-delay: 0s;
+  }
+
+  .connection-node:nth-child(2) {
+    bottom: 20px;
+    left: 20px;
+    animation-delay: 1s;
+  }
+
+  .connection-node:nth-child(3) {
+    bottom: 20px;
+    right: 20px;
+    animation-delay: 2s;
+  }
+
+  .connection-line {
+    position: absolute;
+    height: 2px;
+    background: var(--color-accent);
+    animation: line-grow 3s ease-in-out infinite;
+  }
+
+  .connection-line:nth-child(4) {
+    top: 40px;
+    left: 100px;
+    width: 60px;
+    transform: rotate(45deg);
+    animation-delay: 0.5s;
+  }
+
+  .connection-line:nth-child(5) {
+    bottom: 40px;
+    left: 40px;
+    width: 100px;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes node-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+
+  @keyframes line-grow {
+    0%, 100% { transform: scaleX(0); opacity: 0; }
+    50% { transform: scaleX(1); opacity: 0.8; }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .contact-content,
+    .values-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .contact-methods {
+      gap: 1.5rem;
+    }
+
+    .collab-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .values-visual {
+      height: 200px;
+    }
+  }
+</style> 

@@ -1,0 +1,552 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.jsx';
+---
+
+<Layout title="Azorean Sound - Recording Studio & Audio Lab">
+  <Navigation client:load />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label">AZOREAN SOUND</span>
+          <h1>Recording Studio & Audio Lab</h1>
+          <p class="hero-description">
+            A modular experimental sound engine where we craft ambient soundscapes, 
+            design audio experiences, and push the boundaries of sonic possibility.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+      <div class="container">
+        <div class="mission-content">
+          <div class="mission-text">
+            <h2>Our Approach</h2>
+            <p>
+              Azorean Sound operates as both a traditional recording studio and an experimental 
+              audio laboratory. We specialize in creating immersive soundscapes that transport 
+              listeners into states of deep presence and contemplation.
+            </p>
+            <p>
+              Our modular approach allows us to adapt to each project's unique sonic vision, 
+              whether it's ambient music production, sound design for digital experiences, 
+              or audio research and development.
+            </p>
+          </div>
+          <div class="mission-visual">
+            <div class="waveform-animation">
+              <div class="frequency-bar"></div>
+              <div class="frequency-bar"></div>
+              <div class="frequency-bar"></div>
+              <div class="frequency-bar"></div>
+              <div class="frequency-bar"></div>
+              <div class="frequency-bar"></div>
+              <div class="frequency-bar"></div>
+              <div class="frequency-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+      <div class="container">
+        <h2 class="section-title">Studio Services</h2>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎚️</div>
+            <h3>Ambient Production</h3>
+            <p>Crafting expansive soundscapes and meditative audio experiences that invite deep listening and contemplation.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">🔊</div>
+            <h3>Sound Design</h3>
+            <p>Creating bespoke audio elements for digital experiences, installations, and immersive environments.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">🎵</div>
+            <h3>Music Scoring</h3>
+            <p>Composing and producing original scores for film, meditation apps, and therapeutic applications.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">🧪</div>
+            <h3>Audio R&D</h3>
+            <p>Experimental audio research, developing new techniques and tools for conscious sound creation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipment & Tech -->
+    <section class="equipment">
+      <div class="container">
+        <div class="equipment-content">
+          <div class="equipment-text">
+            <span class="section-label">Our Tools</span>
+            <h2>Equipment & Technology</h2>
+            <p>
+              Our studio combines vintage analog warmth with cutting-edge digital precision, 
+              creating a sonic palette that bridges the organic and the electronic.
+            </p>
+            
+            <div class="tech-categories">
+              <div class="tech-category">
+                <h4>Modular Synthesis</h4>
+                <p>Custom Eurorack system for generative ambient textures</p>
+              </div>
+              <div class="tech-category">
+                <h4>Field Recording</h4>
+                <p>Professional portable setups for capturing natural soundscapes</p>
+              </div>
+              <div class="tech-category">
+                <h4>Digital Processing</h4>
+                <p>Max/MSP, Ableton Live, Pro Tools for advanced audio manipulation</p>
+              </div>
+              <div class="tech-category">
+                <h4>Spatial Audio</h4>
+                <p>Multi-channel systems for immersive 3D sound experiences</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="equipment-visual">
+            <div class="synth-visualization">
+              <div class="synth-module">
+                <div class="knob"></div>
+                <div class="knob"></div>
+                <div class="knob"></div>
+              </div>
+              <div class="synth-module">
+                <div class="knob"></div>
+                <div class="knob"></div>
+                <div class="knob"></div>
+              </div>
+              <div class="patch-cable"></div>
+              <div class="patch-cable"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+      <div class="container">
+        <h2 class="section-title">Our Process</h2>
+        
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <h3>Listen & Understand</h3>
+            <p>Deep consultation to understand your sonic vision and the emotional landscape you want to create.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <h3>Explore & Experiment</h3>
+            <p>Collaborative sound exploration using our modular systems to discover unique textures and tones.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <h3>Craft & Refine</h3>
+            <p>Careful production and post-processing to sculpt the perfect sonic experience for your project.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <h3>Deliver & Support</h3>
+            <p>Final delivery in multiple formats with ongoing support for implementation and optimization.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Create Something Beautiful?</h2>
+          <p>Let's explore the sonic possibilities for your next project.</p>
+          <a href="/contact" class="cta-button">Book Studio Time</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    text-align: center;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .mission {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .mission-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .mission-text h2 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .mission-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .mission-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+
+  .waveform-animation {
+    display: flex;
+    align-items: end;
+    gap: 4px;
+    height: 120px;
+  }
+
+  .frequency-bar {
+    width: 8px;
+    background: var(--color-accent);
+    border-radius: 4px;
+    animation: frequency-pulse 1.5s ease-in-out infinite;
+  }
+
+  .frequency-bar:nth-child(1) { height: 20%; animation-delay: 0s; }
+  .frequency-bar:nth-child(2) { height: 60%; animation-delay: 0.1s; }
+  .frequency-bar:nth-child(3) { height: 100%; animation-delay: 0.2s; }
+  .frequency-bar:nth-child(4) { height: 40%; animation-delay: 0.3s; }
+  .frequency-bar:nth-child(5) { height: 80%; animation-delay: 0.4s; }
+  .frequency-bar:nth-child(6) { height: 30%; animation-delay: 0.5s; }
+  .frequency-bar:nth-child(7) { height: 70%; animation-delay: 0.6s; }
+  .frequency-bar:nth-child(8) { height: 50%; animation-delay: 0.7s; }
+
+  @keyframes frequency-pulse {
+    0%, 100% { transform: scaleY(0.3); opacity: 0.6; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+
+  .services {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-bg-soft);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--color-primary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    text-align: center;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(74, 144, 164, 0.15);
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .service-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .equipment {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .equipment-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .equipment-text h2 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .equipment-text p {
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+  }
+
+  .tech-categories {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .tech-category h4 {
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .tech-category p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .equipment-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+
+  .synth-visualization {
+    position: relative;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .synth-module {
+    width: 80px;
+    height: 120px;
+    background: var(--color-secondary);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .knob {
+    width: 20px;
+    height: 20px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    position: relative;
+    animation: knob-turn 4s ease-in-out infinite;
+  }
+
+  .knob::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    width: 2px;
+    height: 8px;
+    background: white;
+    transform: translateX(-50%);
+  }
+
+  .patch-cable {
+    position: absolute;
+    width: 3px;
+    height: 60px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    transform: rotate(25deg);
+    animation: cable-glow 3s ease-in-out infinite;
+  }
+
+  .patch-cable:first-of-type {
+    top: 20px;
+    left: 50px;
+  }
+
+  .patch-cable:last-of-type {
+    bottom: 20px;
+    right: 50px;
+    transform: rotate(-25deg);
+    animation-delay: 1.5s;
+  }
+
+  @keyframes knob-turn {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(45deg); }
+  }
+
+  @keyframes cable-glow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; box-shadow: 0 0 10px var(--color-accent); }
+  }
+
+  .process {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-bg-soft);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .process-step {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1.5rem;
+  }
+
+  .process-step h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .process-step p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .cta {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .cta-content p {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: var(--transition);
+  }
+
+  .cta-button:hover {
+    background: white;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .mission-content,
+    .equipment-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .mission-visual,
+    .equipment-visual {
+      height: 200px;
+    }
+
+    .services-grid,
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .synth-visualization {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style> 

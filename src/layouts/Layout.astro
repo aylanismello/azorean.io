@@ -1,0 +1,119 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Azorean Studios - Creative technology company exploring sound, mindfulness, and digital experience" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    <slot />
+    
+    <style>
+      :root {
+        --color-primary: #1a1a1a;
+        --color-secondary: #2d3748;
+        --color-accent: #4a90a4;
+        --color-text: #2d3748;
+        --color-text-light: #718096;
+        --color-bg: #ffffff;
+        --color-bg-soft: #f7fafc;
+        --color-border: #e2e8f0;
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 6rem;
+        --border-radius: 0.5rem;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-family: var(--font-family);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.6;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Global typography */
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      h3 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      p {
+        font-size: 1.125rem;
+        color: var(--color-text-light);
+        max-width: 65ch;
+      }
+
+      /* Smooth transitions */
+      a, button {
+        transition: var(--transition);
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--color-bg-soft);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-accent);
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #3a7a8a;
+      }
+    </style>
+  </body>
+</html> 

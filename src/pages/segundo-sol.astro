@@ -1,0 +1,474 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.jsx';
+---
+
+<Layout title="Segundo Sol - Label & Collective">
+  <Navigation client:load />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label">SEGUNDO SOL</span>
+          <h1>Label & Collective</h1>
+          <p class="hero-description">
+            A community-centered label and collective fostering intentional gatherings, 
+            conscious music releases, and healing arts experiences.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+      <div class="container">
+        <div class="mission-content">
+          <div class="mission-text">
+            <h2>Our Mission</h2>
+            <p>
+              Segundo Sol exists to nurture authentic community through the healing power 
+              of music and intentional gathering. We believe in the transformative potential 
+              of shared sonic experiences that bring people together in presence and connection.
+            </p>
+            <p>
+              From intimate listening sessions to expansive festival experiences, we create 
+              containers for meaningful artistic expression and collective healing.
+            </p>
+          </div>
+          <div class="mission-visual">
+            <div class="sound-waves">
+              <div class="wave"></div>
+              <div class="wave"></div>
+              <div class="wave"></div>
+              <div class="wave"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do -->
+    <section class="services">
+      <div class="container">
+        <h2 class="section-title">What We Do</h2>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎵</div>
+            <h3>Music Releases</h3>
+            <p>Curating and releasing ambient, healing, and conscious music that supports transformation and inner work.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">🌱</div>
+            <h3>Intentional Events</h3>
+            <p>Organizing gatherings, ceremonies, and immersive experiences that prioritize community and healing.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">🤝</div>
+            <h3>Artist Support</h3>
+            <p>Providing platform and resources for conscious artists to share their gifts with receptive communities.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">🎭</div>
+            <h3>Healing Arts</h3>
+            <p>Integrating various healing modalities with musical experiences for holistic transformation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Artists -->
+    <section class="artists">
+      <div class="container">
+        <div class="artists-content">
+          <div class="artists-text">
+            <span class="section-label">Our Community</span>
+            <h2>Featured Artists</h2>
+            <p>
+              We work with a diverse collective of musicians, sound healers, and artists 
+              who share our vision of music as a vessel for consciousness and community.
+            </p>
+            
+            <div class="artist-spotlight">
+              <h4>Fluindo</h4>
+              <p>
+                Creating flowing ambient soundscapes that invite deep listening and meditative states. 
+                Fluindo's work exemplifies our commitment to music as a pathway to presence.
+              </p>
+            </div>
+          </div>
+          
+          <div class="artists-visual">
+            <div class="vinyl-animation">
+              <div class="vinyl-record"></div>
+              <div class="stylus"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Values -->
+    <section class="values">
+      <div class="container">
+        <h2 class="section-title">Our Values</h2>
+        
+        <div class="values-grid">
+          <div class="value-item">
+            <h3>Intentionality</h3>
+            <p>Every gathering and release is crafted with purpose and mindful attention to creating meaningful experiences.</p>
+          </div>
+          
+          <div class="value-item">
+            <h3>Community</h3>
+            <p>We prioritize building genuine connections and fostering a sense of belonging among artists and audiences.</p>
+          </div>
+          
+          <div class="value-item">
+            <h3>Healing</h3>
+            <p>Music and gathering as medicine – supporting individual and collective transformation through sound.</p>
+          </div>
+          
+          <div class="value-item">
+            <h3>Authenticity</h3>
+            <p>Creating spaces where people can be fully themselves and express their truth without judgment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Join Our Community</h2>
+          <p>Connect with like-minded souls and experience the magic of intentional gathering.</p>
+          <a href="/contact" class="cta-button">Get Involved</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    text-align: center;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .mission {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .mission-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .mission-text h2 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .mission-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .mission-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+
+  .sound-waves {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    height: 100px;
+  }
+
+  .wave {
+    width: 6px;
+    background: var(--color-accent);
+    border-radius: 3px;
+    animation: wave-dance 2s ease-in-out infinite;
+  }
+
+  .wave:nth-child(1) { height: 60%; animation-delay: 0s; }
+  .wave:nth-child(2) { height: 100%; animation-delay: 0.2s; }
+  .wave:nth-child(3) { height: 40%; animation-delay: 0.4s; }
+  .wave:nth-child(4) { height: 80%; animation-delay: 0.6s; }
+
+  @keyframes wave-dance {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.3); }
+  }
+
+  .services {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-bg-soft);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--color-primary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    text-align: center;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(74, 144, 164, 0.15);
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .service-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .artists {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .artists-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .artists-text h2 {
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .artists-text p {
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+  }
+
+  .artist-spotlight {
+    background: var(--color-bg-soft);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .artist-spotlight h4 {
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .artist-spotlight p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .artists-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+
+  .vinyl-animation {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  .vinyl-record {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1a1a1a 20%, #2d3748 21%, #2d3748 40%, #1a1a1a 41%);
+    border-radius: 50%;
+    animation: spin 8s linear infinite;
+    position: relative;
+  }
+
+  .vinyl-record::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .stylus {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    width: 3px;
+    height: 80px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    transform: rotate(25deg);
+    transform-origin: top;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .values {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-bg-soft);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .value-item {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .value-item h3 {
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+  }
+
+  .value-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .cta {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .cta-content p {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: var(--transition);
+  }
+
+  .cta-button:hover {
+    background: white;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .mission-content,
+    .artists-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .mission-visual,
+    .artists-visual {
+      height: 200px;
+    }
+
+    .services-grid,
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 
