@@ -1,0 +1,218 @@
+---
+// Hero component with working video background
+---
+
+<section class="hero">
+  <div class="hero-background">
+    <video 
+      id="hero-video"
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      class="hero-video"
+    >
+      <source src="/azores_clip_noaudio.mp4" type="video/mp4" />
+      <source src="/azores_clip.mp4" type="video/mp4" />
+    </video>
+    <div class="gradient-overlay"></div>
+  </div>
+  
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        A studio for slow tech, sound, and story.
+      </h1>
+    </div>
+  </div>
+
+  <!-- Subtle floating elements inspired by ocean currents -->
+  <div class="floating-elements">
+    <div class="current current-1"></div>
+    <div class="current current-2"></div>
+    <div class="current current-3"></div>
+  </div>
+</section>
+
+<script>
+  // Ensure video plays properly
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('hero-video') as HTMLVideoElement;
+    if (video) {
+      video.muted = true;
+      video.playsInline = true;
+      
+      // Ensure playback starts
+      setTimeout(() => {
+        video.play().catch(() => {
+          // Fallback if autoplay fails
+          video.load();
+        });
+      }, 100);
+    }
+  });
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: var(--color-deep-blue);
+  }
+  
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 27, 46, 0.3) 0%,
+      rgba(45, 125, 138, 0.1) 30%,
+      rgba(15, 27, 46, 0.4) 100%
+    );
+    z-index: 2;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+  }
+  
+  .hero-text {
+    max-width: 800px;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-pure-white);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.6),
+      0 8px 16px rgba(0, 0, 0, 0.4),
+      0 16px 32px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out 0.5s forwards;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
+  }
+  
+  .floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+  
+  .current {
+    position: absolute;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(74, 154, 168, 0.15) 50%, 
+      transparent 100%);
+    border-radius: 50px;
+    animation: float-current 8s ease-in-out infinite;
+  }
+  
+  .current-1 {
+    width: 200px;
+    height: 2px;
+    top: 20%;
+    right: 10%;
+    animation-delay: 0s;
+  }
+  
+  .current-2 {
+    width: 150px;
+    height: 1px;
+    top: 60%;
+    right: 30%;
+    animation-delay: 3s;
+  }
+  
+  .current-3 {
+    width: 120px;
+    height: 1px;
+    bottom: 30%;
+    right: 20%;
+    animation-delay: 6s;
+  }
+  
+  @keyframes float-current {
+    0%, 100% { 
+      transform: translateX(0) translateY(0) rotate(5deg);
+      opacity: 0.3;
+    }
+    50% { 
+      transform: translateX(-20px) translateY(-10px) rotate(-5deg);
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .hero-content {
+      padding: 0 1rem;
+    }
+    
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      line-height: 1.2;
+    }
+    
+    .current {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: clamp(1.8rem, 9vw, 2.8rem);
+    }
+  }
+</style> 
