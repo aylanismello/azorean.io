@@ -1,45 +1,52 @@
 export default function Hero() {
   return (
     <section className="hero">
+      {/* 
+        VIDEO BACKGROUND PLACEHOLDER:
+        1. Create a short (10-15 second) looped video of the Azores landscape
+        2. Focus on São Miguel - show misty mountains, volcanic landscapes, or ocean views
+        3. Use subtle, slow camera movements (drone footage works well)
+        4. Keep it moody with soft lighting - golden hour or misty conditions
+        5. Export as MP4 and WebM formats for browser compatibility
+        6. Recommended dimensions: 1920x1080 or higher
+        7. Compress for web but maintain quality
+        8. Replace the placeholder div below with:
+           <video autoPlay muted loop playsInline className="hero-video">
+             <source src="/azores-landscape.webm" type="video/webm" />
+             <source src="/azores-landscape.mp4" type="video/mp4" />
+           </video>
+      */}
       <div className="hero-background">
+        <video autoPlay muted loop playsInline className="hero-video">
+          <source src="/azores_clip.mp4" type="video/mp4" />
+        </video>
         <div className="gradient-overlay"></div>
-        <div className="wave-animation"></div>
       </div>
       
       <div className="hero-content">
         <div className="hero-text">
-          <span className="hero-label">WELCOME TO AZOREAN STUDIOS®</span>
           <h1 className="hero-title">
-            Creative Technology<br />
-            Meets Mindful Design
+            A studio for slow tech, sound, and story.
           </h1>
-          <p className="hero-description">
-            Exploring the intersection of sound, consciousness, and digital experience 
-            within a future-facing creative studio.
-          </p>
-          <a href="/studios" className="hero-cta">
-            Explore Our Work
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
         </div>
       </div>
-      
-      <div className="scroll-indicator">
-        <span>Scroll Down</span>
-        <div className="scroll-line"></div>
+
+      {/* Subtle floating elements inspired by ocean currents */}
+      <div className="floating-elements">
+        <div className="current current-1"></div>
+        <div className="current current-2"></div>
+        <div className="current current-3"></div>
       </div>
       
       <style jsx>{`
         .hero {
           position: relative;
-          min-height: 100vh;
+          height: 100vh;
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
           overflow: hidden;
-          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          background: var(--color-deep-blue);
         }
         
         .hero-background {
@@ -51,6 +58,20 @@ export default function Hero() {
           z-index: 1;
         }
         
+        /* Video styling */
+        .hero-video {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: cover;
+          z-index: 0;
+        }
+        
         .gradient-overlay {
           position: absolute;
           top: 0;
@@ -59,27 +80,13 @@ export default function Hero() {
           bottom: 0;
           background: linear-gradient(
             135deg,
-            rgba(74, 144, 164, 0.1) 0%,
-            rgba(255, 255, 255, 0.9) 50%,
-            rgba(226, 232, 240, 0.8) 100%
+            rgba(15, 27, 46, 0.4) 0%,
+            rgba(45, 125, 138, 0.2) 30%,
+            rgba(15, 27, 46, 0.6) 100%
           );
+          z-index: 2;
         }
-        
-        .wave-animation {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a90a4' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-          animation: wave 20s ease-in-out infinite;
-          opacity: 0.3;
-        }
-        
-        @keyframes wave {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-20px) scale(1.02); }
-        }
+
         
         .hero-content {
           position: relative;
@@ -87,111 +94,96 @@ export default function Hero() {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 2rem;
-          text-align: center;
+          width: 100%;
         }
         
         .hero-text {
           max-width: 800px;
-          margin: 0 auto;
-        }
-        
-        .hero-label {
-          display: inline-block;
-          font-size: 0.875rem;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--color-accent);
-          margin-bottom: 1.5rem;
-          opacity: 0;
-          animation: fadeInUp 1s ease-out 0.3s forwards;
         }
         
         .hero-title {
-          font-size: clamp(3rem, 6vw, 5rem);
+          font-size: clamp(2.5rem, 6vw, 5.5rem);
           font-weight: 700;
           line-height: 1.1;
-          color: var(--color-primary);
+          color: var(--color-pure-white);
           margin-bottom: 2rem;
-          letter-spacing: -0.03em;
+          letter-spacing: -0.02em;
+          text-shadow: 0 4px 20px rgba(15, 27, 46, 0.5);
           opacity: 0;
-          animation: fadeInUp 1s ease-out 0.5s forwards;
+          animation: fadeInUp 1.2s ease-out 0.5s forwards;
         }
         
-        .hero-description {
-          font-size: 1.25rem;
-          line-height: 1.6;
-          color: var(--color-text-light);
-          margin-bottom: 3rem;
-          max-width: 600px;
-          margin-left: auto;
-          margin-right: auto;
-          opacity: 0;
-          animation: fadeInUp 1s ease-out 0.7s forwards;
+        .text-emphasis {
+          font-style: italic;
+          color: var(--color-cloud-white);
         }
         
-        .hero-cta {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 1rem 2rem;
-          background: var(--color-primary);
-          color: white;
-          text-decoration: none;
-          border-radius: var(--border-radius);
-          font-weight: 600;
-          font-size: 1.125rem;
-          transition: var(--transition);
-          opacity: 0;
-          animation: fadeInUp 1s ease-out 0.9s forwards;
+        .text-gradient {
+          background: linear-gradient(135deg, #4A9AA8 0%, #8FA1B3 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         
-        .hero-cta:hover {
-          background: var(--color-accent);
-          transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(74, 144, 164, 0.3);
-        }
-        
-        .hero-cta svg {
-          transition: var(--transition);
-        }
-        
-        .hero-cta:hover svg {
-          transform: translateX(4px);
-        }
-        
-        .scroll-indicator {
+        .floating-elements {
           position: absolute;
-          bottom: 2rem;
-          right: 2rem;
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          color: var(--color-text-light);
-          font-size: 0.875rem;
-          font-weight: 500;
-          writing-mode: vertical-lr;
-          text-orientation: mixed;
-          opacity: 0;
-          animation: fadeIn 1s ease-out 1.5s forwards;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 3;
+          pointer-events: none;
         }
         
-        .scroll-line {
-          width: 1px;
-          height: 60px;
-          background: var(--color-accent);
-          animation: scrollLine 2s ease-in-out infinite;
+        .current {
+          position: absolute;
+          background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(74, 154, 168, 0.15) 50%, 
+            transparent 100%);
+          border-radius: 50px;
+          animation: float-current 8s ease-in-out infinite;
         }
         
-        @keyframes scrollLine {
-          0%, 100% { transform: scaleY(1); }
-          50% { transform: scaleY(0.5); }
+        .current-1 {
+          width: 200px;
+          height: 2px;
+          top: 20%;
+          right: 10%;
+          animation-delay: 0s;
+        }
+        
+        .current-2 {
+          width: 150px;
+          height: 1px;
+          top: 60%;
+          right: 30%;
+          animation-delay: 3s;
+        }
+        
+        .current-3 {
+          width: 120px;
+          height: 1px;
+          bottom: 30%;
+          right: 20%;
+          animation-delay: 6s;
+        }
+        
+        @keyframes float-current {
+          0%, 100% { 
+            transform: translateX(0) translateY(0) rotate(5deg);
+            opacity: 0.3;
+          }
+          50% { 
+            transform: translateX(-20px) translateY(-10px) rotate(-5deg);
+            opacity: 0.7;
+          }
         }
         
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
           }
           to {
             opacity: 1;
@@ -199,27 +191,25 @@ export default function Hero() {
           }
         }
         
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
+        /* Responsive design */
         @media (max-width: 768px) {
-          .hero {
-            min-height: 90vh;
-            padding-top: 5rem;
-          }
-          
           .hero-content {
             padding: 0 1rem;
           }
           
-          .hero-description {
-            font-size: 1.125rem;
+          .hero-title {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            line-height: 1.2;
           }
           
-          .scroll-indicator {
+          .current {
             display: none;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .hero-title {
+            font-size: clamp(1.8rem, 9vw, 2.8rem);
           }
         }
       `}</style>

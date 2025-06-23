@@ -1,10 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="nav">
+    <nav className={`nav ${isScrolled ? 'nav-scrolled' : ''}`}>
       <div className="nav-container">
         <a href="/" className="nav-logo">
           <span className="logo-text">Azorean</span>
@@ -35,15 +45,21 @@ export default function Navigation() {
           left: 0;
           right: 0;
           z-index: 1000;
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(10px);
-          border-bottom: 1px solid var(--color-border);
+          background: rgba(248, 250, 251, 0.85);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(209, 220, 231, 0.3);
+          transition: var(--transition-smooth);
+        }
+        
+        .nav-scrolled {
+          background: rgba(248, 250, 251, 0.95);
+          box-shadow: var(--shadow-sm);
         }
         
         .nav-container {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 1rem 2rem;
+          padding: 1.25rem 2rem;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -55,6 +71,11 @@ export default function Navigation() {
           text-decoration: none;
           color: var(--color-primary);
           letter-spacing: -0.025em;
+          transition: var(--transition);
+        }
+        
+        .nav-logo:hover {
+          transform: translateY(-1px);
         }
         
         .logo-accent {
@@ -63,35 +84,40 @@ export default function Navigation() {
         
         .nav-menu {
           display: flex;
-          gap: 2rem;
+          gap: 2.5rem;
           align-items: center;
         }
         
         .nav-link {
           text-decoration: none;
-          color: var(--color-text);
+          color: var(--color-text-light);
           font-weight: 500;
+          font-size: 0.95rem;
           position: relative;
           transition: var(--transition);
+          letter-spacing: 0.01em;
         }
         
         .nav-link:hover {
           color: var(--color-accent);
+          transform: translateY(-1px);
         }
         
         .nav-link::after {
           content: '';
           position: absolute;
-          bottom: -4px;
-          left: 0;
+          bottom: -6px;
+          left: 50%;
+          transform: translateX(-50%);
           width: 0;
           height: 2px;
           background: var(--color-accent);
           transition: var(--transition);
+          border-radius: 1px;
         }
         
         .nav-link:hover::after {
-          width: 100%;
+          width: 24px;
         }
         
         .nav-toggle {
@@ -100,6 +126,12 @@ export default function Navigation() {
           border: none;
           cursor: pointer;
           padding: 0.5rem;
+          border-radius: var(--border-radius-sm);
+          transition: var(--transition);
+        }
+        
+        .nav-toggle:hover {
+          background: var(--color-bg-mist);
         }
         
         .hamburger {
@@ -109,6 +141,7 @@ export default function Navigation() {
           background: var(--color-primary);
           position: relative;
           transition: var(--transition);
+          border-radius: 1px;
         }
         
         .hamburger::before,
@@ -120,6 +153,7 @@ export default function Navigation() {
           background: var(--color-primary);
           position: absolute;
           transition: var(--transition);
+          border-radius: 1px;
         }
         
         .hamburger::before {
@@ -145,25 +179,35 @@ export default function Navigation() {
         }
         
         @media (max-width: 768px) {
+          .nav-container {
+            padding: 1rem 1rem;
+          }
+          
           .nav-menu {
             position: fixed;
             top: 100%;
             left: 0;
             right: 0;
-            background: white;
+            background: var(--color-bg);
             flex-direction: column;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            gap: 1.5rem;
+            box-shadow: var(--shadow-lg);
             transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;
-            transition: var(--transition);
+            transition: var(--transition-smooth);
           }
           
           .nav-menu-open {
             transform: translateY(0);
             opacity: 1;
             visibility: visible;
+          }
+          
+          .nav-link {
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
           }
           
           .nav-toggle {
