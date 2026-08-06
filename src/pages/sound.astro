@@ -1,160 +1,63 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.jsx';
+import DivisionPage from '../layouts/DivisionPage.astro';
+
+const focus = [
+  { text: 'Ambient production and meditative audio experiences', tag: 'ambient' },
+  { text: 'Sound design for digital experiences and installations', tag: 'design' },
+  { text: 'Music scoring for film and therapeutic applications', tag: 'scoring' },
+  { text: 'Experimental audio research and conscious sound creation', tag: 'research' },
+] as const;
 ---
 
-<Layout title="Sound">
-  <Navigation client:load />
-  
-  <main>
-    <section class="sound">
-      <div class="container">
-        <h1>Sound</h1>
-        
-        <div class="content">
-          <p class="intro">
-            A modular experimental sound engine crafting ambient soundscapes and audio experiences.
-          </p>
-          
-          <p class="description">
-            We specialize in creating immersive soundscapes that transport listeners into states of deep presence and contemplation.
-          </p>
-          
-          <div class="focus-areas">
-            <div class="area">Ambient production and meditative audio experiences</div>
-            <div class="area">Sound design for digital experiences and installations</div>
-            <div class="area">Music scoring for film and therapeutic applications</div>
-            <div class="area">Experimental audio research and conscious sound creation</div>
-          </div>
-          
-          <p class="philosophy">
-            Every sound is intentional.<br />
-            Every frequency serves presence.
-          </p>
-          
-          <p class="closing">
-            Our modular approach combines vintage analog warmth with cutting-edge digital precision, creating a sonic palette that bridges the organic and the electronic.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-</Layout>
+<DivisionPage
+  n="03"
+  title="sound"
+  pict="sound"
+  role="modular audio lab"
+  intro="A modular experimental sound engine crafting ambient soundscapes and audio experiences."
+  description="We specialize in creating immersive soundscapes that transport listeners into states of deep presence and contemplation."
+  focus={focus}
+  philosophy={['every sound is intentional.', 'every frequency serves presence.']}
+  closing="Our modular approach combines vintage analog warmth with cutting-edge digital precision, creating a sonic palette that bridges the organic and the electronic."
+>
+  <div class="signal">
+    <span class="label label--ink signal-label">— signal chain</span>
+    <ul class="spec">
+      <li>
+        <span class="spec-n">in</span>
+        <span class="spec-t">Field recordings, acoustic sources, modular voltage</span>
+        <span class="spec-v">capture</span>
+      </li>
+      <li>
+        <span class="spec-n">proc</span>
+        <span class="spec-t">Analog colour, granular and generative processing</span>
+        <span class="spec-v">shape</span>
+      </li>
+      <li>
+        <span class="spec-n">out</span>
+        <span class="spec-t">Records, scores, installations, and app soundtracks</span>
+        <span class="spec-v">release</span>
+      </li>
+    </ul>
+
+    <a href="mailto:studio@azorean.io" class="btn signal-cta">
+      studio bookings
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</DivisionPage>
 
 <style>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  .signal {
+    margin-top: 3.5rem;
   }
 
-  .sound {
-    padding: 8rem 0 6rem;
-    min-height: 85vh;
+  .signal-label {
+    display: block;
+    margin-bottom: 1.25rem;
   }
 
-  h1 {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    font-weight: 700;
-    margin-bottom: 4rem;
-    color: var(--color-primary);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
+  .signal-cta {
+    margin-top: 2rem;
   }
-
-  .content {
-    max-width: 800px;
-  }
-
-  .intro {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 600;
-    margin-bottom: 3rem;
-    color: var(--color-primary);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .description {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    color: var(--color-text-light);
-    font-weight: 400;
-  }
-
-  .focus-areas {
-    margin: 3rem 0 4rem;
-  }
-
-  .area {
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    color: var(--color-text);
-    font-weight: 400;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-
-  .area::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-
-  .philosophy {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 600;
-    color: var(--color-accent);
-    margin: 4rem 0;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .closing {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    line-height: 1.6;
-    color: var(--color-text-light);
-    font-weight: 400;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 768px) {
-    .sound {
-      padding: 6rem 0 4rem;
-    }
-    
-    .container {
-      padding: 0 1rem;
-    }
-
-    h1 {
-      margin-bottom: 3rem;
-    }
-
-    .intro {
-      margin-bottom: 2rem;
-    }
-
-    .description {
-      margin-bottom: 2rem;
-    }
-
-    .focus-areas {
-      margin: 2rem 0 3rem;
-    }
-
-    .philosophy {
-      margin: 3rem 0;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .area {
-      padding-left: 1rem;
-    }
-  }
-</style> 
+</style>

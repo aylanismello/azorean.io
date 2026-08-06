@@ -1,0 +1,70 @@
+---
+/**
+ * Geometric marks in two tones — deep blue body, bright cyan accent — so they
+ * read as part of the depth ramp rather than as flat black signage.
+ */
+interface Props {
+  name: 'studios' | 'somi' | 'sol' | 'sound' | 'contact'
+  class?: string
+}
+const { name, class: className = '' } = Astro.props as Props
+---
+
+{
+  name === 'studios' && (
+    <svg class={`pict ${className}`} viewBox="0 0 48 48" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" />
+      <rect class="pict-accent" x="26" y="2" width="20" height="20" rx="10" />
+      <rect x="2" y="26" width="20" height="20" rx="10" />
+      <path class="pict-accent" d="M26 46V26h20z" />
+    </svg>
+  )
+}
+
+{
+  name === 'somi' && (
+    <svg class={`pict ${className}`} viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M0 16c4-7 8-7 12 0s8 7 12 0 8-7 12 0 8 7 12 0v7c-4 7-8 7-12 0s-8-7-12 0-8 7-12 0-8-7-12 0z" />
+      <path
+        class="pict-accent"
+        d="M0 32c4-7 8-7 12 0s8 7 12 0 8-7 12 0 8 7 12 0v7c-4 7-8 7-12 0s-8-7-12 0-8 7-12 0-8-7-12 0z"
+      />
+    </svg>
+  )
+}
+
+{
+  name === 'sol' && (
+    <svg class={`pict ${className}`} viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="pict-accent" cx="24" cy="24" r="11" />
+      <rect x="21" y="0" width="6" height="8" />
+      <rect x="21" y="40" width="6" height="8" />
+      <rect x="0" y="21" width="8" height="6" />
+      <rect x="40" y="21" width="8" height="6" />
+      <rect x="5" y="7" width="6" height="8" transform="rotate(-45 8 11)" />
+      <rect x="37" y="33" width="6" height="8" transform="rotate(-45 40 37)" />
+      <rect x="5" y="33" width="8" height="6" transform="rotate(45 9 36)" />
+      <rect x="35" y="9" width="8" height="6" transform="rotate(45 39 12)" />
+    </svg>
+  )
+}
+
+{
+  name === 'sound' && (
+    <svg class={`pict ${className}`} viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M2 18h10L26 4v40L12 30H2z" />
+      <rect class="pict-accent" x="32" y="14" width="5" height="20" />
+      <rect class="pict-accent" x="41" y="8" width="5" height="32" />
+    </svg>
+  )
+}
+
+{
+  name === 'contact' && (
+    <svg class={`pict ${className}`} viewBox="0 0 48 48" aria-hidden="true">
+      <path class="pict-accent" d="M2 8h44v6L24 30 2 14z" />
+      <path d="M2 20l16 12L2 44zM46 20v24L30 32z" />
+      <path d="M2 44l20-14 2 1.5L26 30l20 14z" />
+    </svg>
+  )
+}

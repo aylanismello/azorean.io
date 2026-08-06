@@ -1,0 +1,124 @@
+---
+const year = new Date().getFullYear()
+
+const groups = [
+  {
+    head: 'studios',
+    links: [
+      { label: 'what we build', href: '/studios' },
+      { label: 'somi', href: '/somi' },
+      { label: 'somi — support', href: '/somi/support' },
+      { label: 'somi — privacy', href: '/somi/privacy' },
+    ],
+  },
+  {
+    head: 'segundo sol',
+    links: [
+      { label: 'collective', href: '/segundo-sol' },
+      { label: 'fluindo — epk', href: '/fluindo' },
+      { label: 'events@segundosol.com', href: 'mailto:events@segundosol.com' },
+    ],
+  },
+  {
+    head: 'sound',
+    links: [
+      { label: 'audio lab', href: '/sound' },
+      { label: 'studio@azorean.io', href: 'mailto:studio@azorean.io' },
+    ],
+  },
+  {
+    head: 'contact',
+    links: [
+      { label: 'start a project', href: '/contact' },
+      { label: 'hello@azorean.io', href: 'mailto:hello@azorean.io' },
+    ],
+  },
+]
+---
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      {
+        groups.map((g) => (
+          <div>
+            <h2 class="label label--ink">{g.head}</h2>
+            <ul>
+              {g.links.map((l) => (
+                <li>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="foot-base">
+      <span class="num">© {year} azorean studios</span>
+      <span class="num">los angeles, ca — são miguel, açores</span>
+      <span class="num">est. mmxxiv</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* The bottom of the descent — the deepest surface on the site. */
+  .foot {
+    margin-top: 6rem;
+    padding: 4rem 0 2.25rem;
+    background:
+      radial-gradient(70% 120% at 10% 0%, rgba(0, 119, 182, 0.35), transparent 60%),
+      var(--abyss);
+    color: var(--on-deep);
+  }
+
+  .foot :global(.label--ink) {
+    color: var(--mist);
+  }
+
+  .foot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .foot-grid ul {
+    list-style: none;
+    margin-top: 0.85rem;
+  }
+
+  .foot-grid a {
+    display: block;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--on-deep-70);
+    transition: color 0.15s;
+  }
+
+  .foot-grid a:hover {
+    color: var(--glass);
+  }
+
+  .foot-base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--on-deep-rule);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(234, 247, 252, 0.5);
+  }
+
+  @media (max-width: 780px) {
+    .foot-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 1.5rem;
+    }
+  }
+</style>

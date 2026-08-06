@@ -1,218 +1,130 @@
 ---
-// Hero component with working video background
+/**
+ * Surface level. Light, airy, a soft cyan wash behind the type — then the
+ * São Miguel clip as a plate, sunk into the page with a depth reading beneath.
+ */
 ---
 
 <section class="hero">
-  <div class="hero-background">
-    <video 
-      id="hero-video"
-      autoplay 
-      muted 
-      loop 
-      playsinline 
-      class="hero-video"
-    >
-      <source src="/azores_clip_noaudio.mp4" type="video/mp4" />
-      <source src="/azores_clip.mp4" type="video/mp4" />
-    </video>
-    <div class="gradient-overlay"></div>
-  </div>
-  
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1 class="hero-title">
-        A studio for slow tech, sound, and story.
-      </h1>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <p class="label label--ink kicker">— atlantic / 38° north</p>
+
+    <h1 class="display headline">
+      a studio for<br />slow tech, <span class="sub">sound</span>,<br />and story.
+    </h1>
+
+    <div class="plate">
+      <video
+        id="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="plate-video"
+        aria-label="Aerial footage of Ilhéu de Vila Franca, São Miguel, Azores"
+      >
+        <source src="/azores_clip_noaudio.mp4" type="video/mp4" />
+        <source src="/azores_clip.mp4" type="video/mp4" />
+      </video>
+      <div class="plate-tint" aria-hidden="true"></div>
+    </div>
+
+    <div class="caption">
+      <span class="num">fig. 01 — ilhéu de vila franca do campo</span>
+      <span class="num">são miguel, açores</span>
+      <span class="num sounding">sounding <b>−1 240 m</b></span>
     </div>
   </div>
-
-  <!-- Subtle floating elements inspired by ocean currents -->
-  <div class="floating-elements">
-    <div class="current current-1"></div>
-    <div class="current current-2"></div>
-    <div class="current current-3"></div>
-  </div>
 </section>
-
-<script>
-  // Ensure video plays properly
-  document.addEventListener('DOMContentLoaded', function() {
-    const video = document.getElementById('hero-video') as HTMLVideoElement;
-    if (video) {
-      video.muted = true;
-      video.playsInline = true;
-      
-      // Ensure playback starts
-      setTimeout(() => {
-        video.play().catch(() => {
-          // Fallback if autoplay fails
-          video.load();
-        });
-      }, 100);
-    }
-  });
-</script>
 
 <style>
   .hero {
     position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
-    background: var(--color-deep-blue);
+    padding: 3.5rem 0 0;
+    isolation: isolate;
   }
-  
-  .hero-background {
+
+  /* The one atmospheric flourish on the light half of the site. */
+  .glow {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-  }
-  
-  .hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-  }
-  
-  .gradient-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(15, 27, 46, 0.3) 0%,
-      rgba(45, 125, 138, 0.1) 30%,
-      rgba(15, 27, 46, 0.4) 100%
-    );
-    z-index: 2;
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    width: 100%;
-  }
-  
-  .hero-text {
-    max-width: 800px;
-  }
-  
-  .hero-title {
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--color-pure-white);
-    margin-bottom: 2rem;
-    letter-spacing: -0.02em;
-    text-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.8),
-      0 4px 8px rgba(0, 0, 0, 0.6),
-      0 8px 16px rgba(0, 0, 0, 0.4),
-      0 16px 32px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    animation: fadeInUp 1.2s ease-out 0.5s forwards;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
-  }
-  
-  .floating-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
+    inset: -8rem 0 auto 0;
+    height: 34rem;
+    z-index: -1;
+    background:
+      radial-gradient(46rem 24rem at 18% 22%, rgba(0, 180, 216, 0.22), transparent 68%),
+      radial-gradient(38rem 22rem at 78% 6%, rgba(144, 224, 239, 0.34), transparent 66%);
     pointer-events: none;
   }
-  
-  .current {
+
+  .kicker {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .headline {
+    margin-bottom: 2.25rem;
+  }
+
+  .plate {
+    position: relative;
+    border: 1px solid var(--rule-strong);
+    overflow: hidden;
+    background: var(--abyss);
+    /* The clip has titling burned into its lower third — crop past it. */
+    aspect-ratio: 16 / 7;
+  }
+
+  .plate-video {
+    width: 100%;
+    height: 128%;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(1.12) contrast(1.04);
+  }
+
+  /* Just enough of the palette at the edges to seat the footage in the page —
+     a corner vignette, not a wash over the whole frame. */
+  .plate-tint {
     position: absolute;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(74, 154, 168, 0.15) 50%, 
-      transparent 100%);
-    border-radius: 50px;
-    animation: float-current 8s ease-in-out infinite;
+    inset: 0;
+    background:
+      radial-gradient(70% 60% at 0% 100%, rgba(3, 4, 94, 0.4), transparent 62%),
+      radial-gradient(60% 55% at 100% 0%, rgba(0, 180, 216, 0.18), transparent 60%);
+    pointer-events: none;
   }
-  
-  .current-1 {
-    width: 200px;
-    height: 2px;
-    top: 20%;
-    right: 10%;
-    animation-delay: 0s;
+
+  .caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.4rem 1.5rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-45);
   }
-  
-  .current-2 {
-    width: 150px;
-    height: 1px;
-    top: 60%;
-    right: 30%;
-    animation-delay: 3s;
+
+  .sounding b {
+    color: var(--mid);
+    font-weight: 600;
   }
-  
-  .current-3 {
-    width: 120px;
-    height: 1px;
-    bottom: 30%;
-    right: 20%;
-    animation-delay: 6s;
-  }
-  
-  @keyframes float-current {
-    0%, 100% { 
-      transform: translateX(0) translateY(0) rotate(5deg);
-      opacity: 0.3;
-    }
-    50% { 
-      transform: translateX(-20px) translateY(-10px) rotate(-5deg);
-      opacity: 0.7;
+
+  @media (max-width: 700px) {
+    .plate {
+      aspect-ratio: 4 / 5;
     }
   }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .hero-content {
-      padding: 0 1rem;
-    }
-    
-    .hero-title {
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      line-height: 1.2;
-    }
-    
-    .current {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero-title {
-      font-size: clamp(1.8rem, 9vw, 2.8rem);
-    }
-  }
-</style> 
+</style>
+
+<script>
+  // Safari occasionally ignores the autoplay attribute after a bfcache restore.
+  const video = document.getElementById('hero-video') as HTMLVideoElement | null
+  video?.play().catch(() => {
+    /* autoplay blocked — the still frame is fine */
+  })
+</script>

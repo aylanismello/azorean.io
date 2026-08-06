@@ -1,189 +1,69 @@
 ---
+import '../styles/azorean.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
 export interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Azorean Studios — a studio for slow tech, sound, and story. Mindful digital tools, conscious music, and experimental audio.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://azorean.io').href;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Azorean Studios - Creative technology company exploring sound, mindfulness, and digital experience" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#f2f1ee" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Azorean Studios" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  
+
   <body>
-    <slot />
-    
+    <a href="#main" class="skip">skip to content</a>
+    <SiteNav />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+
     <style>
-      :root {
-        /* Azorean Oceanic Color Palette */
-        --color-deep-blue: #0F1B2E;
-        --color-ocean-blue: #1E3A5F;
-        --color-teal: #2D7D8A;
-        --color-light-teal: #4A9AA8;
-        --color-misty-gray: #6B7C95;
-        --color-soft-gray: #8FA1B3;
-        --color-cloud-white: #F8FAFB;
-        --color-pure-white: #FFFFFF;
-        --color-mist: #E6EDF2;
-        
-        /* Semantic Colors */
-        --color-primary: var(--color-deep-blue);
-        --color-secondary: var(--color-ocean-blue);
-        --color-accent: var(--color-teal);
-        --color-accent-light: var(--color-light-teal);
-        --color-text: var(--color-deep-blue);
-        --color-text-light: var(--color-misty-gray);
-        --color-text-muted: var(--color-soft-gray);
-        --color-bg: var(--color-pure-white);
-        --color-bg-soft: var(--color-cloud-white);
-        --color-bg-mist: var(--color-mist);
-        --color-border: #D1DCE7;
-        
-        /* Typography */
-        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        
-        /* Spacing */
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 1rem;
-        --spacing-md: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-xl: 3rem;
-        --spacing-2xl: 4rem;
-        --spacing-3xl: 6rem;
-        --spacing-4xl: 8rem;
-        
-        /* Design System */
-        --border-radius: 0.75rem;
-        --border-radius-sm: 0.5rem;
-        --border-radius-lg: 1rem;
-        --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        --transition-smooth: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        
-        /* Shadows */
-        --shadow-sm: 0 2px 8px rgba(15, 27, 46, 0.08);
-        --shadow-md: 0 8px 24px rgba(15, 27, 46, 0.12);
-        --shadow-lg: 0 16px 48px rgba(15, 27, 46, 0.16);
-        --shadow-xl: 0 24px 64px rgba(15, 27, 46, 0.2);
-        
-        /* Gradients */
-        --gradient-ocean: linear-gradient(135deg, var(--color-deep-blue) 0%, var(--color-teal) 100%);
-        --gradient-mist: linear-gradient(135deg, var(--color-cloud-white) 0%, var(--color-mist) 100%);
-        --gradient-depth: linear-gradient(180deg, rgba(15, 27, 46, 0) 0%, rgba(15, 27, 46, 0.4) 100%);
+      .skip {
+        position: absolute;
+        left: -9999px;
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        font-family: var(--font-family);
-        scroll-behavior: smooth;
-      }
-
-      body {
-        background: var(--color-bg);
-        color: var(--color-text);
-        line-height: 1.7;
-        font-weight: 400;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
-      }
-
-      /* Global typography */
-      h1, h2, h3, h4, h5, h6 {
-        font-weight: 600;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        color: var(--color-text);
-      }
-
-      h1 {
-        font-size: clamp(2.5rem, 5vw, 4.5rem);
-        font-weight: 700;
-        letter-spacing: -0.03em;
-      }
-
-      h2 {
-        font-size: clamp(2rem, 4vw, 3.5rem);
-        font-weight: 600;
-      }
-
-      h3 {
-        font-size: clamp(1.5rem, 3vw, 2.25rem);
-      }
-
-      p {
-        font-size: 1.125rem;
-        color: var(--color-text-light);
-        max-width: 65ch;
-        line-height: 1.7;
-      }
-
-      /* Smooth transitions */
-      a, button {
-        transition: var(--transition);
-      }
-
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: var(--color-bg-soft);
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: var(--color-accent);
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(--color-accent-light);
-      }
-
-      /* Utility classes */
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .text-gradient {
-        background: var(--gradient-ocean);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      /* Responsive design */
-      @media (max-width: 768px) {
-        .container {
-          padding: 0 1rem;
-        }
-        
-        h1 {
-          font-size: clamp(2rem, 8vw, 3rem);
-        }
-        
-        p {
-          font-size: 1rem;
-        }
+      .skip:focus {
+        left: 1rem;
+        top: 1rem;
+        z-index: 100;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
       }
     </style>
   </body>
-</html> 
+</html>

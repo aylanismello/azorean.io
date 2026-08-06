@@ -1,220 +1,110 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.jsx';
+import DivisionPage from '../layouts/DivisionPage.astro';
+import Pictogram from '../components/Pictogram.astro';
+
+const focus = [
+  { text: 'Somatic tools that encourage breath, awareness, and stillness', tag: 'somatic' },
+  { text: 'Audio-based experiments that use generative sound or ambient environments', tag: 'audio' },
+  { text: 'Interactive web projects inspired by nature, the ocean, and human rhythm', tag: 'web' },
+] as const;
 ---
 
-<Layout title="Studios">
-  <Navigation client:load />
-  
-  <main>
-    <section class="studios">
-      <div class="container">
-        <h1>Studios</h1>
-        
-        <div class="content">
-          <p class="intro">
-            We build tools at the intersection of wellness, sound, and embodiment.
-          </p>
-          
-          <p class="description">
-            Small, intentional apps — often experimental — that explore how technology can support nervous system regulation, creative flow, and deeper presence.
-          </p>
-          
-          <div class="focus-areas">
-            <div class="area">Somatic tools that encourage breath, awareness, and stillness</div>
-            <div class="area">Audio-based experiments that use generative sound or ambient environments</div>
-            <div class="area">Interactive web projects inspired by nature, the ocean, and human rhythm</div>
-          </div>
-          
-          <p class="philosophy">
-            We don't chase scale.<br />
-            We build for feeling.
-          </p>
-          
-          <p class="closing">
-            Each project reflects a commitment to slowness, simplicity, and intuitive design — shaped by our roots in creative coding, music, and embodied experience.
-          </p>
-
-          <a href="/somi" class="project-card">
-            <span class="project-eyebrow">Now building</span>
-            <span class="project-title">SoMi</span>
-            <span class="project-desc">
-              Short somatic flows for iPhone, composed around how your nervous
-              system actually feels today.
-            </span>
-            <span class="project-cta">See the app &rarr;</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-</Layout>
+<DivisionPage
+  n="01"
+  title="studios"
+  pict="studios"
+  role="mindful digital tools"
+  intro="We build tools at the intersection of wellness, sound, and embodiment."
+  description="Small, intentional apps — often experimental — that explore how technology can support nervous system regulation, creative flow, and deeper presence."
+  focus={focus}
+  philosophy={["we don't chase scale.", 'we build for feeling.']}
+  closing="Each project reflects a commitment to slowness, simplicity, and intuitive design — shaped by our roots in creative coding, music, and embodied experience."
+>
+  <a href="/somi" class="product">
+    <Pictogram name="somi" />
+    <div class="product-body">
+      <span class="badge">now building</span>
+      <h2 class="title-md product-title">somi</h2>
+      <p class="body product-desc">
+        Short somatic flows for iPhone, composed around how your nervous system
+        actually feels today. Check in, move, check out.
+      </p>
+      <ul class="product-spec">
+        <li><span class="num">platform</span><span class="num">iphone</span></li>
+        <li><span class="num">sessions</span><span class="num">5–18 min</span></li>
+        <li><span class="num">price</span><span class="num">free</span></li>
+        <li><span class="num">status</span><span class="num orange">pre-release</span></li>
+      </ul>
+    </div>
+    <span class="product-cta num">see the app &rarr;</span>
+  </a>
+</DivisionPage>
 
 <style>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  .product {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    border: 1px solid var(--rule-strong);
+    padding: 2rem;
+    margin-top: 3rem;
+    transition: background 0.15s, color 0.15s;
   }
 
-  .project-card {
-    display: block;
-    margin-top: 4rem;
-    padding: 2rem 2.25rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 12px);
-    background: var(--color-bg-soft);
-    text-decoration: none;
-    transition: var(--transition-smooth);
+  .product:hover {
+    background: var(--ink);
+    color: var(--paper);
   }
 
-  .project-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-md, 0 12px 32px rgba(15, 27, 46, 0.08));
+  .product:hover :global(.pict) {
+    fill: var(--paper);
   }
 
-  .project-eyebrow {
-    display: block;
+  .product:hover .product-desc {
+    color: rgba(242, 241, 238, 0.7);
+  }
+
+  .product:hover .product-spec li {
+    border-color: rgba(242, 241, 238, 0.25);
+  }
+
+  .product-title {
+    margin: 0.7rem 0 0.5rem;
+  }
+
+  .product-spec {
+    list-style: none;
+    margin-top: 1.5rem;
+    max-width: 24rem;
+  }
+
+  .product-spec li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .product-spec .orange {
+    color: var(--mid);
+  }
+
+  .product-cta {
     font-size: 0.72rem;
-    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    white-space: nowrap;
   }
 
-  .project-title {
-    display: block;
-    margin-top: 0.6rem;
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--color-primary);
-  }
-
-  .project-desc {
-    display: block;
-    margin-top: 0.6rem;
-    max-width: 46ch;
-    color: var(--color-text-light);
-    line-height: 1.7;
-  }
-
-  .project-cta {
-    display: inline-block;
-    margin-top: 1.1rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--color-accent);
-  }
-
-  .studios {
-    padding: 8rem 0 6rem;
-    min-height: 85vh;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    font-weight: 700;
-    margin-bottom: 4rem;
-    color: var(--color-primary);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-  }
-
-  .content {
-    max-width: 800px;
-  }
-
-  .intro {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 600;
-    margin-bottom: 3rem;
-    color: var(--color-primary);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .description {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    color: var(--color-text-light);
-    font-weight: 400;
-  }
-
-  .focus-areas {
-    margin: 3rem 0 4rem;
-  }
-
-  .area {
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    color: var(--color-text);
-    font-weight: 400;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-
-  .area::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-
-  .philosophy {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 600;
-    color: var(--color-accent);
-    margin: 4rem 0;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .closing {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    line-height: 1.6;
-    color: var(--color-text-light);
-    font-weight: 400;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 768px) {
-    .studios {
-      padding: 6rem 0 4rem;
-    }
-    
-    .container {
-      padding: 0 1rem;
-    }
-
-    h1 {
-      margin-bottom: 3rem;
-    }
-
-    .intro {
-      margin-bottom: 2rem;
-    }
-
-    .description {
-      margin-bottom: 2rem;
-    }
-
-    .focus-areas {
-      margin: 2rem 0 3rem;
-    }
-
-    .philosophy {
-      margin: 3rem 0;
+  @media (max-width: 820px) {
+    .product {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
   }
-
-  @media (max-width: 480px) {
-    .area {
-      padding-left: 1rem;
-    }
-  }
-</style> 
+</style>

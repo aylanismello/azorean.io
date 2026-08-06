@@ -1,0 +1,412 @@
+/* ==========================================================================
+   Azorean Studios — design system
+
+   Organising idea: DEPTH. The Atlantic gets darker as you go down, and so does
+   the page — surface light at the masthead, abyssal navy by the footer. The
+   nine-step blue ramp below is the whole palette; nothing else is allowed in.
+
+   Structure stays functional — hairline rules, spec tables, technical labels —
+   but colour carries the atmosphere, and one section per page inverts to deep
+   water so the site breathes instead of sitting flat.
+
+   Scoped to the azorean.io pages. The /somi mini-site has its own stylesheet
+   (styles/somi.css) and must never import this one, or vice versa.
+   ========================================================================== */
+
+:root {
+  /* The ramp — surface (09) down to abyss (01) */
+  --abyss: #03045e;
+  --deep: #023e8a;
+  --mid: #0077b6;
+  --sea: #0096c7;
+  --bright: #00b4d8;
+  --glass: #48cae4;
+  --mist: #90e0ef;
+  --foam: #ade8f4;
+  --shell: #caf0f8;
+
+  /* Surfaces */
+  --paper: #f6fbfd;
+  --paper-2: #e9f5fa;
+
+  /* Ink — deep navy rather than black; the page never goes truly neutral */
+  --ink: #03045e;
+  --ink-70: rgba(3, 4, 94, 0.72);
+  --ink-45: rgba(3, 4, 94, 0.48);
+  --rule: rgba(3, 4, 94, 0.16);
+  --rule-strong: rgba(3, 4, 94, 0.55);
+
+  /* On deep-water sections */
+  --on-deep: #eaf7fc;
+  --on-deep-70: rgba(234, 247, 252, 0.72);
+  --on-deep-rule: rgba(144, 224, 239, 0.28);
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  --gutter: 2rem;
+  --max: 1240px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--bright);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sea);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────── */
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* The bathymetric strip — the depth ramp rendered literally, used as a
+   divider. Small, repeated, and the site's one piece of ornament. */
+.depth-strip {
+  display: flex;
+  height: 3px;
+  width: 100%;
+}
+
+.depth-strip span {
+  flex: 1;
+}
+
+.depth-strip span:nth-child(1) { background: var(--abyss); }
+.depth-strip span:nth-child(2) { background: var(--deep); }
+.depth-strip span:nth-child(3) { background: var(--mid); }
+.depth-strip span:nth-child(4) { background: var(--sea); }
+.depth-strip span:nth-child(5) { background: var(--bright); }
+.depth-strip span:nth-child(6) { background: var(--glass); }
+.depth-strip span:nth-child(7) { background: var(--mist); }
+.depth-strip span:nth-child(8) { background: var(--foam); }
+.depth-strip span:nth-child(9) { background: var(--shell); }
+
+/* ── Deep-water section — the inverted moment on every page ─────────────── */
+
+.deep {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 15% -20%, rgba(0, 180, 216, 0.34), transparent 62%),
+    radial-gradient(90% 80% at 90% 110%, rgba(0, 119, 182, 0.42), transparent 60%),
+    linear-gradient(170deg, var(--deep) 0%, var(--abyss) 78%);
+  color: var(--on-deep);
+}
+
+.deep .label,
+.deep .body {
+  color: var(--on-deep-70);
+}
+
+.deep .label--ink {
+  color: var(--mist);
+}
+
+/* ── Type ───────────────────────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-transform: lowercase;
+}
+
+.display {
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  text-transform: lowercase;
+}
+
+.title-lg {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.title-md {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+/* One word per headline can go under water. */
+.sub {
+  background: linear-gradient(100deg, var(--mid) 0%, var(--bright) 55%, var(--glass) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+.label--ink {
+  color: var(--mid);
+}
+
+.lede {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  max-width: 34ch;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-70);
+  max-width: 62ch;
+}
+
+.num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Badge ──────────────────────────────────────────────────────────────── */
+
+.badge {
+  display: inline-block;
+  background: var(--bright);
+  color: var(--abyss);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+}
+
+/* ── Spec list ──────────────────────────────────────────────────────────── */
+
+.spec {
+  list-style: none;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.spec li {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s;
+}
+
+.spec li:hover {
+  background: rgba(0, 180, 216, 0.07);
+}
+
+.spec .spec-n {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--mid);
+  font-variant-numeric: tabular-nums;
+}
+
+.spec .spec-t {
+  font-size: 1rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.spec .spec-v {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+  white-space: nowrap;
+}
+
+.deep .spec {
+  border-top-color: var(--on-deep-rule);
+}
+
+.deep .spec li {
+  border-bottom-color: var(--on-deep-rule);
+}
+
+.deep .spec li:hover {
+  background: rgba(144, 224, 239, 0.08);
+}
+
+.deep .spec .spec-n {
+  color: var(--glass);
+}
+
+.deep .spec .spec-v {
+  color: var(--on-deep-70);
+}
+
+/* ── Links & buttons ────────────────────────────────────────────────────── */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.link:hover {
+  color: var(--sea);
+  border-color: var(--sea);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.15rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.btn:hover {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: var(--shell);
+}
+
+.btn--fill {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: var(--shell);
+}
+
+.btn--fill:hover {
+  background: var(--bright);
+  border-color: var(--bright);
+  color: var(--abyss);
+}
+
+.deep .btn {
+  border-color: var(--on-deep-rule);
+  color: var(--on-deep);
+}
+
+.deep .btn:hover {
+  background: var(--mist);
+  border-color: var(--mist);
+  color: var(--abyss);
+}
+
+/* ── Pictograms ─────────────────────────────────────────────────────────── */
+
+.pict {
+  display: block;
+  width: 46px;
+  height: 46px;
+  fill: var(--deep);
+}
+
+.pict .pict-accent {
+  fill: var(--bright);
+}
+
+.deep .pict {
+  fill: var(--mist);
+}
+
+.deep .pict .pict-accent {
+  fill: var(--glass);
+}
+
+/* ── Utilities ──────────────────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 1.25rem;
+  }
+}

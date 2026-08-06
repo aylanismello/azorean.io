@@ -1,515 +1,347 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.jsx';
 import Hero from '../components/Hero.astro';
+import Pictogram from '../components/Pictogram.astro';
+
+const divisions = [
+  {
+    n: '01',
+    pict: 'studios',
+    name: 'studios',
+    role: 'mindful digital tools',
+    body: 'The technological heart of the ecosystem — small, intentional apps that explore how software can support nervous system regulation, creative flow, and deeper presence.',
+    href: '/studios',
+    cta: 'explore technology',
+    meta: ['ios', 'web', 'experimental'],
+  },
+  {
+    n: '02',
+    pict: 'sol',
+    name: 'segundo sol',
+    role: 'label & collective',
+    body: 'A community-focused collective fostering intentional gatherings, conscious music releases, and collaborative experiences. Music as medicine, community as healing.',
+    href: '/segundo-sol',
+    cta: 'join community',
+    meta: ['releases', 'events', 'artists'],
+  },
+  {
+    n: '03',
+    pict: 'sound',
+    name: 'sound',
+    role: 'modular audio lab',
+    body: 'A modular experimental sound engine crafting ambient soundscapes, field recordings, and compositions for film, installation, and therapeutic use.',
+    href: '/sound',
+    cta: 'enter studio',
+    meta: ['ambient', 'scoring', 'design'],
+  },
+] as const;
 ---
 
-<Layout title="Azorean Studios - Where Adventure Begins">
-  <Navigation client:load />
+<Layout title="Azorean Studios — a studio for slow tech, sound, and story">
   <Hero />
-  
-  <main>
-      <!-- About Section -->
-  <section class="about">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-text">
-          <span class="section-label">About</span>
-          <h2>Bridging worlds through mindful technology</h2>
-          <p>
-            From the volcanic landscapes of São Miguel to the depths of digital innovation, 
-            we create experiences that connect the physical and virtual realms.
-          </p>
-          <p>
-            Our three creative divisions explore sound, community, and technological 
-            innovation as pathways to deeper human connection.
-          </p>
-        </div>
-        <div class="about-visual">
-          <div class="azores-pattern">
-            <div class="pattern-circle"></div>
-            <div class="pattern-circle"></div>
-            <div class="pattern-circle"></div>
-          </div>
-        </div>
+
+  <!-- ── Divisions index ──────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label label--ink">— divisions</span>
+        <h2 class="title-lg">three ways in</h2>
+      </div>
+
+      <div class="grid">
+        {
+          divisions.map((d) => (
+            <article class="unit">
+              <div class="unit-top">
+                <span class="num unit-n">{d.n}</span>
+                <Pictogram name={d.pict} />
+              </div>
+
+              <h3 class="unit-name">{d.name}</h3>
+              <span class="label unit-role">{d.role}</span>
+              <p class="unit-body">{d.body}</p>
+
+              <ul class="chips">
+                {d.meta.map((m) => (
+                  <li class="chip">{m}</li>
+                ))}
+              </ul>
+
+              <a href={d.href} class="btn unit-cta">
+                {d.cta}
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
-    <!-- Creative Divisions Section -->
-    <section class="divisions">
-      <div class="container">
-        <span class="section-label">Our Creative Divisions</span>
-        <h2 class="section-title">Where Ideas Take Shape</h2>
-        
-        <div class="divisions-grid">
-          <div class="division-card">
-            <div class="card-header">
-              <div class="card-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M16 4L20 12H28L22 18L24 26L16 22L8 26L10 18L4 12H12L16 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                </svg>
-              </div>
-              <h3>Studios</h3>
-            </div>
-            <p>The technological heart of our creative ecosystem, developing mindful digital tools and immersive experiences.</p>
-            <div class="card-footer">
-              <a href="/studios" class="card-link">
-                Explore Technology
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-          
-          <div class="division-card">
-            <div class="card-header">
-              <div class="card-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" fill="none"/>
-                  <path d="M12 16l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h3>Segundo Sol</h3>
-            </div>
-            <p>Our community-focused collective fostering intentional gatherings, music releases, and collaborative experiences.</p>
-            <div class="card-footer">
-              <a href="/segundo-sol" class="card-link">
-                Join Community
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-          
-          <div class="division-card">
-            <div class="card-header">
-              <div class="card-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M6 8h20v16H6z" stroke="currentColor" stroke-width="2" fill="none"/>
-                  <path d="M10 12h12M10 16h8M10 20h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h3>Sound</h3>
-            </div>
-            <p>Our modular audio laboratory crafting ambient soundscapes, field recordings, and experimental compositions.</p>
-            <div class="card-footer">
-              <a href="/sound" class="card-link">
-                Enter Studio
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+  <!-- ── About ────────────────────────────────────────────────────────── -->
+  <section class="section band">
+    <div class="wrap two-col">
+      <div>
+        <span class="label label--ink">— about</span>
+        <h2 class="title-lg about-h">bridging worlds through mindful technology</h2>
       </div>
-    </section>
+      <div class="col-text">
+        <p class="lede">
+          From the volcanic landscapes of São Miguel to the depths of digital
+          innovation, we create experiences that connect the physical and
+          virtual.
+        </p>
+        <p class="body">
+          Our three creative divisions explore sound, community, and
+          technological innovation as pathways to deeper human connection.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Philosophy Section -->
-    <section class="philosophy">
-      <div class="container">
-        <div class="philosophy-content">
-          <div class="philosophy-text">
-            <span class="section-label">Philosophy</span>
-            <h2>Rooted in presence, reaching for wonder</h2>
-            <p>
-              Like the volcanic islands emerging from the Atlantic depths, we believe 
-              the most profound innovations arise from patience, presence, and respect 
-              for natural rhythms.
-            </p>
-            <p>
-              Every project we undertake honors the balance between technological 
-              possibility and human flourishing, creating tools that invite deeper 
-              connection rather than distraction.
-            </p>
-          </div>
-          <div class="philosophy-visual">
-            <div class="volcanic-form">
-              <div class="form-layer"></div>
-              <div class="form-layer"></div>
-              <div class="form-layer"></div>
-            </div>
-          </div>
-        </div>
+  <!-- ── Philosophy — the descent ─────────────────────────────────────── -->
+  <section class="deep philosophy">
+    <div class="wrap">
+      <span class="label label--ink">— philosophy</span>
+      <p class="statement">rooted in presence,<br />reaching for wonder.</p>
+
+      <div class="two-col philo">
+        <p class="body">
+          Like the volcanic islands emerging from the Atlantic depths, we
+          believe the most profound innovations arise from patience, presence,
+          and respect for natural rhythms.
+        </p>
+        <p class="body">
+          Every project we undertake honors the balance between technological
+          possibility and human flourishing, creating tools that invite deeper
+          connection rather than distraction.
+        </p>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- ── Now building ─────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <a href="/somi" class="now">
+        <Pictogram name="somi" />
+        <div>
+          <span class="badge">now building</span>
+          <h2 class="title-md now-title">somi — somatic practice for iphone</h2>
+          <p class="body now-body">
+            Check in with how your body actually feels, get a short flow of
+            body-based exercises built for that state, then check in again.
+          </p>
+        </div>
+        <span class="now-cta num">see the app &rarr;</span>
+      </a>
+    </div>
+  </section>
 </Layout>
 
 <style>
-  /* Container */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  .section {
+    padding: 5rem 0;
   }
 
-  /* Section Labels */
-  .section-label {
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  .band {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-2);
   }
 
-  .about .section-label {
-    color: rgba(255, 255, 255, 0.8);
+  .philosophy {
+    padding: 7rem 0;
   }
 
-  .philosophy .section-label {
-    color: rgba(255, 255, 255, 0.8);
+  .section-head {
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 1.25rem;
+    margin-bottom: 2.5rem;
   }
 
-  /* About Section */
-  .about {
-    padding: 8rem 0;
-    background: linear-gradient(135deg, #87CEEB 0%, #4682B4 50%, #1E90FF 100%);
-    color: white;
-  }
-
-  .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-  }
-
-  .about-text h2 {
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: 900;
-    line-height: 1.1;
-    color: white;
-    margin-bottom: 2rem;
-    letter-spacing: -0.03em;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .about-text p {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-  }
-
-  .about-text p:last-child {
-    margin-bottom: 0;
-  }
-
-  .about-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 400px;
-  }
-
-  .azores-pattern {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    transform: rotate(15deg);
-  }
-
-  .pattern-circle {
-    position: absolute;
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, rgba(135, 206, 235, 0.2) 100%);
-    backdrop-filter: blur(10px);
-  }
-
-  .pattern-circle:nth-child(1) {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: rotate(-10deg);
-  }
-
-  .pattern-circle:nth-child(2) {
-    width: 60%;
-    height: 60%;
-    top: 20%;
-    left: 20%;
-    border-color: rgba(255, 255, 255, 0.6);
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.25) 0%, rgba(30, 144, 255, 0.3) 100%);
-    transform: rotate(20deg);
-  }
-
-  .pattern-circle:nth-child(3) {
-    width: 20%;
-    height: 20%;
-    top: 40%;
-    left: 40%;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
-  }
-
-  /* Divisions Section */
-  .divisions {
-    padding: 8rem 0;
-    background: linear-gradient(180deg, #1E90FF 0%, #4169E1 50%, #6A5ACD 100%);
-    color: white;
-  }
-
-  .section-title {
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: 900;
-    line-height: 1.1;
-    text-align: center;
-    margin-bottom: 4rem;
-    color: white;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    letter-spacing: -0.03em;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .divisions .section-label {
+  .section-head .label {
     display: block;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1rem;
-    font-weight: 700;
+    margin-bottom: 0.6rem;
   }
 
-  .divisions-grid {
+  /* Divisions */
+  .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
-    margin-top: 4rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .division-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 3rem;
-    height: 100%;
+  .unit {
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    padding-right: 2rem;
+    border-right: 1px solid var(--rule);
   }
 
-  .division-card:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.3);
-    transform: translateY(-8px);
+  .unit + .unit {
+    padding-left: 2rem;
   }
 
-  .card-header {
+  .unit:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .unit-top {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
   }
 
-  .card-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #1E3A5F;
-    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+  .unit-n {
+    font-size: 0.72rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
   }
 
-  .card-header h3 {
-    color: white;
-    font-size: 1.75rem;
-    font-weight: 800;
-    margin: 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  .unit-name {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    letter-spacing: -0.04em;
   }
 
-  .division-card p {
-    color: rgba(255, 255, 255, 0.9);
+  .unit-role {
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  .unit-body {
+    font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 2.5rem;
-    flex-grow: 1;
-    font-size: 1.1rem;
+    color: var(--ink-70);
+    margin-top: 1rem;
   }
 
-  .card-footer {
+  .chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 1.25rem 0 1.75rem;
+  }
+
+  .chip {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule);
+    padding: 0.22rem 0.5rem;
+    color: var(--ink-70);
+  }
+
+  .unit-cta {
     margin-top: auto;
+    align-self: flex-start;
   }
 
-  .card-link {
-    color: #FFD700;
-    text-decoration: none;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-    font-size: 1.1rem;
-  }
-
-  .card-link:hover {
-    color: #FFA500;
-    transform: translateX(4px);
-  }
-
-  /* Philosophy Section */
-  .philosophy {
-    padding: 8rem 0;
-    background: linear-gradient(135deg, #00CED1 0%, #20B2AA 50%, #008B8B 100%);
-    color: white;
-  }
-
-  .philosophy-content {
+  /* Two column */
+  .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
+    gap: 3rem;
   }
 
-  .philosophy-text h2 {
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: 900;
-    line-height: 1.1;
-    color: white;
-    margin-bottom: 2rem;
-    letter-spacing: -0.03em;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  .about-h {
+    margin-top: 0.6rem;
+    max-width: 14ch;
   }
 
-  .philosophy-text p {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
+  .col-text > * + * {
+    margin-top: 1.25rem;
   }
 
-  .philosophy-text p:last-child {
-    margin-bottom: 0;
+  /* Philosophy */
+  .statement {
+    font-size: clamp(2.2rem, 6.5vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-transform: lowercase;
+    margin: 1.25rem 0 3rem;
   }
 
-  .philosophy-visual {
-    display: flex;
+  .philo {
+    border-top: 1px solid var(--on-deep-rule);
+    padding-top: 2rem;
+  }
+
+  /* Now building */
+  .now {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
     align-items: center;
-    justify-content: center;
-    min-height: 400px;
+    border: 1px solid var(--rule);
+    background: linear-gradient(
+      100deg,
+      rgba(202, 240, 248, 0.5) 0%,
+      rgba(246, 251, 253, 0.4) 60%
+    );
+    padding: 2rem;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
   }
 
-  .volcanic-form {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    transform: rotate(-10deg);
+  .now:hover {
+    background: linear-gradient(100deg, var(--deep) 0%, var(--abyss) 90%);
+    border-color: var(--deep);
+    color: var(--on-deep);
   }
 
-  .form-layer {
-    position: absolute;
-    border-radius: 30px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(15px);
+  .now:hover :global(.pict) {
+    fill: var(--mist);
   }
 
-  .form-layer:nth-child(1) {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: rotate(15deg);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(0, 206, 209, 0.2) 100%);
+  .now:hover :global(.pict-accent) {
+    fill: var(--glass);
   }
 
-  .form-layer:nth-child(2) {
-    width: 70%;
-    height: 70%;
-    top: 15%;
-    left: 15%;
-    transform: rotate(-20deg);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(32, 178, 170, 0.25) 100%);
-    border-color: rgba(255, 255, 255, 0.4);
+  .now:hover .now-body {
+    color: var(--on-deep-70);
   }
 
-  .form-layer:nth-child(3) {
-    width: 40%;
-    height: 40%;
-    top: 30%;
-    left: 30%;
-    transform: rotate(25deg);
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
+  .now-title {
+    margin: 0.7rem 0 0.5rem;
   }
 
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .container {
-      padding: 0 1rem;
-    }
+  .now-cta {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
 
-    .about-content,
-    .philosophy-content {
+  @media (max-width: 900px) {
+    .grid {
       grid-template-columns: 1fr;
-      gap: 4rem;
     }
 
-    .about,
-    .divisions,
-    .philosophy {
-      padding: 4rem 0;
+    .unit {
+      border-right: 0;
+      border-bottom: 1px solid var(--rule);
+      padding: 2rem 0;
     }
 
-    .about-visual,
-    .philosophy-visual {
-      min-height: 300px;
+    .unit + .unit {
+      padding-left: 0;
     }
 
-    .divisions-grid {
+    .unit:first-child {
+      padding-top: 0;
+    }
+
+    .two-col {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
-    .division-card {
-      padding: 2rem;
-    }
-
-    .azores-pattern,
-    .volcanic-form {
-      width: 200px;
-      height: 200px;
+    .now {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
   }
-
-  @media (max-width: 480px) {
-    .about,
-    .divisions,
-    .philosophy {
-      padding: 3rem 0;
-    }
-
-    .about-content,
-    .philosophy-content {
-      gap: 3rem;
-    }
-
-    .section-title {
-      margin-bottom: 3rem;
-    }
-
-    .divisions-grid {
-      margin-top: 3rem;
-    }
-  }
-</style> 
+</style>

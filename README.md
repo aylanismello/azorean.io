@@ -19,12 +19,30 @@ Azorean Studios operates through three creative divisions:
 
 ## 🎨 Design Philosophy
 
-The website embodies the "organic meets futuristic" aesthetic with:
-- Clean, modern typography with Inter font
-- Soft, oceanic color palette
-- Subtle animations and micro-interactions
-- Fluid, ambient visual elements
-- Generous white space and mindful content hierarchy
+The azorean.io pages use a functional, catalogue-like language — closer to a
+hardware index than a brochure:
+
+- **Paper and ink.** Warm off-white background (`--paper`), near-black type.
+- **One loud colour.** Orange (`--orange`) only where something needs to shout —
+  index numbers, badges, the primary button, hover states. Green
+  (`--green`) is available as an Atlantic undertone.
+- **Lowercase grotesque.** Inter, tight tracking, negative letter-spacing.
+- **Hairline rules, no shadows, no rounded corners.** Structure comes from 1px
+  lines and grid, not depth.
+- **Bold geometric pictograms.** Solid black shapes, no strokes (`Pictogram.astro`).
+- **Technical labels.** Monospace, uppercase, wide tracking — used for section
+  markers, captions, and spec tables.
+
+Tokens live in `src/styles/azorean.css`. Reusable primitives: `.label`,
+`.badge`, `.spec`, `.btn`, `.link`, `.display`, `.title-lg`, `.num`, `.wrap`.
+
+The three division pages (studios, segundo sol, sound) share
+`layouts/DivisionPage.astro` — they are data, not markup. Add a division by
+copying one of those pages and changing the props.
+
+> **Note:** `/fluindo` is deliberately excluded. It's a standalone artist EPK
+> with its own `<html>` document and its own look, and it does not use
+> `Layout.astro`. The redesign left it alone on purpose.
 
 ## 🚀 Getting Started
 
@@ -54,12 +72,15 @@ The website embodies the "organic meets futuristic" aesthetic with:
 │   └── somi-assets.mjs     # regenerates public/somi/{og,icons}
 ├── src/
 │   ├── components/
-│   │   ├── Navigation.jsx
-│   │   ├── Hero.astro
+│   │   ├── SiteNav.astro   # catalogue masthead (no JS)
+│   │   ├── SiteFooter.astro
+│   │   ├── Pictogram.astro # solid-black division marks
+│   │   ├── Hero.astro      # video plate + caption
 │   │   └── somi/           # SoMi-only components
 │   ├── layouts/
-│   │   ├── Layout.astro    # azorean.io
-│   │   └── SomiBase.astro  # SoMi mini-site
+│   │   ├── Layout.astro       # azorean.io shell
+│   │   ├── DivisionPage.astro # shared studios/sol/sound template
+│   │   └── SomiBase.astro     # SoMi mini-site
 │   ├── somi/
 │   │   └── config.js       # every swappable SoMi value
 │   ├── styles/
