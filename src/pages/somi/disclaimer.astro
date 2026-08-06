@@ -1,0 +1,155 @@
+---
+import SomiBase from '../../layouts/SomiBase.astro'
+import DocHeader from '../../components/somi/DocHeader.astro'
+import { COMPANY, CONTACT, LEGAL_UPDATED, p } from '../../somi/config.js'
+---
+
+<SomiBase
+  title="Health Disclaimer"
+  variant="document"
+  description="What somatic practice can and cannot do, and when to talk to a professional before using SoMi."
+>
+  <DocHeader
+    eyebrow="Legal"
+    title="Health Disclaimer"
+    lede="Somatic work is gentle, but it is not nothing. Here is the honest version of what SoMi is for and who should check with someone first."
+    updated={LEGAL_UPDATED}
+  />
+
+  <article class="prose-somi mx-auto max-w-3xl px-5 pb-28 pt-4 sm:px-8">
+    <div class="my-8 rounded-2xl border border-teal/30 bg-teal/8 px-6 py-5">
+      <p class="!mt-0 !mb-0 text-foam">
+        <strong>If you are in crisis, SoMi is not the right tool.</strong> Call
+        your local emergency number, or in the United States call or text
+        <strong>988</strong> for the Suicide &amp; Crisis Lifeline. The app does
+        not monitor what you write and nobody is reading it.
+      </p>
+    </div>
+
+    <h2 id="not-medical">SoMi is not medical care</h2>
+    <p>
+      SoMi is a general wellbeing and self-regulation app. It is <strong
+        >not a medical device</strong
+      >, not therapy, and not a substitute for diagnosis or treatment by a
+      qualified professional. Nothing in the app or on this website is medical,
+      psychological or psychiatric advice, and using SoMi does not create a
+      clinical relationship of any kind.
+    </p>
+    <p>
+      Never disregard professional advice or delay seeking it because of
+      something you encountered in SoMi.
+    </p>
+
+    <h2 id="polyvagal">About the polyvagal framing</h2>
+    <p>
+      SoMi organises its exercises using a polyvagal-informed model — the energy
+      and safety axes, and the state names like Steady, Wired and Shutdown. This
+      is a <strong>useful way of sorting practices</strong>, and it is how many
+      somatic practitioners work. It is not a measurement of your vagus nerve, it
+      is not a diagnostic instrument, and the state the app shows you is derived
+      entirely from where you placed your own finger on a picker. It reflects
+      your self-report, nothing more.
+    </p>
+    <p>
+      Aspects of polyvagal theory remain debated in the research literature. We
+      present it as a practical organising lens, not settled clinical science.
+    </p>
+
+    <h2 id="check-first">Talk to a professional before starting if you</h2>
+    <ul>
+      <li>are pregnant, or recently gave birth;</li>
+      <li>
+        have a heart condition, uncontrolled blood pressure, or a history of
+        stroke;
+      </li>
+      <li>
+        have a neck, spine, jaw or shoulder injury — several exercises involve
+        head turns, gaze shifts and stretches;
+      </li>
+      <li>
+        have an eye condition, retinal problem, glaucoma, or recent eye surgery —
+        some exercises use sustained gaze direction;
+      </li>
+      <li>
+        have an inner-ear or vestibular condition, or are prone to vertigo or
+        fainting;
+      </li>
+      <li>have a seizure disorder;</li>
+      <li>
+        are being treated for a mental health condition, particularly trauma,
+        PTSD, dissociation, psychosis, or an eating disorder;
+      </li>
+      <li>are recovering from surgery or an acute injury.</li>
+    </ul>
+
+    <h2 id="what-can-happen">What can come up</h2>
+    <p>
+      Somatic practice deliberately brings attention into the body, and that can
+      surface more than you expected. Sighing, yawning, shaking, trembling,
+      tears, heat, tingling and spontaneous movement are all common and usually
+      harmless — the app even gives you tags for them. Less often, turning
+      attention inward can bring up difficult memories, strong emotion, numbness,
+      or a feeling of being far away from yourself.
+    </p>
+    <p>
+      If that happens: stop the flow, open your eyes, put your feet on the floor,
+      and look around the room until it feels like a room again. If it keeps
+      happening, work with a trauma-informed practitioner rather than alone with
+      an app.
+    </p>
+
+    <h2 id="stop">Stop immediately if you experience</h2>
+    <ul>
+      <li>chest pain, pressure, or shortness of breath;</li>
+      <li>dizziness, faintness, or visual disturbance;</li>
+      <li>sharp or increasing pain anywhere;</li>
+      <li>
+        distress that keeps escalating rather than settling as the practice
+        continues.
+      </li>
+    </ul>
+    <p>
+      Then seek medical attention. Do not push through. Nothing in a five-minute
+      flow is worth an injury.
+    </p>
+
+    <h2 id="practise-safely">Practising safely</h2>
+    <ul>
+      <li>
+        Work within a range that feels easy. Somatic practice is not a stretch
+        you win.
+      </li>
+      <li>
+        Never practise while driving, operating machinery, or anywhere you need
+        your full attention.
+      </li>
+      <li>
+        Do the lying-down exercises on a surface you can safely get down to and
+        up from.
+      </li>
+      <li>
+        Skip anything that does not feel right. Every block in a flow can be
+        swapped or skipped.
+      </li>
+    </ul>
+
+    <h2 id="results">No promised results</h2>
+    <p>
+      We make no claim that SoMi will reduce your stress, improve your sleep,
+      regulate your nervous system, or produce any other specific outcome.
+      Individual responses to somatic practice vary widely, and streaks and stats
+      in the app are a record of what you did, not evidence of a health benefit.
+    </p>
+
+    <h2 id="contact">Questions</h2>
+    <p>
+      This disclaimer forms part of our <a href={p('/terms')}>Terms of Use</a>. If
+      something here is unclear, write to
+      <a href={`mailto:${CONTACT.support}`}>{CONTACT.support}</a>.
+    </p>
+    <p>
+      {COMPANY.name}<br />
+      {COMPANY.addressLine}
+    </p>
+  </article>
+</SomiBase>

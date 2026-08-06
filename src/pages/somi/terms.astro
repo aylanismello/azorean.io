@@ -1,0 +1,247 @@
+---
+import SomiBase from '../../layouts/SomiBase.astro'
+import DocHeader from '../../components/somi/DocHeader.astro'
+import { COMPANY, CONTACT, LEGAL_UPDATED, APP, p } from '../../somi/config.js'
+---
+
+<SomiBase
+  title="Terms of Use"
+  variant="document"
+  description="The agreement between you and Azorean Studios covering your use of the SoMi app."
+>
+  <DocHeader
+    eyebrow="Legal"
+    title="Terms of Use"
+    lede="The agreement between you and Azorean Studios covering the SoMi app. Written to be read, not skipped."
+    updated={LEGAL_UPDATED}
+  />
+
+  <article class="prose-somi mx-auto max-w-3xl px-5 pb-28 pt-4 sm:px-8">
+    <p>
+      These Terms of Use (“Terms”) are a legal agreement between you and {
+        COMPANY.name
+      } (“we”, “us”), covering the SoMi mobile application and this website
+      (together, the “Service”). By downloading, installing or using SoMi you
+      agree to these Terms. If you do not agree, do not use the Service.
+    </p>
+
+    <h2 id="health">1. SoMi is not medical care — read this one</h2>
+    <p>
+      <strong
+        >SoMi is a general wellbeing app. It is not a medical device, it is not
+        therapy, and it does not provide medical, psychological or other
+        professional advice.</strong
+      > Nothing in the Service is intended to diagnose, treat, cure or prevent any
+      condition. SoMi draws on polyvagal-informed somatic practice, which is a
+      framework for organising exercises — not a clinical claim about outcomes in
+      your body.
+    </p>
+    <p>
+      You use the exercises at your own risk. Consult a qualified healthcare
+      professional before starting if you are pregnant, have a cardiovascular,
+      blood pressure, neck, spine, eye or inner-ear condition, have a seizure
+      disorder, or are being treated for a mental health condition — including
+      trauma, PTSD, or dissociative symptoms. Stop immediately if you feel pain,
+      dizziness, faintness, or distress that does not settle, and seek help.
+    </p>
+    <p>
+      <strong>In an emergency, call your local emergency number.</strong> SoMi is
+      not a crisis service, does not monitor what you write, and cannot respond to
+      a request for help. Our full
+      <a href={p('/disclaimer')}>health disclaimer</a> forms part of these Terms.
+    </p>
+
+    <h2 id="eligibility">2. Who can use SoMi</h2>
+    <p>
+      You must be at least 13 years old to create an account, and at least 16 in
+      regions where that is the minimum age to consent to data processing. If
+      you are under the age of majority where you live, you may only use the
+      Service with the involvement of a parent or guardian who agrees to these
+      Terms on your behalf. You must be able to form a binding contract and must
+      not be barred from using the Service under applicable law.
+    </p>
+
+    <h2 id="account">3. Your account</h2>
+    <p>
+      You need an account to use SoMi. You can create one with an email address
+      and password, or with Sign in with Apple. You agree to provide accurate
+      information, to keep your credentials secure, and to tell us promptly at {
+        CONTACT.support
+      } if you believe your account has been accessed by someone else. You are
+      responsible for activity that happens under your account.
+    </p>
+    <p>
+      You can delete your account at any time from inside the app. Deletion is
+      permanent and removes your practice history — see
+      <a href={p('/account-deletion')}>account deletion</a>.
+    </p>
+
+    <h2 id="price">4. Price</h2>
+    <p>
+      SoMi is currently {APP.price.toLowerCase()} to download and use. There are
+      no in-app purchases, no subscriptions and no advertising. If we ever
+      introduce paid features, we will publish updated Terms describing the
+      pricing, billing and cancellation arrangements before those features go
+      live, and existing free functionality will not be retroactively placed
+      behind a paywall without notice.
+    </p>
+
+    <h2 id="licence">5. Your licence to use SoMi</h2>
+    <p>
+      Subject to these Terms, we grant you a personal, limited, non-exclusive,
+      non-transferable, revocable licence to install and use SoMi on Apple
+      devices you own or control, for your own non-commercial use, as permitted
+      by the App Store Terms of Service.
+    </p>
+
+    <h2 id="restrictions">6. What you may not do</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>
+        copy, record, download, redistribute, publicly perform or resell the
+        exercise videos, audio, or any other content in the Service;
+      </li>
+      <li>
+        reverse engineer, decompile or attempt to extract the source code of the
+        app, except to the extent that restriction is prohibited by law;
+      </li>
+      <li>
+        access the Service through automated means, scrape it, or attempt to
+        access data belonging to another user;
+      </li>
+      <li>
+        interfere with, overload, or attempt to breach the security of our
+        systems;
+      </li>
+      <li>
+        use the Service to deliver somatic or therapeutic instruction to others
+        commercially, or hold yourself out as certified by us;
+      </li>
+      <li>use the Service in violation of any applicable law.</li>
+    </ul>
+
+    <h2 id="content">7. Content</h2>
+    <h3>Ours</h3>
+    <p>
+      The Service, including the exercise videos, voice-over recordings, music,
+      text, design, the SoMi name and logo, and the software itself, is owned by
+      {COMPANY.name} or our licensors and is protected by copyright, trademark
+      and other laws. These Terms do not transfer any ownership to you.
+    </p>
+    <h3>Yours</h3>
+    <p>
+      Your check-ins, tags and journal entries remain yours. You grant us only
+      the limited licence necessary to store, process and display that content
+      back to you within the Service — for example, to render your calendar and
+      history. We do not publish it, share it with other users, sell it, or use
+      it to train anything.
+    </p>
+
+    <h2 id="availability">8. Availability and changes</h2>
+    <p>
+      We may add, change, suspend or discontinue any part of the Service at any
+      time. We may release updates, and some updates may be required for the app
+      to keep working. We do not promise the Service will be uninterrupted or
+      error-free, and features present today may not be present tomorrow.
+    </p>
+
+    <h2 id="termination">9. Termination</h2>
+    <p>
+      You may stop using SoMi and delete your account at any time. We may
+      suspend or terminate your access if you breach these Terms, if we are
+      required to by law, or if we discontinue the Service. Sections 1, 7, 10,
+      11, 12 and 13 survive termination.
+    </p>
+
+    <h2 id="warranty">10. Disclaimer of warranties</h2>
+    <p>
+      To the fullest extent permitted by law, the Service is provided <strong
+        >“as is” and “as available”, without warranties of any kind</strong
+      >, express or implied, including implied warranties of merchantability,
+      fitness for a particular purpose, non-infringement, accuracy, and any
+      warranty that the Service will produce a particular result in your body or
+      state of mind. Some jurisdictions do not allow the exclusion of implied
+      warranties, so parts of this section may not apply to you.
+    </p>
+
+    <h2 id="liability">11. Limitation of liability</h2>
+    <p>
+      To the fullest extent permitted by law, {COMPANY.name} will not be liable
+      for any indirect, incidental, special, consequential or punitive damages,
+      or for any loss of data, profits, or goodwill, arising out of your use of
+      or inability to use the Service. Our total aggregate liability arising out
+      of or relating to the Service will not exceed one hundred United States
+      dollars (US$100), or the amount you paid us in the twelve months before the
+      claim, whichever is greater.
+    </p>
+    <p>
+      Nothing in these Terms excludes or limits liability that cannot lawfully be
+      excluded or limited, including liability for death or personal injury
+      caused by negligence, or for fraud.
+    </p>
+
+    <h2 id="indemnity">12. Indemnity</h2>
+    <p>
+      You agree to indemnify and hold harmless {COMPANY.name} and its officers
+      and contractors from any claim or demand, including reasonable legal fees,
+      arising out of your misuse of the Service or your breach of these Terms or
+      of any law.
+    </p>
+
+    <h2 id="apple">13. Apple-specific terms</h2>
+    <p>
+      You acknowledge that these Terms are between you and {COMPANY.name} only,
+      and not with Apple Inc. Apple is not responsible for the Service or its
+      content. Apple has no obligation to furnish any maintenance or support for
+      the Service. If the app fails to conform to any applicable warranty, you
+      may notify Apple and Apple will refund any purchase price paid for it —
+      which, SoMi being free, is nothing; to the maximum extent permitted by law,
+      Apple has no other warranty obligation with respect to the app. Apple is
+      not responsible for addressing any claim relating to the app, including
+      product liability, regulatory compliance, or intellectual property
+      infringement claims. Apple and its subsidiaries are third-party
+      beneficiaries of these Terms and, upon your acceptance, will have the right
+      to enforce them against you. You represent that you are not located in a
+      country subject to a U.S. Government embargo or designated as a “terrorist
+      supporting” country, and that you are not on any U.S. Government list of
+      prohibited or restricted parties.
+    </p>
+
+    <h2 id="law">14. Governing law and disputes</h2>
+    <p>
+      These Terms are governed by the laws of the State of {COMPANY.state},
+      United States, without regard to conflict-of-law rules. You and we agree to
+      the exclusive jurisdiction of the state and federal courts located in {
+        COMPANY.city
+      }, {COMPANY.state}, for any dispute not subject to arbitration or small
+      claims. If you are a consumer resident in the European Union, the United
+      Kingdom, or another jurisdiction whose law grants you the right to bring
+      proceedings locally, nothing here removes that right or the protection of
+      mandatory consumer law where you live.
+    </p>
+
+    <h2 id="misc">15. Everything else</h2>
+    <p>
+      If a provision of these Terms is found unenforceable, the rest stays in
+      force. Our failure to enforce a provision is not a waiver of it. You may
+      not assign these Terms; we may assign them in connection with a merger or
+      sale of assets. These Terms, together with the
+      <a href={p('/privacy')}>Privacy Policy</a> and the
+      <a href={p('/disclaimer')}>Health Disclaimer</a>, are the entire agreement
+      between us regarding the Service.
+    </p>
+    <p>
+      We may update these Terms. Material changes will be notified in the app or
+      by email before they take effect, and the date at the top of this page will
+      change. Continuing to use the Service after that means you accept the
+      updated Terms.
+    </p>
+
+    <h2 id="contact">16. Contact</h2>
+    <p>
+      {COMPANY.name}<br />
+      {COMPANY.addressLine}<br />
+      <a href={`mailto:${CONTACT.legal}`}>{CONTACT.legal}</a>
+    </p>
+  </article>
+</SomiBase>

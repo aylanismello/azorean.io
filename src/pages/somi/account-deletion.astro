@@ -1,0 +1,87 @@
+---
+import SomiBase from '../../layouts/SomiBase.astro'
+import DocHeader from '../../components/somi/DocHeader.astro'
+import { CONTACT, COMPANY, p } from '../../somi/config.js'
+
+const steps = [
+  'Open SoMi and tap the Profile tab.',
+  'Tap the settings icon in the top-right corner.',
+  'Tap Delete account.',
+  'Read what will be removed, then confirm.',
+]
+
+const removed = [
+  'Your profile and login',
+  'All your SoMi flows and check-ins',
+  'Your journal entries and tags',
+  'Your streak history',
+]
+---
+
+<SomiBase
+  title="Delete Your Account"
+  variant="document"
+  description="How to permanently delete your SoMi account and all the data attached to it."
+>
+  <DocHeader
+    eyebrow="Your data"
+    title="Delete your account"
+    lede="Two taps from the Profile tab. It is a permanent deletion, not a deactivation — and you do not have to email anyone to get it."
+  />
+
+  <article class="prose-somi mx-auto max-w-3xl px-5 pb-28 pt-4 sm:px-8">
+    <h2 id="in-app">Deleting from inside the app</h2>
+    <ol>
+      {steps.map((s) => <li>{s}</li>)}
+    </ol>
+    <p>
+      You will be signed out and returned to the welcome screen as soon as it
+      completes.
+    </p>
+
+    <h2 id="what-goes">What gets deleted</h2>
+    <p>Everything tied to your account is removed from our database:</p>
+    <ul>
+      {removed.map((r) => <li>{r}</li>)}
+    </ul>
+    <p>
+      Your authentication record is deleted too, so the account itself no longer
+      exists. <strong
+        >This cannot be undone and we cannot restore it for you afterwards.</strong
+      > If you want to keep your journal entries, copy them out before you delete.
+    </p>
+
+    <h3>What is not affected</h3>
+    <p>
+      The exercise videos, voice-overs and music are shared content that belongs
+      to the app, not to your account, so they are unaffected. Historical crash
+      reports and aggregated analytics may persist with our providers for their
+      normal retention periods, but they are not tied to a usable identity once
+      your account is gone. See the <a href={p('/privacy')}>Privacy Policy</a> for the
+      detail.
+    </p>
+
+    <h2 id="cant-sign-in">If you cannot sign in</h2>
+    <p>
+      If you have lost access to your account and cannot reach the delete button,
+      email <a href={`mailto:${CONTACT.privacy}?subject=Account%20deletion%20request`}
+        >{CONTACT.privacy}</a
+      > from the address you registered with, or tell us the Apple relay address
+      you used with Sign in with Apple. We will verify the request and delete the
+      account within 30 days.
+    </p>
+
+    <h2 id="other-requests">Other data requests</h2>
+    <p>
+      If you would rather have a copy of your data, or want something corrected
+      instead of deleted, write to the same address. Your full set of rights is
+      described in the <a href={p('/privacy#your-rights')}>Privacy Policy</a>.
+    </p>
+
+    <p>
+      {COMPANY.name}<br />
+      {COMPANY.addressLine}<br />
+      <a href={`mailto:${CONTACT.privacy}`}>{CONTACT.privacy}</a>
+    </p>
+  </article>
+</SomiBase>

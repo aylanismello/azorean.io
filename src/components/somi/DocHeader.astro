@@ -1,0 +1,29 @@
+---
+interface Props {
+  eyebrow?: string
+  title: string
+  lede?: string
+  updated?: string
+}
+
+const { eyebrow, title, lede, updated } = Astro.props as Props
+---
+
+<div class="border-b border-foam/8">
+  <div class="mx-auto max-w-3xl px-5 pb-12 sm:px-8">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1
+      class="mt-4 font-display text-[2.6rem] leading-[1.08] tracking-[-0.02em] text-foam sm:text-[3.2rem]"
+    >
+      {title}
+    </h1>
+    {lede && <p class="mt-5 text-lg leading-relaxed text-mist">{lede}</p>}
+    {
+      updated && (
+        <p class="mt-6 text-xs uppercase tracking-[0.14em] text-mist/70">
+          Last updated {updated}
+        </p>
+      )
+    }
+  </div>
+</div>

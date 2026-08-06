@@ -1,0 +1,531 @@
+---
+import SomiBase from '../../layouts/SomiBase.astro'
+import Phone from '../../components/somi/Phone.astro'
+import Cta from '../../components/somi/Cta.astro'
+import StateMap from '../../components/somi/StateMap.astro'
+import { FACTS, APP, SITE, p } from '../../somi/config.js'
+
+const steps = [
+  {
+    n: '01',
+    tag: 'Check in',
+    title: 'Say how you actually are',
+    body: `No mood menu. You place yourself on a two-axis map — how much energy you have, and how safe you feel. The app reads that as one of five states and builds from there.`,
+    img: p('/screens/flow-setup.jpeg'),
+    alt: 'The SoMi check-in screen showing the energy and safety picker with the Steady state selected.',
+  },
+  {
+    n: '02',
+    tag: 'Get your flow',
+    title: 'A sequence built for that state, not a playlist',
+    body: `Pick a window from ${FACTS.minMinutes} to ${FACTS.maxMinutes} minutes and a flow is composed for you — warm-up into main work, ordered so each exercise sets up the next. Reroll it, swap any block, or add a body scan at either end.`,
+    img: p('/screens/edit-flow.jpeg'),
+    alt: 'The Edit Flow screen listing the composed sequence of blocks with swap and reroll controls.',
+  },
+  {
+    n: '03',
+    tag: 'Move',
+    title: 'Follow along, then feel what changed',
+    body: `Each exercise is a short guided video with a voice you can hear over your own music. Between every one there's a ${FACTS.integrationSecondsLow}–${FACTS.integrationSecondsHigh} second pause on moving water — the part most practice apps skip, and the part that does the work.`,
+    img: p('/screens/somi-block.jpeg'),
+    alt: 'A fullscreen guided exercise video with the time remaining shown at the top.',
+  },
+  {
+    n: '04',
+    tag: 'Check out',
+    title: 'Notice the arc',
+    body: `Place yourself on the map again. Tag what showed up — ${FACTS.tags.slice(0, 4).join(', ')} — and add a note if you want one. Over time the calendar shows you the pattern, not just the streak.`,
+    img: p('/screens/check-out.jpeg'),
+    alt: 'The check-out screen showing the state picker with somatic experience tags below it.',
+  },
+]
+
+const features = [
+  {
+    icon: '🌊',
+    title: 'Pauses that count',
+    body: `Every block is bracketed by an integration pause on ocean footage. The session is built around the settling, not just the movement.`,
+  },
+  {
+    icon: '🎚',
+    title: 'Voice and music, separately',
+    body: 'Two independent volume sliders. Turn the guide down once you know the exercise, or turn the music off entirely.',
+  },
+  {
+    icon: '🎲',
+    title: 'Yours to edit',
+    body: 'The composed flow is a starting point. Swap a block you are not feeling, reroll the whole thing, toggle the body scans.',
+  },
+  {
+    icon: '🔥',
+    title: 'A streak you can trust',
+    body: 'A calendar of real sessions with your top streak, total practice minutes and every check-in you have logged.',
+  },
+  {
+    icon: '📓',
+    title: 'A body journal',
+    body: 'Tag the sighing, the shaking, the warmth. Add a note. It stays yours — private to your account, never used for advertising.',
+  },
+  {
+    icon: '🍎',
+    title: 'Sign in the quiet way',
+    body: 'Sign in with Apple — including Hide My Email — or a plain email and password. No social account required.',
+  },
+]
+
+const moments = [
+  {
+    emoji: '☀️',
+    title: 'Wake the Body',
+    when: 'Morning',
+    sub: 'Heavy, groggy, still in bed at heart',
+  },
+  {
+    emoji: '🫱',
+    title: 'Desk Reset',
+    when: 'Midday',
+    sub: 'Tense shoulders, tight jaw, screen fatigue',
+  },
+  {
+    emoji: '🦁',
+    title: 'Before the Hard Thing',
+    when: 'Any time',
+    sub: 'Nerves before a meeting, a call, a conversation',
+  },
+  {
+    emoji: '🌊',
+    title: 'Too Much',
+    when: 'Right now',
+    sub: 'Overwhelmed, spiraling, need to come down',
+  },
+  {
+    emoji: '🌙',
+    title: 'Down to Rest',
+    when: 'Evening',
+    sub: "Wired at night, can't switch off",
+  },
+]
+
+const screens = [
+  { src: p('/screens/home.jpeg'), label: 'Home', note: 'Streak, week strip, one button.' },
+  { src: p('/screens/flow-setup.jpeg'), label: 'Check in', note: 'Energy × safety.' },
+  { src: p('/screens/edit-flow.jpeg'), label: 'Edit flow', note: 'Swap, reroll, scan.' },
+  {
+    src: p('/screens/opening-integration.jpeg'),
+    label: 'Arrive',
+    note: 'Settle before the first block.',
+  },
+  { src: p('/screens/somi-block.jpeg'), label: 'Practice', note: 'Guided, fullscreen.' },
+  {
+    src: p('/screens/middle-integration.jpeg'),
+    label: 'Integrate',
+    note: 'Feel what changed.',
+  },
+  { src: p('/screens/deeper-in.jpeg'), label: 'Deeper in', note: 'The arc comes down.' },
+  { src: p('/screens/check-out.jpeg'), label: 'Check out', note: 'Tags and a journal.' },
+  { src: p('/screens/completion.jpeg'), label: 'Complete', note: 'Where you started, where you landed.' },
+  { src: p('/screens/profile.jpeg'), label: 'Profile', note: 'Calendar and history.' },
+  { src: p('/screens/voice-and-music.jpeg'), label: 'Sound', note: 'Voice and music sliders.' },
+]
+
+const faqs = [
+  {
+    q: 'What is a somatic exercise?',
+    a: 'A small, deliberate physical action — humming, an ear stretch, shaking out your hands, covering your eyes — chosen for its effect on your nervous system rather than your muscles. Most take under a minute and none of them look like exercise.',
+  },
+  {
+    q: 'Do I need to know anything about polyvagal theory?',
+    a: 'No. The energy × safety map is the whole interface. You drag a dot to roughly where you are; the app handles the rest. The state names are there if you find them useful and ignorable if you do not.',
+  },
+  {
+    q: 'Do I need space, equipment or a mat?',
+    a: 'No. Everything can be done seated or standing in whatever you are already wearing. Some longer flows end lying down if you have the floor for it.',
+  },
+  {
+    q: 'How long is a session?',
+    a: `You choose, between ${FACTS.minMinutes} and ${FACTS.maxMinutes} minutes. The flow is composed to fit the window you picked, including the pauses between exercises.`,
+  },
+  {
+    q: 'Is SoMi therapy?',
+    a: 'No. SoMi is a wellbeing app for everyday self-regulation. It does not diagnose, treat or cure anything, and it is not a substitute for care from a licensed professional. If you are working through trauma, please practise alongside someone qualified to support you.',
+  },
+  {
+    q: 'What does it cost?',
+    a: `${APP.price}. There are no in-app purchases, no subscription and no ads.`,
+  },
+  {
+    q: 'Is there an Android version?',
+    a: 'Not yet. SoMi is an iPhone app today. If you want to be told when that changes, email us.',
+  },
+  {
+    q: 'What happens to my check-ins and journal notes?',
+    a: 'They are stored against your account so the app can show you your own history, and nothing else. We do not sell data and we do not use your journal for advertising. The Privacy Policy spells out exactly what is collected and how to delete all of it.',
+  },
+]
+---
+
+<SomiBase>
+  <!-- ─────────────────────────── Hero ─────────────────────────── -->
+  <section class="relative overflow-hidden">
+    <div class="aurora pointer-events-none absolute inset-0 -z-10"></div>
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-64 bg-gradient-to-b from-transparent to-abyss"
+    >
+    </div>
+
+    <div class="mx-auto max-w-6xl px-5 pb-24 pt-32 sm:px-8 sm:pt-40">
+      <div class="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <p class="eyebrow">Somatic practice for iPhone</p>
+
+          <h1
+            class="mt-5 font-display text-[3rem] leading-[1.02] tracking-[-0.02em] text-foam sm:text-[4.2rem] lg:text-[4.6rem]"
+          >
+            Meet your nervous
+            <span class="block italic text-teal">system where it is.</span>
+          </h1>
+
+          <p class="mt-7 max-w-xl text-lg leading-relaxed text-mist">
+            Most practice apps ask what you want to do. SoMi asks how you are —
+            then builds a short flow of body-based exercises for that answer,
+            today, not for the version of you that has forty spare minutes.
+          </p>
+
+          <div class="mt-9">
+            <Cta />
+          </div>
+
+          <p class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-mist">
+            <span>{APP.price} · no ads · no subscription</span>
+            <span aria-hidden="true" class="hidden text-foam/25 sm:inline">·</span>
+            <span>{FACTS.minMinutes}–{FACTS.maxMinutes} minute sessions</span>
+          </p>
+        </div>
+
+        <!-- Staggered phone trio -->
+        <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+          <div class="grid grid-cols-3 items-end gap-3 sm:gap-4">
+            <Phone
+              src={p('/screens/flow-setup.jpeg')}
+              alt="The SoMi check-in screen with the energy and safety map."
+              class="translate-y-6"
+              priority
+            />
+            <Phone
+              src={p('/screens/home.jpeg')}
+              alt="The SoMi home screen showing a streak, a grounding quote and the Flow button."
+              class="-translate-y-4 scale-[1.06]"
+              priority
+            />
+            <Phone
+              src={p('/screens/opening-integration.jpeg')}
+              alt="An integration pause over ocean footage with the next exercise previewed."
+              class="translate-y-6"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── Statement ─────────────────────── -->
+  <section class="border-y border-foam/8 bg-ocean/30">
+    <div class="mx-auto max-w-4xl px-5 py-24 text-center sm:px-8">
+      <p
+        class="font-display text-[1.9rem] leading-[1.35] tracking-[-0.01em] text-foam sm:text-[2.5rem]"
+      >
+        You already know the days you are wired and the days you are flat. The
+        practice should know too.
+      </p>
+      <p class="mx-auto mt-7 max-w-2xl text-mist">
+        A flow that calms you down when you are buzzing is the wrong flow when
+        you cannot get off the couch. SoMi starts by asking, and composes
+        accordingly — a rising arc when you are shut down, a descending one when
+        you are lit up.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── How it works ─────────────────────── -->
+  <section id="how-it-works" class="mx-auto max-w-6xl scroll-mt-24 px-5 py-28 sm:px-8">
+    <div class="max-w-2xl">
+      <p class="eyebrow">How it works</p>
+      <h2
+        class="mt-4 font-display text-[2.4rem] leading-[1.12] tracking-[-0.02em] text-foam sm:text-[3rem]"
+      >
+        Four moves, start to finish.
+      </h2>
+    </div>
+
+    <div class="mt-20 space-y-24 lg:space-y-32">
+      {
+        steps.map((step, i) => (
+          <div
+            class={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${
+              i % 2 === 1 ? '[&>*:first-child]:lg:order-2' : ''
+            }`}
+          >
+            <div>
+              <div class="flex items-baseline gap-4">
+                <span class="font-display text-3xl text-teal/50">{step.n}</span>
+                <span class="eyebrow">{step.tag}</span>
+              </div>
+              <h3 class="mt-4 font-display text-[1.9rem] leading-tight tracking-[-0.01em] text-foam sm:text-[2.2rem]">
+                {step.title}
+              </h3>
+              <p class="mt-5 max-w-lg text-[1.02rem] leading-relaxed text-mist">
+                {step.body}
+              </p>
+            </div>
+
+            <div class="mx-auto w-full max-w-[16rem] sm:max-w-[17rem]">
+              <Phone src={step.img} alt={step.alt} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ─────────────────────── State map ─────────────────────── -->
+  <section class="border-y border-foam/8 bg-ocean/30">
+    <div class="mx-auto max-w-6xl px-5 py-28 sm:px-8">
+      <div class="max-w-2xl">
+        <p class="eyebrow">The map</p>
+        <h2
+          class="mt-4 font-display text-[2.4rem] leading-[1.12] tracking-[-0.02em] text-foam sm:text-[3rem]"
+        >
+          Two questions, five states.
+        </h2>
+        <p class="mt-5 text-[1.02rem] leading-relaxed text-mist">
+          How much energy do you have, and how safe do you feel? Those two axes
+          are enough to tell a jittery day from a heavy one — and they are the
+          only thing SoMi needs to know before it starts composing.
+        </p>
+      </div>
+
+      <div class="mt-16">
+        <StateMap />
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── Features ─────────────────────── -->
+  <section class="mx-auto max-w-6xl px-5 py-28 sm:px-8">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Inside</p>
+      <h2
+        class="mt-4 font-display text-[2.4rem] leading-[1.12] tracking-[-0.02em] text-foam sm:text-[3rem]"
+      >
+        Small app. Careful about the details that matter.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        features.map((f) => (
+          <div class="glass rounded-2xl p-7 transition-colors hover:border-foam/25">
+            <span class="text-2xl leading-none" aria-hidden="true">
+              {f.icon}
+            </span>
+            <h3 class="mt-5 text-[1.05rem] font-semibold text-foam">{f.title}</h3>
+            <p class="mt-2.5 text-[0.95rem] leading-relaxed text-mist">{f.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ─────────────────────── Moments ─────────────────────── -->
+  <section id="moments" class="border-y border-foam/8 bg-ocean/30">
+    <div class="mx-auto max-w-6xl scroll-mt-24 px-5 py-28 sm:px-8">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Moments</p>
+        <h2
+          class="mt-4 font-display text-[2.4rem] leading-[1.12] tracking-[-0.02em] text-foam sm:text-[3rem]"
+        >
+          For when you already know what is going on.
+        </h2>
+        <p class="mt-5 text-[1.02rem] leading-relaxed text-mist">
+          Some days you do not want to be asked anything. Moments are fixed,
+          hand-picked sequences for a specific situation — same order every
+          time, no check-in, straight in.
+        </p>
+      </div>
+
+      <ul class="mt-12 grid gap-4 sm:grid-cols-2">
+        {
+          moments.map((m, i) => (
+            <li
+              class={`glass flex items-center gap-5 rounded-2xl px-6 py-5 ${
+                i === moments.length - 1 ? 'sm:col-span-2' : ''
+              }`}
+            >
+              <span class="text-2xl leading-none" aria-hidden="true">
+                {m.emoji}
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block text-[1rem] font-semibold text-foam">
+                  {m.title}
+                </span>
+                <span class="mt-1 block text-sm text-mist">{m.sub}</span>
+              </span>
+              <span class="shrink-0 rounded-full border border-foam/15 px-3 py-1 text-[0.68rem] uppercase tracking-[0.1em] text-mist">
+                {m.when}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── Screens rail ─────────────────────── -->
+  <section id="screens" class="scroll-mt-24 py-28">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div class="max-w-xl">
+          <p class="eyebrow">Every screen</p>
+          <h2
+            class="mt-4 font-display text-[2.4rem] leading-[1.12] tracking-[-0.02em] text-foam sm:text-[3rem]"
+          >
+            The whole app, in order.
+          </h2>
+        </div>
+        <p class="text-sm text-mist">Scroll sideways →</p>
+      </div>
+    </div>
+
+    <div class="rail mt-12 flex snap-x snap-proximity gap-5 overflow-x-auto px-5 pb-6 sm:px-8">
+      <!-- Aligns the first phone with the max-w-6xl (72rem) container above.
+           Inline style because calc() needs real spaces, which Tailwind's
+           arbitrary-value syntax would have to escape. Needs snap-start of its
+           own, or the rail snaps straight past it to the first figure. -->
+      <div
+        class="shrink-0 snap-start"
+        style="width: max(0px, calc((100vw - 72rem) / 2))"
+        aria-hidden="true"
+      >
+      </div>
+      {
+        screens.map((s) => (
+          <figure class="w-[13.5rem] shrink-0 snap-start sm:w-[15rem]">
+            <Phone src={s.src} alt={`SoMi ${s.label} screen`} />
+            <figcaption class="mt-3.5">
+              <span class="block text-sm font-semibold text-foam">{s.label}</span>
+              <span class="mt-0.5 block text-[0.82rem] leading-snug text-mist">
+                {s.note}
+              </span>
+            </figcaption>
+          </figure>
+        ))
+      }
+      <div class="w-5 shrink-0 sm:w-8" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── Honesty ─────────────────────── -->
+  <section class="border-y border-foam/8 bg-ocean/30">
+    <div class="mx-auto max-w-3xl px-5 py-24 sm:px-8">
+      <p class="eyebrow">Plainly</p>
+      <h2
+        class="mt-4 font-display text-[2rem] leading-[1.15] tracking-[-0.02em] text-foam sm:text-[2.5rem]"
+      >
+        What SoMi is not.
+      </h2>
+      <div class="mt-8 space-y-5 text-[1.02rem] leading-relaxed text-mist">
+        <p>
+          It is not therapy, and it is not a medical device. It does not
+          diagnose, treat, cure or prevent anything, and nothing in it is
+          medical advice. It draws on polyvagal-informed somatic practice, which
+          is a lens for organising exercises — not a clinical claim about what
+          will happen in your body.
+        </p>
+        <p>
+          Somatic work can surface strong feeling. If you have a heart, blood
+          pressure, neck, eye or inner-ear condition, are pregnant, or are
+          working through trauma, talk to a professional before starting and
+          practise with support. Stop if something hurts.
+        </p>
+        <p>
+          <a
+            href={p('/disclaimer')}
+            class="text-teal underline underline-offset-4 hover:text-foam"
+            >Read the full health disclaimer →</a
+          >
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── FAQ ─────────────────────── -->
+  <section id="faq" class="mx-auto max-w-3xl scroll-mt-24 px-5 py-28 sm:px-8">
+    <p class="eyebrow">Questions</p>
+    <h2
+      class="mt-4 font-display text-[2.4rem] leading-[1.12] tracking-[-0.02em] text-foam sm:text-[3rem]"
+    >
+      Before you download.
+    </h2>
+
+    <div class="mt-12 divide-y divide-foam/10 border-y border-foam/10">
+      {
+        faqs.map((f) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-[1.02rem] font-medium text-foam [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <svg
+                viewBox="0 0 20 20"
+                class="h-5 w-5 shrink-0 text-teal transition-transform group-open:rotate-45"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M10 4v12M4 10h12" />
+              </svg>
+            </summary>
+            <p class="mt-3.5 max-w-2xl pr-10 text-[0.98rem] leading-relaxed text-mist">
+              {f.a}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ─────────────────────── Final CTA ─────────────────────── -->
+  <section class="relative overflow-hidden border-t border-foam/8">
+    <div class="aurora pointer-events-none absolute inset-0 -z-10 opacity-70"></div>
+    <div class="mx-auto max-w-3xl px-5 py-28 text-center sm:px-8">
+      <h2
+        class="font-display text-[2.6rem] leading-[1.08] tracking-[-0.02em] text-foam sm:text-[3.4rem]"
+      >
+        Start where you actually are.
+      </h2>
+      <p class="mx-auto mt-6 max-w-xl text-lg text-mist">
+        {FACTS.minMinutes} minutes is enough. {APP.platform}, {APP.minOS}.
+      </p>
+      <div class="mt-10">
+        <Cta align="center" />
+      </div>
+    </div>
+  </section>
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: SITE.name,
+      applicationCategory: 'HealthApplication',
+      operatingSystem: 'iOS',
+      description: SITE.description,
+      url: SITE.url + p('/'),
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      publisher: { '@type': 'Organization', name: 'Azorean Studios' },
+    })}
+  />
+</SomiBase>

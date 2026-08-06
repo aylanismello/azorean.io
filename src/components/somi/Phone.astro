@@ -1,0 +1,26 @@
+---
+interface Props {
+  src: string
+  alt: string
+  /** Above-the-fold phones should load eagerly; the rest lazily. */
+  priority?: boolean
+  class?: string
+}
+
+const { src, alt, priority = false, class: className = '' } = Astro.props as Props
+---
+
+<div
+  class={`relative rounded-[2.1rem] border border-foam/12 bg-black p-[6px] shadow-[0_28px_70px_-20px_rgba(0,0,0,0.85)] ${className}`}
+>
+  <img
+    src={src}
+    alt={alt}
+    width="293"
+    height="634"
+    loading={priority ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={priority ? 'high' : 'auto'}
+    class="block w-full rounded-[1.7rem]"
+  />
+</div>

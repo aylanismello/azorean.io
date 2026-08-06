@@ -1,0 +1,131 @@
+---
+/**
+ * A flat rendering of the app's energy × safety picker.
+ * Quadrants and labels match constants/polyvagalStates in the app.
+ */
+const quadrants = [
+  {
+    name: 'Restful',
+    emoji: '🌙',
+    note: 'Safe, low energy. Settled and quiet.',
+    pos: 'top-left',
+  },
+  {
+    name: 'Glowing',
+    emoji: '☀️',
+    note: 'Safe, high energy. Open and alive.',
+    pos: 'top-right',
+  },
+  {
+    name: 'Shutdown',
+    emoji: '🌑',
+    note: 'Unsafe, low energy. Flat, foggy, far away.',
+    pos: 'bottom-left',
+  },
+  {
+    name: 'Wired',
+    emoji: '⚡️',
+    note: 'Unsafe, high energy. Buzzing and braced.',
+    pos: 'bottom-right',
+  },
+]
+---
+
+<div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-center">
+  <div>
+    <div
+      class="relative aspect-square w-full overflow-hidden rounded-3xl border border-foam/12"
+      style="background:
+        radial-gradient(120% 120% at 0% 0%, rgba(79,195,217,0.30), transparent 58%),
+        radial-gradient(120% 120% at 100% 0%, rgba(241,196,15,0.26), transparent 58%),
+        radial-gradient(120% 120% at 0% 100%, rgba(120,130,150,0.22), transparent 58%),
+        radial-gradient(120% 120% at 100% 100%, rgba(230,126,34,0.24), transparent 58%),
+        #0b1f33;"
+      role="img"
+      aria-label="A square map. Left to right is low to high energy. Bottom to top is unsafe to safe. The four corners are Restful, Glowing, Shutdown and Wired, with Steady at the centre."
+    >
+      <!-- axis guides -->
+      <div class="absolute inset-y-0 left-1/2 w-px bg-foam/10"></div>
+      <div class="absolute inset-x-0 top-1/2 h-px bg-foam/10"></div>
+
+      <!-- corner labels -->
+      <span
+        class="absolute left-4 top-4 text-[0.62rem] font-semibold uppercase leading-tight tracking-[0.13em] text-foam/55"
+        >Safe<br />Low energy</span
+      >
+      <span
+        class="absolute right-4 top-4 text-right text-[0.62rem] font-semibold uppercase leading-tight tracking-[0.13em] text-foam/55"
+        >Safe<br />High energy</span
+      >
+      <span
+        class="absolute bottom-4 left-4 text-[0.62rem] font-semibold uppercase leading-tight tracking-[0.13em] text-foam/55"
+        >Unsafe<br />Low energy</span
+      >
+      <span
+        class="absolute bottom-4 right-4 text-right text-[0.62rem] font-semibold uppercase leading-tight tracking-[0.13em] text-foam/55"
+        >Unsafe<br />High energy</span
+      >
+
+      <!-- quadrant names -->
+      <span
+        class="absolute left-[22%] top-[27%] -translate-x-1/2 text-center text-sm text-foam/75"
+        >🌙<br /><span class="font-medium">Restful</span></span
+      >
+      <span
+        class="absolute left-[78%] top-[27%] -translate-x-1/2 text-center text-sm text-foam/75"
+        >☀️<br /><span class="font-medium">Glowing</span></span
+      >
+      <span
+        class="absolute left-[22%] top-[68%] -translate-x-1/2 text-center text-sm text-foam/75"
+        >🌑<br /><span class="font-medium">Shutdown</span></span
+      >
+      <span
+        class="absolute left-[78%] top-[68%] -translate-x-1/2 text-center text-sm text-foam/75"
+        >⚡️<br /><span class="font-medium">Wired</span></span
+      >
+
+      <!-- the puck -->
+      <div
+        class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-turquoise/60 bg-turquoise/25 text-xl shadow-[0_0_40px_rgba(79,195,217,0.55)] backdrop-blur-sm"
+      >
+        🌤
+      </div>
+      <span
+        class="absolute left-1/2 top-[calc(50%+2.4rem)] -translate-x-1/2 text-xs font-medium text-foam/80"
+        >Steady</span
+      >
+    </div>
+
+    <p class="mt-4 text-center text-xs text-mist">
+      Drag anywhere. Lift your finger and the flow regenerates for wherever you
+      landed.
+    </p>
+  </div>
+
+  <ul class="space-y-3">
+    {
+      quadrants.map((q) => (
+        <li class="glass flex items-start gap-4 rounded-2xl px-5 py-4">
+          <span class="text-xl leading-none" aria-hidden="true">
+            {q.emoji}
+          </span>
+          <span>
+            <span class="block text-[0.95rem] font-semibold text-foam">
+              {q.name}
+            </span>
+            <span class="mt-0.5 block text-sm text-mist">{q.note}</span>
+          </span>
+        </li>
+      ))
+    }
+    <li class="flex items-start gap-4 rounded-2xl border border-teal/30 bg-teal/8 px-5 py-4">
+      <span class="text-xl leading-none" aria-hidden="true">🌤</span>
+      <span>
+        <span class="block text-[0.95rem] font-semibold text-foam">Steady</span>
+        <span class="mt-0.5 block text-sm text-mist">
+          The middle. Not a goal so much as a place you pass through.
+        </span>
+      </span>
+    </li>
+  </ul>
+</div>

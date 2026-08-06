@@ -1,0 +1,62 @@
+---
+import { APP, CONTACT } from '../../somi/config.js'
+
+interface Props {
+  /** 'hero' is the large primary pairing; 'inline' is the compact version. */
+  size?: 'hero' | 'inline'
+  align?: 'left' | 'center'
+}
+
+const { size = 'hero', align = 'left' } = Astro.props as Props
+
+const wrap =
+  align === 'center'
+    ? 'flex flex-col items-center gap-4 sm:flex-row sm:justify-center'
+    : 'flex flex-col gap-4 sm:flex-row sm:items-center'
+
+const pad = size === 'hero' ? 'px-7 py-3.5 text-[0.95rem]' : 'px-5 py-2.5 text-sm'
+---
+
+<div class={wrap}>
+  {
+    APP.appStoreUrl ? (
+      <a
+        href={APP.appStoreUrl}
+        class={`inline-flex items-center justify-center gap-2.5 rounded-full bg-teal font-semibold text-abyss transition-transform hover:-translate-y-0.5 ${pad}`}
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+          <path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.9c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.3 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7 2-1.1 2.7-2.2c.9-1.2 1.2-2.4 1.2-2.5 0 0-2.4-.9-2.4-3.6zM14.2 5.4c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.7-1.3z" />
+        </svg>
+        Download on the App Store
+      </a>
+    ) : (
+      <span
+        class={`inline-flex items-center justify-center gap-2.5 rounded-full border border-teal/40 bg-teal/8 font-semibold text-teal ${pad}`}
+      >
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal opacity-60" />
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-teal" />
+        </span>
+        Coming soon to the App Store
+      </span>
+    )
+  }
+
+  {
+    APP.testFlightUrl ? (
+      <a
+        href={APP.testFlightUrl}
+        class={`inline-flex items-center justify-center rounded-full border border-foam/18 font-medium text-foam transition-colors hover:border-foam/40 ${pad}`}
+      >
+        Join the TestFlight beta
+      </a>
+    ) : (
+      <a
+        href={`mailto:${CONTACT.support}?subject=SoMi%20beta`}
+        class={`inline-flex items-center justify-center rounded-full border border-foam/18 font-medium text-foam transition-colors hover:border-foam/40 ${pad}`}
+      >
+        Ask for a beta invite
+      </a>
+    )
+  }
+</div>

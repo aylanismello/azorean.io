@@ -1,0 +1,74 @@
+---
+import '../styles/somi.css'
+import Nav from '../components/somi/Nav.astro'
+import Footer from '../components/somi/Footer.astro'
+import { SITE, p } from '../somi/config.js'
+
+interface Props {
+  title?: string
+  description?: string
+  /** Legal/support pages get a narrower, calmer shell. */
+  variant?: 'landing' | 'document'
+}
+
+const {
+  title,
+  description = SITE.description,
+  variant = 'landing',
+} = Astro.props as Props
+
+const fullTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url).href
+const ogImage = new URL(p('/og.png'), Astro.site ?? SITE.url).href
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" href={p('/favicon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={p('/apple-touch-icon.png')} />
+    <meta name="theme-color" content="#04121f" />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+    />
+  </head>
+
+  <body class="min-h-screen antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-teal focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-abyss"
+    >
+      Skip to content
+    </a>
+
+    <Nav />
+
+    <main id="main" class={variant === 'document' ? 'pt-28 sm:pt-32' : ''}>
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

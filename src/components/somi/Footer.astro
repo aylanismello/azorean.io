@@ -1,0 +1,65 @@
+---
+import Wordmark from './Wordmark.astro'
+import { FOOTER_LINKS, COMPANY, CONTACT } from '../../somi/config.js'
+
+const year = new Date().getFullYear()
+---
+
+<footer class="border-t border-foam/8 bg-ocean/40">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+    <div class="grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+      <div>
+        <Wordmark />
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-mist">
+          Short somatic practice for your nervous system, built around how your
+          body actually feels today.
+        </p>
+        <p class="mt-5 text-sm text-mist">
+          <a
+            href={`mailto:${CONTACT.support}`}
+            class="text-teal underline underline-offset-4 hover:text-foam"
+          >
+            {CONTACT.support}
+          </a>
+        </p>
+      </div>
+
+      {
+        FOOTER_LINKS.map((group) => (
+          <div>
+            <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-foam/70">
+              {group.heading}
+            </h2>
+            <ul class="mt-4 space-y-2.5">
+              {group.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-sm text-mist transition-colors hover:text-foam"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-14 flex flex-col gap-4 border-t pt-8 rule sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="text-xs text-mist">
+        © {year}{' '}
+        <a href={COMPANY.site} class="transition-colors hover:text-foam" rel="noopener"
+          >{COMPANY.name}</a
+        >. {COMPANY.addressLine}
+      </p>
+      <p class="text-xs text-mist">
+        SoMi supports wellbeing practice. It is not a medical device and does
+        not provide medical advice.
+      </p>
+    </div>
+  </div>
+</footer>
