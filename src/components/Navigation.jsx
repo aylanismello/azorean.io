@@ -24,6 +24,7 @@ export default function Navigation() {
         <div className={`nav-menu ${isOpen ? 'nav-menu-open' : ''}`}>
           <a href="/" className="nav-link">Home</a>
           <a href="/studios" className="nav-link">Studios</a>
+          <a href="/somi" className="nav-link">SoMi</a>
           <a href="/segundo-sol" className="nav-link">Segundo Sol</a>
           <a href="/sound" className="nav-link">Sound</a>
           <a href="/contact" className="nav-link">Contact</a>

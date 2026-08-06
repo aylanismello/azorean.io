@@ -1,2 +1,14 @@
 node_modules
 .DS_Store
+
+# build output — the host builds from source, so this never needs committing
+dist/
+.astro/
+
+# env
+.env
+.env.production
+
+# editors
+.vscode/
+.idea/
