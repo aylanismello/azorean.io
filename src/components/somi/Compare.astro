@@ -1,0 +1,236 @@
+---
+/**
+ * Free vs Depth. Every row comes from PRICING in src/somi/config.js, which is
+ * transcribed from SoMi/docs/00_context.md — edit the data there, not here.
+ *
+ * The free column is meant to read as a real column: the practice group sits
+ * first and is all yeses, because free is a complete practice and the page
+ * should not open with a wall of dashes.
+ */
+import { PRICING } from '../../somi/config.js'
+
+// Shared geometry only — the head and body cells set their own type and
+// padding, and duplicating those here would leave Tailwind two conflicting
+// utilities to resolve.
+const colClass = 'w-[5.75rem] px-2 text-center sm:w-[11rem] sm:px-4'
+const cellClass = `${colClass} py-4 align-top text-[0.78rem] leading-snug sm:text-[0.9rem]`
+const headClass = `${colClass} py-3.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em]`
+---
+
+<div>
+  <!-- Launch window — the whole table is unlocked while this is true. -->
+  <p
+    class="glass flex flex-col gap-1.5 rounded-2xl px-6 py-5 text-[0.95rem] leading-relaxed text-mist sm:flex-row sm:items-baseline sm:gap-4"
+  >
+    <span class="eyebrow shrink-0">Right now</span>
+    <span>{PRICING.launch}</span>
+  </p>
+
+  <!-- The two tiers -->
+  <div class="mt-8 grid gap-4 sm:grid-cols-2">
+    <div class="glass flex flex-col rounded-2xl p-7">
+      <h3 class="font-display text-[1.6rem] leading-none text-foam">Free</h3>
+      <p class="mt-4 font-display text-[2.4rem] leading-none text-foam">
+        $0<span class="text-base text-mist"> / forever</span>
+      </p>
+      <p class="mt-4 text-[0.95rem] leading-relaxed text-mist">
+        The practice, whole. Check in, get your flow, feel what changed, see
+        today. No card, no clock, no thinned-out version.
+      </p>
+    </div>
+
+    <div class="glass flex flex-col rounded-2xl border-teal/30 p-7">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-display text-[1.6rem] leading-none text-teal">Depth</h3>
+        <span
+          class="rounded-full border border-teal/30 px-2.5 py-1 text-[0.68rem] uppercase tracking-[0.1em] text-teal"
+          >Save {PRICING.yearlySaving} yearly</span
+        >
+      </div>
+      <p class="mt-4 font-display text-[2.4rem] leading-none text-foam">
+        {PRICING.monthly}<span class="text-base text-mist"> / month</span>
+      </p>
+      <p class="mt-1.5 text-[0.95rem] text-mist">
+        or {PRICING.yearly} a year
+      </p>
+      <p class="mt-4 text-[0.95rem] leading-relaxed text-mist">
+        Convenience, control and memory. Free gets you today in full; Depth
+        gets you time — the months behind you and what they add up to.
+      </p>
+    </div>
+  </div>
+
+  <!-- The comparison -->
+  <div class="mt-10 overflow-hidden rounded-2xl border border-foam/12">
+    <!-- table-fixed, or the two narrow columns get pushed out by the label
+         column's content and the whole page scrolls sideways on a phone. -->
+    <table class="w-full table-fixed border-collapse text-left">
+      <caption class="sr-only">
+        What is included in the free tier and in the paid Depth tier.
+      </caption>
+      <thead>
+        <tr class="bg-ocean/60">
+          <th
+            scope="col"
+            class="px-4 py-3.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-mist sm:px-6"
+          >
+            Feature
+          </th>
+          <th
+            scope="col"
+            class={`${headClass} text-foam`}
+          >
+            Free
+          </th>
+          <th
+            scope="col"
+            class={`${headClass} text-teal`}
+          >
+            Depth
+          </th>
+        </tr>
+      </thead>
+
+      {
+        PRICING.groups.map((group) => (
+          <tbody class="border-t border-foam/12">
+            <tr class="bg-foam/4">
+              <th
+                scope="colgroup"
+                colspan="3"
+                class="px-4 py-3 text-left text-[0.82rem] font-semibold text-foam sm:px-6"
+              >
+                {group.title}
+                {group.note && (
+                  <span class="ml-2 font-normal text-mist">{group.note}</span>
+                )}
+              </th>
+            </tr>
+
+            {group.rows.map((row) => (
+              <tr class="border-t border-foam/8">
+                <th
+                  scope="row"
+                  class="px-4 py-4 pr-3 text-left align-top font-normal sm:px-6"
+                >
+                  <span class="block text-[0.92rem] font-medium text-foam sm:text-[1rem]">
+                    {row.label}
+                  </span>
+                  {row.detail && (
+                    <span class="mt-1 block max-w-md text-[0.82rem] leading-relaxed text-mist">
+                      {row.detail}
+                    </span>
+                  )}
+                </th>
+
+                <td class={cellClass}>
+                  {row.free === true ? (
+                    <>
+                      <svg
+                        viewBox="0 0 20 20"
+                        class="mx-auto h-[1.15rem] w-[1.15rem] text-teal"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.9"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M4 10.5l4 4 8-9" />
+                      </svg>
+                      <span class="sr-only">Included</span>
+                    </>
+                  ) : row.free === false ? (
+                    <>
+                      <span aria-hidden="true" class="text-foam/25">
+                        —
+                      </span>
+                      <span class="sr-only">Not included</span>
+                    </>
+                  ) : (
+                    <span class="text-mist">{row.free}</span>
+                  )}
+                </td>
+
+                <td class={cellClass}>
+                  {row.depth === true ? (
+                    <>
+                      <svg
+                        viewBox="0 0 20 20"
+                        class="mx-auto h-[1.15rem] w-[1.15rem] text-teal"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.9"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M4 10.5l4 4 8-9" />
+                      </svg>
+                      <span class="sr-only">Included</span>
+                    </>
+                  ) : row.depth === false ? (
+                    <>
+                      <span aria-hidden="true" class="text-foam/25">
+                        —
+                      </span>
+                      <span class="sr-only">Not included</span>
+                    </>
+                  ) : (
+                    <span class="text-foam">{row.depth}</span>
+                  )}
+
+                  {row.coming && (
+                    <span class="mx-auto mt-2 block w-fit rounded-full border border-foam/15 px-2 py-0.5 text-[0.62rem] uppercase tracking-[0.1em] text-mist">
+                      Coming
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        ))
+      }
+    </table>
+  </div>
+
+  <p class="mt-4 text-[0.85rem] leading-relaxed text-mist">
+    <span class="text-foam">Coming</span> means exactly that — shipping into Depth,
+    not there the day you download. Everything without that mark is in the app
+    today.
+  </p>
+
+  <!-- The promise that makes the free column trustworthy -->
+  <div class="mt-8 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+    <div class="glass rounded-2xl p-7">
+      <h3 class="text-[1.05rem] font-semibold text-foam">Never behind a paywall</h3>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {
+          PRICING.neverGated.map((item) => (
+            <li class="rounded-full border border-teal/25 px-3 py-1.5 text-[0.82rem] text-mist">
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-5 text-[0.9rem] leading-relaxed text-mist">
+        Paid gates convenience, control and memory. It never gates the practice.
+      </p>
+    </div>
+
+    <dl class="glass space-y-5 rounded-2xl p-7 text-[0.9rem] leading-relaxed">
+      <div>
+        <dt class="font-semibold text-foam">The trial</dt>
+        <dd class="mt-1 text-mist">{PRICING.trial}</dd>
+      </div>
+      <div>
+        <dt class="font-semibold text-foam">If you stop paying</dt>
+        <dd class="mt-1 text-mist">{PRICING.lapsed}</dd>
+      </div>
+      <div>
+        <dt class="font-semibold text-foam">No lifetime tier</dt>
+        <dd class="mt-1 text-mist">{PRICING.noLifetime}</dd>
+      </div>
+    </dl>
+  </div>
+</div>

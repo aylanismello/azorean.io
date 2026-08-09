@@ -1,0 +1,500 @@
+---
+/**
+ * SoMi's Depth paywall, rebuilt as live HTML inside an iPhone frame.
+ *
+ * Not a screenshot on purpose: it stays sharp at any width, inherits the site
+ * palette, and reads its prices from PRICING, so nothing here can drift out of
+ * date behind a PNG.
+ *
+ * Everything inside `.screen` is sized in `em` off a root font-size given in
+ * container-query units, so the entire mock scales as one piece — set the
+ * frame's width and the type, spacing, radii and device chrome all follow.
+ * That is also why this component owns a stylesheet instead of leaning on
+ * Tailwind utilities: the sizes are all relative to the device, not the page.
+ */
+import { PRICING } from '../../somi/config.js'
+
+interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props as Props
+const pw = PRICING.paywall
+
+/**
+ * Fourteen days of check-ins, oldest first — one glyph per SoMi state. The
+ * first week is blurred out in the mock, which is the whole argument the card
+ * is making: free remembers this week, Depth remembers all of them.
+ */
+const fortnight = [
+  '🌑', '🌑', '🌪', '🌤', '🌑', '🌙', '🌤',
+  '🌪', '🌤', '☀️', '🌙', '🌤', '☀️', '🌙',
+]
+---
+
+<div class={`device ${className}`}>
+  <div class="screen">
+    <!-- Device chrome -->
+    <div class="island" aria-hidden="true"></div>
+    <div class="statusbar" aria-hidden="true">
+      <span class="time">9:41</span>
+      <span class="indicators">
+        <svg viewBox="0 0 18 12" class="ind"
+          ><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect
+            x="5"
+            y="5.5"
+            width="3"
+            height="6.5"
+            rx="1"></rect><rect x="10" y="3" width="3" height="9" rx="1"></rect><rect
+            x="15"
+            y="0"
+            width="3"
+            height="12"
+            rx="1"></rect></svg
+        >
+        <svg viewBox="0 0 16 12" class="ind"
+          ><path
+            d="M8 10.6 6.2 8.7a2.6 2.6 0 0 1 3.6 0zM8 6.4a5 5 0 0 0-3.5 1.4L2.9 6.2a7.3 7.3 0 0 1 10.2 0l-1.6 1.6A5 5 0 0 0 8 6.4z"
+          ></path></svg
+        >
+        <svg viewBox="0 0 26 12" class="ind"
+          ><rect
+            x="0.5"
+            y="0.5"
+            width="21"
+            height="11"
+            rx="3.2"
+            fill="none"
+            stroke="currentColor"
+            stroke-opacity="0.4"></rect><rect x="2.5" y="2.5" width="15" height="7" rx="1.8"
+          ></rect><path d="M23.4 4.2a2.6 2.6 0 0 1 0 3.6z" fill-opacity="0.4"></path></svg
+        >
+      </span>
+    </div>
+
+    <div class="home" aria-hidden="true"></div>
+
+    <!-- The sheet itself -->
+    <div class="sheet">
+      <span class="close" aria-hidden="true">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9"
+          ><path d="M6 6l8 8M14 6l-8 8" stroke-linecap="round"></path></svg
+        >
+      </span>
+
+      <p class="brand">SoMi</p>
+
+      <h3 class="headline">
+        {pw.headline.map((line) => <span>{line}</span>)}
+      </h3>
+
+      <!-- Locked history teaser -->
+      <div class="teaser">
+        <p class="teaser-label">{pw.teaserLabel}</p>
+        <p
+          class="strip"
+          role="img"
+          aria-label="Fourteen days of check-ins, the first week blurred out"
+        >
+          {
+            fortnight.map((glyph, i) => (
+              <span
+                style={`filter:blur(${Math.max(0, 3.4 - i * 0.52).toFixed(2)}px);opacity:${Math.min(1, 0.34 + i * 0.075).toFixed(2)}`}
+              >
+                {glyph}
+              </span>
+            ))
+          }
+        </p>
+        <p class="teaser-locked">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            ><path d="M6.4 8.6V6.4a3.6 3.6 0 0 1 7.2 0v2.2" stroke-linecap="round"
+            ></path><rect x="4.4" y="8.6" width="11.2" height="7.6" rx="2.1"></rect></svg
+          >
+          {pw.teaserLocked}
+        </p>
+      </div>
+
+      <!-- What Depth adds -->
+      <ul class="bullets">
+        {
+          pw.bullets.map((b) => (
+            <li>
+              <svg
+                class="tick"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 10.6l4 4 8-9" />
+              </svg>
+              <span>
+                <strong>{b.lead}</strong>
+                <span class="dash"> — </span>
+                {b.rest}
+                {b.soon && <em class="soon">Soon</em>}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Plans -->
+      <div class="plans">
+        <div class="plan plan-on">
+          <span class="plan-copy">
+            <span class="plan-name">Annual</span>
+            <span class="plan-price">
+              {PRICING.yearlyMonthly}/mo · {PRICING.yearly} billed yearly
+            </span>
+          </span>
+          <span class="save">Save<br />{PRICING.yearlySaving}</span>
+        </div>
+
+        <div class="plan">
+          <span class="plan-copy">
+            <span class="plan-name">Monthly</span>
+            <span class="plan-price">{PRICING.monthly}/mo</span>
+          </span>
+        </div>
+      </div>
+
+      <span class="button">{pw.cta}</span>
+
+      <p class="fineprint">
+        {pw.reassurance} · {PRICING.trialDays} days free, then {PRICING.yearly}/yr
+        · Cancel anytime
+      </p>
+
+      <p class="sheetlinks">
+        {pw.links.map((l) => <span>{l}</span>)}
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ── Frame ───────────────────────────────────────────────────────────── */
+  .device {
+    /* The query container has to be the wrapper, not .screen: an element never
+       resolves cq units against itself, and .screen's own would silently fall
+       back to viewport units. .device's content box is exactly .screen's width,
+       so 1cqw stays 1% of the screen either way. */
+    container-type: inline-size;
+    /* Titanium rail: two hairlines either side of the black band read as an
+       edge catching light, which a single border cannot do. */
+    padding: 0.55%;
+    border-radius: 13.5%/6.4%;
+    background: linear-gradient(
+      150deg,
+      color-mix(in oklab, var(--color-foam) 34%, transparent),
+      color-mix(in oklab, var(--color-foam) 4%, transparent) 28%,
+      transparent 55%,
+      color-mix(in oklab, var(--color-foam) 16%, transparent)
+    );
+    box-shadow: 0 3.2rem 6rem -2rem rgb(0 0 0 / 0.9);
+  }
+
+  .screen {
+    /* iPhone 15 Pro logical resolution. Everything below is a ratio of it. */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 393 / 852;
+    overflow: hidden;
+    border-radius: 12.7%/5.9%;
+    background:
+      radial-gradient(
+        120% 60% at 50% 0%,
+        color-mix(in oklab, var(--color-turquoise) 9%, transparent),
+        transparent 70%
+      ),
+      var(--color-abyss);
+    box-shadow: inset 0 0 0 0.28cqw rgb(0 0 0 / 0.9);
+    /* 16pt at a 393pt-wide screen — the sheet's `em` unit. */
+    font-size: 4.07cqw;
+    line-height: 1.4;
+    color: var(--color-foam);
+  }
+
+  .island {
+    position: absolute;
+    top: 0.72em;
+    left: 50%;
+    translate: -50% 0;
+    width: 7.3em;
+    height: 2.15em;
+    border-radius: 999px;
+    background: #000;
+  }
+
+  .home {
+    position: absolute;
+    bottom: 0.55em;
+    left: 50%;
+    translate: -50% 0;
+    width: 8.4em;
+    height: 0.32em;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-foam) 55%, transparent);
+  }
+
+  .statusbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding: 0.95em 1.85em 0;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .indicators {
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+
+  .ind {
+    height: 0.72em;
+    width: auto;
+    fill: currentColor;
+  }
+
+  /* ── Sheet ───────────────────────────────────────────────────────────── */
+  .sheet {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0.5em 1.35em 2.1em;
+  }
+
+  .close {
+    position: absolute;
+    top: 0.1em;
+    right: 1.25em;
+    display: grid;
+    place-items: center;
+    width: 2.05em;
+    height: 2.05em;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-foam) 10%, transparent);
+    color: color-mix(in oklab, var(--color-foam) 65%, transparent);
+  }
+
+  .close svg {
+    width: 1.15em;
+    height: 1.15em;
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-align: center;
+    padding-top: 0.28em;
+  }
+
+  .headline {
+    margin-top: 0.72em;
+    font-family: var(--font-display);
+    font-size: 2.05em;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-align: center;
+  }
+
+  .headline span {
+    display: block;
+  }
+
+  .headline span:last-child {
+    font-style: italic;
+    color: var(--color-teal);
+  }
+
+  /* ── Locked history ──────────────────────────────────────────────────── */
+  .teaser {
+    margin-top: 1.15em;
+    padding: 0.85em 0.9em 0.78em;
+    border: 1px solid color-mix(in oklab, var(--color-foam) 10%, transparent);
+    border-radius: 0.95em;
+    background: color-mix(in oklab, var(--color-panel) 42%, transparent);
+  }
+
+  .teaser-label {
+    font-size: 0.6em;
+    font-weight: 600;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    color: var(--color-mist);
+  }
+
+  .strip {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5em;
+    font-size: 0.92em;
+    line-height: 1;
+  }
+
+  .teaser-locked {
+    display: flex;
+    align-items: center;
+    gap: 0.42em;
+    margin-top: 0.62em;
+    font-size: 0.76em;
+    color: var(--color-mist);
+  }
+
+  .teaser-locked svg {
+    width: 1.15em;
+    height: 1.15em;
+    flex-shrink: 0;
+  }
+
+  /* ── Bullets ─────────────────────────────────────────────────────────── */
+  .bullets {
+    margin-top: 0.55em;
+  }
+
+  .bullets li {
+    display: flex;
+    gap: 0.6em;
+    padding: 0.92em 0.15em;
+    font-size: 0.86em;
+    line-height: 1.38;
+    color: var(--color-mist);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-foam) 8%, transparent);
+  }
+
+  .bullets li:last-child {
+    border-bottom: 0;
+  }
+
+  .tick {
+    width: 1.15em;
+    height: 1.15em;
+    margin-top: 0.14em;
+    flex-shrink: 0;
+    color: var(--color-teal);
+  }
+
+  .bullets strong {
+    font-weight: 600;
+    color: var(--color-foam);
+  }
+
+  .dash {
+    color: color-mix(in oklab, var(--color-foam) 35%, transparent);
+  }
+
+  .soon {
+    margin-left: 0.45em;
+    padding: 0.05em 0.45em;
+    border: 1px solid color-mix(in oklab, var(--color-foam) 18%, transparent);
+    border-radius: 999px;
+    font-size: 0.72em;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── Plans ───────────────────────────────────────────────────────────── */
+  .plans {
+    display: grid;
+    gap: 0.55em;
+    /* Soaks up whatever height the copy above leaves, so the plan picker and
+       button always sit against the bottom of the sheet the way they do in
+       the app — instead of the whole thing floating in the top two thirds. */
+    margin-top: auto;
+    padding-top: 1.1em;
+  }
+
+  .plan {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    padding: 0.85em 0.95em;
+    border: 1px solid color-mix(in oklab, var(--color-foam) 12%, transparent);
+    border-radius: 0.95em;
+  }
+
+  .plan-on {
+    border-color: var(--color-teal);
+    background: color-mix(in oklab, var(--color-teal) 9%, transparent);
+    box-shadow: 0 0 0 0.22em color-mix(in oklab, var(--color-teal) 11%, transparent);
+  }
+
+  .plan-copy {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .plan-name {
+    display: block;
+    font-size: 0.98em;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .plan-price {
+    display: block;
+    margin-top: 0.15em;
+    font-size: 0.74em;
+    color: var(--color-mist);
+  }
+
+  .save {
+    flex-shrink: 0;
+    padding: 0.35em 0.6em;
+    border: 1px solid color-mix(in oklab, var(--color-teal) 45%, transparent);
+    border-radius: 0.55em;
+    font-size: 0.6em;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-teal);
+  }
+
+  /* ── Call to action ──────────────────────────────────────────────────── */
+  .button {
+    display: block;
+    margin-top: 0.95em;
+    padding: 0.82em;
+    border-radius: 999px;
+    background: var(--color-foam);
+    color: var(--color-abyss);
+    font-size: 0.98em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .fineprint {
+    margin-top: 0.75em;
+    font-size: 0.64em;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--color-mist);
+    text-wrap: balance;
+  }
+
+  .sheetlinks {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 0.7em;
+    font-size: 0.66em;
+    color: color-mix(in oklab, var(--color-mist) 75%, transparent);
+  }
+</style>
