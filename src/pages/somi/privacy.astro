@@ -43,6 +43,12 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
       not your real one.
     </p>
     <p>
+      Sign in with Apple also offers to share your name. If you let it, we store
+      that name and use it to greet you on the home screen. Editing it to
+      something else at the Apple prompt, or leaving it blank, is fine — the app
+      works the same either way.
+    </p>
+    <p>
       Passwords for email accounts are handled by our authentication provider
       and stored only as salted hashes. We never see or store your password in
       readable form.
@@ -74,6 +80,11 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
         your attendance streak; completed Daily Flows remain recorded separately.
       </li>
     </ul>
+    <p>
+      Some of this describes your body and your state, so we treat it as
+      health-related information you have given us. SoMi never reads from Apple
+      Health, and none of it goes to any advertiser.
+    </p>
 
     <h3>Usage and diagnostic information</h3>
     <ul>
@@ -86,9 +97,15 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
       </li>
       <li>
         <strong>Crash and error reports.</strong> These may include the device
-        model, operating system version, app version and account information
-        needed to investigate the problem. Sensitive fields such as passwords,
-        tokens and journal entries are stripped before a report is sent.
+        model, operating system version and app version, along with your account
+        identifier and email address, so we can tell who hit the problem and
+        follow up. Passwords, tokens and journal entries are stripped before a
+        report is sent.
+      </li>
+      <li>
+        <strong>Performance timings.</strong> On a small share of sessions we
+        record how long the app took to start, render a screen or finish a
+        request, so we can find what is slow.
       </li>
     </ul>
 
@@ -152,8 +169,10 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
       Where the UK GDPR or EU GDPR applies, we rely on: <strong>contract</strong>
       for account and practice data, because without it the app cannot function;
       and <strong>legitimate interests</strong> for analytics and crash reporting,
-      to keep the app working and improve it. You can object to processing based
-      on legitimate interests at any time by writing to {CONTACT.privacy}.
+      to keep the app working and improve it. For the health-related parts of a
+      check-in we rely on your <strong>explicit consent</strong>, which you give
+      by entering it and can withdraw by deleting your account. You can object to
+      processing based on legitimate interests at any time by writing to {CONTACT.privacy}.
     </p>
 
     <h2 id="who-else">4. Who else processes your data</h2>
