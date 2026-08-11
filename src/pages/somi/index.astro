@@ -3,8 +3,7 @@ import SomiBase from '../../layouts/SomiBase.astro'
 import Phone from '../../components/somi/Phone.astro'
 import Cta from '../../components/somi/Cta.astro'
 import StateMap from '../../components/somi/StateMap.astro'
-import Paywall from '../../components/somi/Paywall.astro'
-import { FACTS, APP, PRICING, SITE, p } from '../../somi/config.js'
+import { FACTS, APP, SITE, p } from '../../somi/config.js'
 
 const steps = [
   {
@@ -152,7 +151,7 @@ const faqs = [
   },
   {
     q: 'What does it cost?',
-    a: `The practice is free, permanently — SOS, the daily flow at full quality, unlimited check-ins and today's insight are never behind a paywall, and there are no ads or duration caps. Depth, the paid tier, is ${PRICING.monthly} a month or ${PRICING.yearly} a year and adds memory, control and convenience: your full history, the window measures, offline downloads, Apple Health. While SoMi is new, all of it is open — the pricing page sets out every row, line by line.`,
+    a: 'SoMi is free to download and use, with no ads.',
   },
   {
     q: 'Is there an Android version?',
@@ -197,7 +196,7 @@ const faqs = [
           </div>
 
           <p class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-mist">
-            <span>{APP.price} to start · no ads · Depth from {PRICING.monthly}/mo</span>
+            <span>{APP.price} · no ads</span>
             <span aria-hidden="true" class="hidden text-foam/25 sm:inline">·</span>
             <span>{FACTS.minMinutes}–{FACTS.maxMinutes} minute sessions</span>
           </p>
@@ -426,65 +425,6 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ─────────────────────── Free vs Depth ─────────────────────── -->
-  <section id="pricing" class="border-y border-foam/8 bg-ocean/30">
-    <div class="mx-auto max-w-6xl scroll-mt-24 px-5 py-28 sm:px-8">
-      <div class="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <p class="eyebrow">What costs money</p>
-          <h2
-            class="mt-4 font-display text-[2.4rem] leading-[1.12] tracking-[-0.02em] text-foam sm:text-[3rem]"
-          >
-            Free gets you today.
-            <span class="block italic text-teal">Depth gets you time.</span>
-          </h2>
-          <p class="mt-5 text-[1.02rem] leading-relaxed text-mist">
-            The practice is free and stays free — the full flow, the full block
-            library, as many check-ins as you like. What you pay for is memory:
-            the months behind you, what they add up to, and the conveniences
-            that make a long practice easier to keep.
-          </p>
-
-          <dl class="mt-8 space-y-4 border-t border-foam/10 pt-8 text-[0.98rem]">
-            <div class="sm:flex sm:gap-5">
-              <dt class="shrink-0 font-semibold text-foam sm:w-40">Free, forever</dt>
-              <dd class="mt-1 text-mist sm:mt-0">
-                <!-- Dot-separated, not comma: the first item has a comma of
-                     its own and the list turns to mush without it. -->
-                {PRICING.neverGated.slice(0, 4).join(' · ')} — never behind a
-                paywall.
-              </dd>
-            </div>
-            <div class="sm:flex sm:gap-5">
-              <dt class="shrink-0 font-semibold text-foam sm:w-40">Depth</dt>
-              <dd class="mt-1 text-mist sm:mt-0">
-                {PRICING.monthly} a month or {PRICING.yearly} a year, saving {
-                  PRICING.yearlySaving
-                }.
-              </dd>
-            </div>
-            <div class="sm:flex sm:gap-5">
-              <dt class="shrink-0 font-semibold text-foam sm:w-40">The trial</dt>
-              <dd class="mt-1 text-mist sm:mt-0">{PRICING.trial}</dd>
-            </div>
-          </dl>
-
-          <a
-            href={p('/pricing')}
-            class="mt-8 inline-flex items-center gap-2 text-[1rem] font-medium text-teal transition-colors hover:text-foam"
-          >
-            See Free vs Depth, line by line
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <!-- The paywall you meet in the app, at actual proportions. -->
-        <div class="mx-auto w-full max-w-[18rem] sm:max-w-[20rem]">
-          <Paywall />
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ─────────────────────── Honesty ─────────────────────── -->
   <section class="border-y border-foam/8 bg-ocean/30">

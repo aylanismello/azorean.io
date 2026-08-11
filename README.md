@@ -126,13 +126,11 @@ things keep them from bleeding into each other:
 
 ### Changing SoMi content
 
-Everything swappable lives in **`src/somi/config.js`**. Two placeholders remain:
+Everything swappable lives in **`src/somi/config.js`**. One placeholder remains:
 
-- `APP.appStoreUrl` — `null` today, so every CTA renders "Coming soon to the
-  App Store" instead of a dead badge. Set it to the real listing URL and all
-  the badges become working links at once.
-- `APP.testFlightUrl` — `null` today, so the secondary button falls back to a
-  `mailto:` beta request.
+- `APP.appStoreUrl` — `null` until the final listing URL is available. The site
+  displays a non-clickable availability label in the meantime; setting the URL
+  turns every CTA into a working App Store link.
 
 Bump `LEGAL_UPDATED` in the same file whenever you meaningfully edit the legal
 pages — it drives the "Last updated" line on all three.
