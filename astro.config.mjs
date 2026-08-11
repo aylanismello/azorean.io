@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://azorean.io',
+  compressHTML: false,
   integrations: [react(), sitemap()],
   vite: {
     // Tailwind is only imported by the /somi pages (via src/styles/somi.css),
