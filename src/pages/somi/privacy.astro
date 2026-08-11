@@ -24,12 +24,12 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
     </p>
 
     <p>
-      The short version: SoMi collects the account details it needs to sign you
-      in, the practice data you deliberately enter, and a small amount of usage
-      and crash data to keep the app working. <strong
-        >We do not sell your data, we do not share it with advertisers, and
-        there are no advertising trackers in the app.</strong
-      >
+      The short version: SoMi stores the account information needed to sign you
+      in and the check-ins, notes, tags and practice history you choose to save.
+      Limited product analytics and crash diagnostics help us improve the app.
+      <strong
+        >SoMi has no ads or advertising trackers, and we do not sell your data.</strong
+      > You can permanently delete your account and practice history from the app.
     </p>
 
     <h2 id="what-we-collect">1. What we collect</h2>
@@ -70,34 +70,34 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
       <li>
         <strong>Session records.</strong> Which exercises played, in what order,
         for how many seconds, and when the session happened. These drive your
-        streak, calendar and stats.
+        calendar, minutes and completion stats. Your check-in history drives
+        your attendance streak; completed Daily Flows remain recorded separately.
       </li>
     </ul>
 
     <h3>Usage and diagnostic information</h3>
     <ul>
       <li>
-        <strong>Product analytics.</strong> We use PostHog to understand how the
-        app is used in aggregate — which screens are opened, and a fixed set of
-        flow events such as starting a flow, completing a block, skipping an
-        exercise, and finishing or leaving a session. Events are linked to your
-        account identifier so we can measure things like completion rate. <strong
-          >Analytics events never include your journal text, your tags, or your
-          email address.</strong
-        > Analytics data is processed on PostHog’s United States cloud.
+        <strong>Product analytics.</strong> Usage events are linked to an account
+        identifier and analyzed to understand patterns such as completion and
+        drop-off. <strong
+          >They do not contain your email, journal text or actual tags.</strong
+        >
       </li>
       <li>
-        <strong>Crash and error reports.</strong> We use Sentry to capture
-        crashes and errors, along with the device model, operating system version
-        and app version needed to reproduce them. Our error reporting is
-        configured to strip sensitive fields — including anything named like a
-        token, password, session, or journal entry — before a report is sent.
+        <strong>Crash and error reports.</strong> These may include the device
+        model, operating system version, app version and account information
+        needed to investigate the problem. Sensitive fields such as passwords,
+        tokens and journal entries are stripped before a report is sent.
       </li>
     </ul>
 
     <h3>What we do not collect</h3>
     <ul>
-      <li>No location data, precise or coarse.</li>
+      <li>
+        SoMi does not request access to your device’s GPS location. Service
+        providers may process an IP address when delivering the app and its services.
+      </li>
       <li>No contacts, photos, calendar or health-app data. SoMi does not read from Apple Health.</li>
       <li>
         No microphone or camera access. The app plays audio and video; it does
@@ -121,18 +121,17 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
           <td>Check-ins, tags and journal notes</td>
           <td>
             To show you your own history and to shape the flow the app composes
-            for you
+            for you; check-ins also calculate your attendance streak
           </td>
         </tr>
         <tr>
           <td>Session records</td>
-          <td>To calculate your streak, calendar, minutes and completion stats</td>
+          <td>To show your calendar, minutes, completed Daily Flows and completion stats</td>
         </tr>
         <tr>
           <td>Analytics events</td>
           <td>
-            To see, in aggregate, where the app is confusing or where people drop
-            out, so we can fix it
+            To understand completion and drop-off patterns so we can improve the app
           </td>
         </tr>
         <tr>
@@ -159,36 +158,11 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
 
     <h2 id="who-else">4. Who else processes your data</h2>
     <p>
-      We use a small number of service providers. They process data on our
-      instructions and are not permitted to use it for their own purposes.
+      We use service providers for hosting, authentication, data storage, product
+      analytics, crash reporting, app distribution and Sign in with Apple. They
+      process information for us to operate and improve SoMi and are not permitted
+      to use it for their own purposes.
     </p>
-    <table>
-      <thead>
-        <tr><th>Provider</th><th>Role</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Supabase</td>
-          <td>Account authentication, database, and exercise video storage</td>
-        </tr>
-        <tr>
-          <td>Vercel</td>
-          <td>Hosting for the app’s backend API and this website</td>
-        </tr>
-        <tr>
-          <td>PostHog</td>
-          <td>Product analytics (United States cloud)</td>
-        </tr>
-        <tr>
-          <td>Sentry</td>
-          <td>Crash and error reporting</td>
-        </tr>
-        <tr>
-          <td>Apple</td>
-          <td>App distribution and Sign in with Apple</td>
-        </tr>
-      </tbody>
-    </table>
     <p>
       We may also disclose information if we are legally required to, or to
       protect the rights and safety of our users or ourselves.
@@ -207,16 +181,16 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
     <p>
       Account and practice data is kept for as long as your account exists,
       because its whole purpose is to be your history. When you delete your
-      account we delete it — see the next section. Aggregated analytics and crash
-      reports are retained by our providers on rolling retention windows and are
-      not tied to a usable identity once your account is gone.
+      account we delete it — see the next section. Analytics and crash reports
+      are kept by our service providers on rolling retention windows. You can
+      contact us if you want those records included in a deletion request.
     </p>
 
     <h2 id="your-rights">7. Your rights and your controls</h2>
     <p>You can, at any time:</p>
     <ul>
       <li>
-        <strong>Delete your account and everything in it</strong> from inside the
+        <strong>Delete your account and practice history</strong> from inside the
         app, in two taps from the Profile tab. This is a permanent deletion, not
         a deactivation. Step-by-step instructions are on our
         <a href={p('/account-deletion')}>account deletion page</a>.
@@ -247,11 +221,12 @@ import { COMPANY, CONTACT, LEGAL_UPDATED, SITE, p } from '../../somi/config.js'
 
     <h2 id="children">8. Children</h2>
     <p>
-      SoMi is not directed at children. You must be at least 13 years old to
-      create an account, and at least 16 in regions where that is the minimum age
-      for consent to data processing. We do not knowingly collect information
-      from children under those ages. If you believe a child has given us
-      information, write to {CONTACT.privacy} and we will delete it.
+      SoMi’s practices may be used by people of all ages. Account creation is for
+      people age 13 and older, or older where local law requires a higher minimum
+      age. Parents and guardians may guide younger children through SoMi using
+      the adult’s own account. If you are a parent or legal guardian and believe
+      a child under 13, or under a higher applicable age where they live, has
+      given us personal information, write to {CONTACT.privacy} and we will delete it.
     </p>
 
     <h2 id="security">9. Security</h2>

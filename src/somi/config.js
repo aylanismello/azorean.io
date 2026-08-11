@@ -26,7 +26,7 @@ export const SITE = {
 }
 
 export const COMPANY = {
-  name: 'Azorean Studios',
+  name: 'Azorean Studios LLC',
   // Used in the legal pages' governing-law and notices sections.
   city: 'Los Angeles',
   state: 'California',
@@ -231,7 +231,7 @@ export const FACTS = {
 }
 
 /** Last substantive edit to the legal pages. Bump when you change them. */
-export const LEGAL_UPDATED = 'August 5, 2026'
+export const LEGAL_UPDATED = 'August 10, 2026'
 
 export const NAV = [
   { href: p('/#how-it-works'), label: 'How it works' },
