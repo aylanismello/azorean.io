@@ -48,13 +48,9 @@ export const APP = {
   minOS: 'iOS 16 or later',
   bundleId: 'com.azorean.somi',
   price: 'Free',
-  // TODO: replace with the real App Store listing once the app is approved.
-  // While this is null the site renders a "Coming soon" state instead of a
-  // dead App Store badge.
+  // Add the listing URL when it is available. Until then the site renders a
+  // non-clickable availability label instead of a dead App Store link.
   appStoreUrl: null,
-  // TODO: replace with the public TestFlight invite link, or leave null to
-  // fall back to a mailto: beta request.
-  testFlightUrl: null,
 }
 
 /**
@@ -236,7 +232,6 @@ export const LEGAL_UPDATED = 'August 10, 2026'
 export const NAV = [
   { href: p('/#how-it-works'), label: 'How it works' },
   { href: p('/#moments'), label: 'Moments' },
-  { href: p('/pricing'), label: 'Pricing' },
   { href: p('/#faq'), label: 'FAQ' },
   { href: p('/support'), label: 'Support' },
 ]
@@ -248,7 +243,6 @@ export const FOOTER_LINKS = [
       { href: p('/#how-it-works'), label: 'How it works' },
       { href: p('/#screens'), label: 'Screens' },
       { href: p('/#moments'), label: 'Moments' },
-      { href: p('/pricing'), label: 'Pricing' },
       { href: p('/#faq'), label: 'FAQ' },
     ],
   },

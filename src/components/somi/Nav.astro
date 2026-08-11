@@ -26,17 +26,13 @@ import { NAV, APP, p } from '../../somi/config.js'
         ))
       }
       {
-        APP.appStoreUrl ? (
+        APP.appStoreUrl && (
           <a
             href={APP.appStoreUrl}
             class="rounded-full bg-teal px-4 py-2 text-sm font-semibold text-abyss transition-opacity hover:opacity-90"
           >
             Get SoMi
           </a>
-        ) : (
-          <span class="rounded-full border border-teal/35 px-4 py-2 text-sm font-medium text-teal">
-            Coming soon
-          </span>
         )
       }
     </div>
@@ -74,19 +70,17 @@ import { NAV, APP, p } from '../../somi/config.js'
             </a>
           ))
         }
-        <div class="my-1.5 border-t rule"></div>
         {
-          APP.appStoreUrl ? (
-            <a
-              href={APP.appStoreUrl}
-              class="block rounded-xl bg-teal px-3.5 py-2.5 text-center text-sm font-semibold text-abyss"
-            >
-              Get SoMi
-            </a>
-          ) : (
-            <span class="block px-3.5 py-2.5 text-sm text-teal">
-              Coming soon to the App Store
-            </span>
+          APP.appStoreUrl && (
+            <>
+              <div class="my-1.5 border-t rule"></div>
+              <a
+                href={APP.appStoreUrl}
+                class="block rounded-xl bg-teal px-3.5 py-2.5 text-center text-sm font-semibold text-abyss"
+              >
+                Get SoMi
+              </a>
+            </>
           )
         }
       </div>
