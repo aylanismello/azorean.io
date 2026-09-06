@@ -76,6 +76,7 @@ copying one of those pages and changing the props.
 │   │   ├── SiteFooter.astro
 │   │   ├── Pictogram.astro # solid-black division marks
 │   │   ├── Hero.astro      # video plate + caption
+│   │   ├── mise/           # Mise product-site components
 │   │   └── somi/           # SoMi-only components
 │   ├── layouts/
 │   │   ├── Layout.astro       # azorean.io shell
@@ -91,6 +92,7 @@ copying one of those pages and changing the props.
 │       ├── segundo-sol.astro
 │       ├── sound.astro
 │       ├── contact.astro
+│       ├── mise.astro      # Mise marketing site
 │       └── somi/           # the SoMi mini-site
 ├── astro.config.mjs
 └── package.json
@@ -174,4 +176,10 @@ For questions about this project or collaboration opportunities:
 
 ---
 
-Built with mindful intention for conscious technology. 
+Built with mindful intention for conscious technology.
+
+## Mise (`/mise`)
+
+The standalone Mise marketing site lives at `/mise`. Its layout, components,
+styles, fonts, screenshots, favicon, and social card are namespaced under
+`mise` so its product theme does not affect the Azorean or SoMi pages.

@@ -1,0 +1,35 @@
+---
+const year = 2026;
+---
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <p class="foot__copy mono">© {year} Azorean Studios · Mise</p>
+    <ul class="foot__links mono">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="#">Press</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    border-top: 1px solid var(--line);
+    padding-block: 2rem 3rem;
+  }
+  .foot__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .foot__copy { color: var(--faint); }
+  .foot__links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .foot__links a { color: var(--dim); }
+  .foot__links a:hover { color: var(--ink); }
+</style>

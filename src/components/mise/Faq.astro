@@ -1,0 +1,70 @@
+---
+interface Props {
+  items: { q: string; a: string }[];
+}
+const { items } = Astro.props;
+---
+
+<section id="faq" class="faq section">
+  <div class="wrap faq__grid">
+    <div class="faq__head">
+      <p class="label label--dim">FAQ</p>
+      <h2 class="h3">The short answers.</h2>
+    </div>
+    <dl class="faq__list">
+      {items.map(({ q, a }) => (
+        <div class="faq__item">
+          <dt>{q}</dt>
+          <dd set:html={a} />
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .faq__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .faq__head { display: grid; gap: 1rem; }
+  .faq__list {
+    margin: 0;
+    display: grid;
+    border-top: 1px solid var(--line);
+  }
+  .faq__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 1rem 2rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  dt {
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.005em;
+  }
+  dd {
+    margin: 0;
+    color: var(--dim);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  dd :global(code) {
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    color: var(--ink);
+    background: var(--wash);
+    padding: 0.1em 0.4em;
+    border-radius: 6px;
+  }
+  @media (max-width: 900px) {
+    .faq__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .faq__item { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+/**
+ * One of the three steps. A numbered mono label, a headline, a paragraph,
+ * a bullet list, and whatever screenshots the page puts in the slot.
+ */
+interface Props {
+  id: string;
+  n: string;          // "01"
+  name: string;       // "Connect"
+  headline: string;
+  bullets: string[];
+  tone?: 'limao' | 'acai' | 'maracuja';
+  flip?: boolean;     // shots on the left
+}
+const { id, n, name, headline, bullets, tone = 'limao', flip = false } = Astro.props;
+---
+
+<section id={id} class={`step section step--${tone} ${flip ? 'step--flip' : ''}`}>
+  <div class="wrap step__grid">
+    <div class="step__text">
+      <p class="label step__label"><span class="step__n">{n}</span> {name}</p>
+      <h2 class="h2">{headline}</h2>
+      <div class="step__body body"><slot name="body" /></div>
+      <ul class="step__list">
+        {bullets.map((b) => (
+          <li>
+            <span class="step__tick" aria-hidden="true"></span>
+            <span set:html={b} />
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="step__shots">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .step__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .step--flip .step__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .step--flip .step__text { order: 2; }
+  .step--flip .step__shots { order: 1; }
+
+  .step__text {
+    display: grid;
+    gap: 1.5rem;
+    position: sticky;
+    top: 4rem;
+  }
+  .step__label { display: flex; align-items: baseline; gap: 0.75rem; }
+  .step__n { color: var(--faint); }
+  .step--limao .step__label { color: var(--limao-text); }
+  .step--acai .step__label { color: var(--acai-text); }
+  .step--maracuja .step__label { color: var(--maracuja-text); }
+
+  .step__body { display: grid; gap: 1rem; }
+
+  .step__list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    font-size: 1rem;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: var(--measure);
+  }
+  .step__list li {
+    display: grid;
+    grid-template-columns: 0.75rem 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .step__tick {
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    transform: translateY(-0.05em);
+  }
+  .step--limao .step__tick { background: var(--limao); }
+  .step--acai .step__tick { background: var(--acai); }
+  .step--maracuja .step__tick { background: var(--maracuja); }
+  .step__list :global(code) {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    color: var(--dim);
+  }
+
+  .step__shots {
+    display: grid;
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+  }
+  .step__shots :global(.pair) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+    align-items: start;
+  }
+  .step__shots :global(.pair--phones) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 26rem;
+  }
+
+  @media (max-width: 900px) {
+    .step__grid, .step--flip .step__grid { grid-template-columns: 1fr; }
+    .step--flip .step__text { order: 1; }
+    .step--flip .step__shots { order: 2; }
+    .step__text { position: static; }
+  }
+  @media (max-width: 480px) {
+    .step__shots :global(.pair) { grid-template-columns: 1fr; }
+    .step__shots :global(.pair--phones) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

@@ -1,0 +1,224 @@
+---
+import Base from '../layouts/MiseBase.astro';
+import Hero from '../components/mise/Hero.astro';
+import Step from '../components/mise/Step.astro';
+import Shot from '../components/mise/Shot.astro';
+import Faq from '../components/mise/Faq.astro';
+import Footer from '../components/mise/Footer.astro';
+
+const faq = [
+  {
+    q: 'Which formats?',
+    a: '<code>wav</code> <code>aif</code> <code>flac</code> <code>mp3</code> <code>m4a</code> <code>aac</code> <code>ogg</code> <code>caf</code>. Anything Core Audio reads, Mise reads.',
+  },
+  {
+    q: 'What does it need?',
+    a: 'macOS 26 on the Mac. iOS 26 on iPhone and iPad. One iCloud account across them; that is the whole setup.',
+  },
+  {
+    q: 'Do I need Dropbox?',
+    a: 'No. Dropbox is one source among several. Connect it if your sounds are there; skip it if they are not.',
+  },
+  {
+    q: 'Where does my library live?',
+    a: 'In your iCloud, as ordinary files. Mise keeps its index next to them. There is no Mise account and nothing leaves your devices for us.',
+  },
+  {
+    q: 'Does the Mac have to stay on?',
+    a: 'The Mac does the listening once, when a sound arrives. After that every device carries the numbers, so the phone finds sounds without the Mac in the room.',
+  },
+];
+
+const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808', 'bass', 'keys', 'pad', 'lead', 'stab', 'vocal', 'fx', 'foley'];
+---
+
+<Base>
+  <Hero />
+
+  <main>
+    <!-- 01 Connect -->
+    <Step
+      id="connect"
+      n="01"
+      name="Connect"
+      tone="limao"
+      headline="Every sound you own, in one list."
+      bullets={[
+        'iCloud, Dropbox, Voice Memos, Ableton projects, any local folder.',
+        'Dropbox sounds are listed from Dropbox&rsquo;s own index. Nothing downloads until you press play.',
+        'Every sound gets an id off its own bytes, so the same sample under three names is known as one sound.',
+        'The Mac listens to the pile once. The phone carries the numbers, not the files.',
+      ]}
+    >
+      <Fragment slot="body">
+        <p>Samples end up everywhere: a Dropbox from an old collaborator, a folder of voice memos, four years of Ableton projects with bounces inside them. Mise reads them where they are and brings scattered audio into one library, without moving anything you did not ask it to move.</p>
+      </Fragment>
+      <Shot src="/mise/shots/mac-dropbox.png" kind="mac" alt="A Dropbox folder listed as a source in Mise on Mac, every sound visible before any of it has downloaded." caption="mac-dropbox.png" />
+      <div class="pair">
+        <Shot src="/mise/shots/mac-library.png" kind="mac" alt="The Mise library on Mac, sounds from several sources in one list." caption="mac-library.png" />
+        <Shot src="/mise/shots/ipad-docked.png" kind="ipad" alt="Mise on iPad: the tape with the ear’s page open — the family vote, the words the model hears, the nearest sounds." caption="ipad-docked.png" />
+      </div>
+    </Step>
+
+    <!-- 02 Prep -->
+    <Step
+      id="prep"
+      n="02"
+      name="Prep"
+      tone="acai"
+      flip
+      headline="Find the good ones. Say what you mean."
+      bullets={[
+        'Search by sound or by name. A typed sentence and a file are compared in the same space.',
+        'Surface the forgotten: never played, a random deal, sounds like this one.',
+        'Favorite, tag, cue and mark, trim, normalize. Organize into crates.',
+        'Audition as loops, keys, slices or kits before you commit to anything.',
+        'Sixteen families, sorted by listening. Your own named folders teach the model your vocabulary.',
+      ]}
+    >
+      <Fragment slot="body">
+        <p>A CLAP model turns every sound and every typed sentence into 512 numbers in one space. So <strong>“a dusty vinyl kick”</strong> finds files called <strong>1234.wav</strong>, and a sound you like finds its siblings across every source.</p>
+        <p class="families" aria-label="The sixteen families">
+          {families.map((f) => <span class="family">{f}</span>)}
+        </p>
+      </Fragment>
+      <Shot src="/mise/shots/mac-search-by-sound.png" kind="mac" alt="Search by sound on Mac: a typed sentence at the top, the closest sounds ranked beneath it." caption="mac-search-by-sound.png" />
+      <div class="pair">
+        <Shot src="/mise/shots/mac-ear.png" kind="mac" alt="The ear on Mac: sounds sorted into families by listening, with a folder teaching the model a new word." caption="mac-ear.png" />
+        <div class="pair pair--phones">
+          <Shot src="/mise/shots/ios-library.png" kind="phone" alt="The library on iPhone with the chip row filtering to one family." caption="ios-library.png" />
+          <Shot src="/mise/shots/ios-crates.png" kind="phone" alt="Crates on iPhone: named collections of sounds, ready for a project." caption="ios-crates.png" />
+        </div>
+      </div>
+    </Step>
+
+    <!-- 03 Cook -->
+    <Step
+      id="cook"
+      n="03"
+      name="Cook"
+      tone="maracuja"
+      headline="Shape it. Send it anywhere."
+      bullets={[
+        'Pitch as tape or keep the pitch. Reverse, stretch, saturate.',
+        'Resample the whole thing, the loop, a slice at your marks, or 8 and 16 even slices.',
+        'Every new sound keeps its lineage back to the parent.',
+        'Drag into Ableton or Logic as the file. Build OP-XY kits. Stage crates for MPC and hardware.',
+        'Hand a sound to another device and it is there.',
+      ]}
+    >
+      <Fragment slot="body">
+        <p>The tape is where a sound becomes yours. Pull it down an octave, flip it, stretch it over a bar, drive it a little. Print what you hear as a new sound in the library, and the library remembers where it came from.</p>
+      </Fragment>
+      <Shot src="/mise/shots/mac-tape.png" kind="mac" alt="The tape as a drawer on the Mac, with the ear’s page open under it." caption="mac-tape.png" />
+      <div class="pair">
+        <Shot src="/mise/shots/mac-resample.png" kind="mac" alt="Search by sound on the Mac: every kick in a library of 145,000, closest first, with how far the match drops off." caption="mac-resample.png" />
+        <div class="pair pair--phones">
+          <Shot src="/mise/shots/ios-tape.png" kind="phone" alt="The tape on iPhone, one thumb on the pitch." caption="ios-tape.png" />
+          <Shot src="/mise/shots/ios-record.png" kind="phone" alt="Recording on iPhone: a level meter, the location, the threshold armed." caption="ios-record.png" />
+        </div>
+      </div>
+    </Step>
+
+    <!-- Record + Private -->
+    <section class="two section">
+      <div class="wrap two__grid">
+        <div class="two__col">
+          <p class="label" style="color: var(--pimenta)">Record</p>
+          <h2 class="h3">Catch it while it is happening.</h2>
+          <p class="body">
+            Field recordings keep their location. On the Mac, record whatever any app is playing: a browser tab, a synth, a call. Set a threshold and recording starts on the first sound, so the take begins where the sound does.
+          </p>
+        </div>
+        <div class="two__col">
+          <p class="label label--dim">Private by design</p>
+          <h2 class="h3">Your sounds stay yours.</h2>
+          <p class="body">
+            The models that listen and sort run on the device. Your library syncs through your own iCloud. There is no account to make, no server to trust, and no upload you did not choose.
+          </p>
+          <ul class="two__facts mono">
+            <li>on-device models</li>
+            <li>iCloud sync</li>
+            <li>no account</li>
+            <li>no server</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <Faq items={faq} />
+
+    <!-- Closing CTA -->
+    <section class="close section">
+      <div class="wrap close__grid">
+        <h2 class="h2">One place for all of it.</h2>
+        <div class="close__cta">
+          <a class="btn btn--limao" href="#">Get Mise for Mac</a>
+          <a class="btn btn--ghost" href="#">TestFlight for iPhone &amp; iPad</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .families {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    max-width: var(--measure);
+  }
+  .family {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--acai-text);
+    background: var(--wash);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.3em 0.75em;
+    line-height: 1;
+  }
+
+  .two__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+  .two__col { display: grid; gap: 1.25rem; align-content: start; }
+  .two__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    color: var(--faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+  }
+  .two__facts li::before {
+    content: '';
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: var(--limao);
+    margin-right: 0.5rem;
+    transform: translateY(-0.05em);
+  }
+  @media (max-width: 800px) {
+    .two__grid { grid-template-columns: 1fr; }
+  }
+
+  .close__grid {
+    display: grid;
+    gap: 2rem;
+    justify-items: start;
+  }
+  .close__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+</style>

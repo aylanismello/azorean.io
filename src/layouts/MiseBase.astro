@@ -1,0 +1,49 @@
+---
+import '../styles/mise.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Mise — all your sounds in one place',
+  description = 'Mise puts all your sounds in one place, helps you find and prep the good ones, then lets you use them anywhere. Native on Mac, iPhone and iPad.',
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://azorean.io');
+const canonical = new URL(Astro.url.pathname, site);
+const ogImage = new URL('/mise/og.png', site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/mise/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#12151C" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mise" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preload" href="/mise/fonts/SchibstedGrotesk-Variable.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/mise/fonts/FragmentMono-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
