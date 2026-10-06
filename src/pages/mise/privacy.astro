@@ -1,0 +1,96 @@
+---
+import Doc from '../../layouts/MiseDoc.astro';
+import { COMPANY, CONTACT, LEGAL_UPDATED } from '../../mise/config.js';
+---
+
+<Doc
+  title="Privacy Policy"
+  label="Mise · Legal"
+  description="What Mise does with your sounds and your information: it keeps them on your devices and in your own iCloud and Dropbox."
+  lede="Mise has no account with us, no server of ours and no analytics. Your sounds and everything about them stay on your devices and in storage you own."
+  updated={LEGAL_UPDATED}
+>
+  <p>
+    This policy covers the Mise app for iPhone, iPad and Mac, made by {COMPANY.name} (“we”, “us”), and these pages
+    on azorean.io. It applies to nothing else.
+  </p>
+
+  <h2>The short version</h2>
+  <ul>
+    <li><strong>We never receive your sounds,</strong> their names, your tags, ratings, notes or recordings.</li>
+    <li><strong>There is no Mise account.</strong> We hold no email, password or profile for you.</li>
+    <li><strong>No analytics, no ads, no tracking,</strong> and nothing is sold or shared with advertisers.</li>
+    <li>Your library lives on your devices, in <strong>your own iCloud</strong>, and in <strong>your own Dropbox</strong> if you connect it.</li>
+  </ul>
+
+  <h2>Where your library lives</h2>
+  <h3>On your devices</h3>
+  <p>
+    Mise keeps an index of your sounds on each device: names, folders, lengths, tempo, key, the families it has
+    sorted them into, your marks, crates, likes and notes. Sounds are analyzed on the device itself; the audio is
+    never sent anywhere to be analyzed.
+  </p>
+  <h3>In your iCloud</h3>
+  <p>
+    So that your iPhone, iPad and Mac show the same library, Mise keeps what you change, and what it has worked out
+    about each sound, in the private iCloud database of your own Apple Account. If you choose iCloud Drive as your
+    library’s home, your sound files live there too. When your phone plays a sound that only your Mac has, the
+    sound passes through that same private database. Only someone signed into your Apple Account can read any of
+    it; we cannot. Apple’s privacy policy covers how iCloud stores it.
+  </p>
+  <h3>In your Dropbox</h3>
+  <p>
+    If you connect Dropbox, Mise signs in through Dropbox and reads and writes files in your account so your
+    sounds can be listed, played and kept in step. The sign-in is stored in your device’s Keychain and, through
+    iCloud Keychain, on your other devices. Mise talks to Dropbox directly; nothing passes through us. Dropbox’s
+    privacy policy covers your files there. You can disconnect Mise at any time in Mise’s settings or in your
+    Dropbox account’s connected apps.
+  </p>
+
+  <h2>What Mise asks your device for</h2>
+  <ul>
+    <li><strong>Microphone</strong> — only to record, and only while you are on the Record page. Recordings are saved into your library.</li>
+    <li><strong>Location</strong> — while you use the app, to note where a recording was made. That place is saved with the recording in your library and nowhere else.</li>
+    <li><strong>Photos</strong> — only to delete a video from Photos after Mise has taken its audio, and only if you turn that on.</li>
+    <li><strong>Local network</strong> — to find your own Mac running Mise, and the devices in a sesh, on the same Wi‑Fi.</li>
+    <li><strong>System audio</strong> (Mac) — only to record what an app is playing, while you are on Record and have asked for it.</li>
+  </ul>
+
+  <h2>Seshes</h2>
+  <p>
+    A sesh connects devices on the same Wi‑Fi. When you host or join one, the name you choose and the sounds you
+    send are shared directly with the other devices in it, without passing through us. Leaving the sesh stops the
+    sharing; sounds already sent to someone stay with them.
+  </p>
+
+  <h2>Crash reports and TestFlight</h2>
+  <p>
+    If you have chosen in your device’s settings to share analytics with app developers, Apple may pass us crash
+    reports for Mise. They describe the device and what the app was doing when it failed, and they contain no
+    sounds. If you test Mise through TestFlight, Apple shares with us what TestFlight collects and any feedback you
+    send. Apple’s privacy policy covers both.
+  </p>
+
+  <h2>Children</h2>
+  <p>Mise is not directed at children under 13, and we do not knowingly collect information from them.</p>
+
+  <h2>Deleting your data</h2>
+  <p>
+    Because everything is on your devices and in accounts you own, you are in control of all of it. Deleting Mise
+    removes its data from that device. Mise’s data in iCloud can be deleted from your device’s settings, under your
+    Apple Account’s iCloud storage. Files in your Dropbox stay yours to keep or delete. There is nothing held by us
+    to ask us to delete.
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    If this policy changes, the new version will be posted here with a new effective date. If Mise ever starts
+    collecting something it does not today, this page will say so before the app does.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about privacy go to <a href={`mailto:${CONTACT}`}>{CONTACT}</a>. {COMPANY.name},
+    {COMPANY.addressLine}.
+  </p>
+</Doc>

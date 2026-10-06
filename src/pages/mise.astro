@@ -5,6 +5,7 @@ import Step from '../components/mise/Step.astro';
 import Shot from '../components/mise/Shot.astro';
 import Faq from '../components/mise/Faq.astro';
 import Footer from '../components/mise/Footer.astro';
+import { URLS } from '../mise/config.js';
 
 const faq = [
   {
@@ -25,11 +26,11 @@ const faq = [
   },
   {
     q: 'Does the Mac have to stay on?',
-    a: 'The Mac does the listening once, when a sound arrives. After that every device carries the numbers, so the phone finds sounds without the Mac in the room.',
+    a: 'No. Each sound is analyzed once, by whichever device gets to it first, and every device then carries the result. A phone with no Mac behind it analyzes its own sounds.',
   },
 ];
 
-const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808', 'bass', 'keys', 'pad', 'lead', 'stab', 'vocal', 'fx', 'foley'];
+const families = ['kicks', 'snares', 'claps', 'hats & shakers', 'cymbals', 'toms', 'percussion', '808 & bass', 'keys', 'leads & plucks', 'stabs & chords', 'pads & texture', 'vocals', 'fx & sweeps', 'noise & vinyl', 'foley'];
 ---
 
 <Base>
@@ -47,7 +48,7 @@ const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808'
         'iCloud, Dropbox, Voice Memos, Ableton projects, any local folder.',
         'Dropbox sounds are listed from Dropbox&rsquo;s own index. Nothing downloads until you press play.',
         'Every sound gets an id off its own bytes, so the same sample under three names is known as one sound.',
-        'The Mac listens to the pile once. The phone carries the numbers, not the files.',
+        'Every sound is analyzed once. The phone carries the results, not the files.',
       ]}
     >
       <Fragment slot="body">
@@ -56,7 +57,7 @@ const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808'
       <Shot src="/mise/shots/mac-dropbox.png" kind="mac" alt="A Dropbox folder listed as a source in Mise on Mac, every sound visible before any of it has downloaded." caption="mac-dropbox.png" />
       <div class="pair">
         <Shot src="/mise/shots/mac-library.png" kind="mac" alt="The Mise library on Mac, sounds from several sources in one list." caption="mac-library.png" />
-        <Shot src="/mise/shots/ipad-docked.png" kind="ipad" alt="Mise on iPad: the tape with the ear’s page open — the family vote, the words the model hears, the nearest sounds." caption="ipad-docked.png" />
+        <Shot src="/mise/shots/ipad-docked.png" kind="ipad" alt="Mise on iPad: the tape with the sous’s page open — the family it chose, the words it found, the nearest sounds." caption="ipad-docked.png" />
       </div>
     </Step>
 
@@ -73,7 +74,7 @@ const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808'
         'Surface the forgotten: never played, a random deal, sounds like this one.',
         'Favorite, tag, cue and mark, trim, normalize. Organize into crates.',
         'Audition as loops, keys, slices or kits before you commit to anything.',
-        'Sixteen families, sorted by listening. Your own named folders teach the model your vocabulary.',
+        'Sixteen families, sorted by the sous. Your own named folders teach it your vocabulary.',
       ]}
     >
       <Fragment slot="body">
@@ -84,7 +85,7 @@ const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808'
       </Fragment>
       <Shot src="/mise/shots/mac-search-by-sound.png" kind="mac" alt="Search by sound on Mac: a typed sentence at the top, the closest sounds ranked beneath it." caption="mac-search-by-sound.png" />
       <div class="pair">
-        <Shot src="/mise/shots/mac-ear.png" kind="mac" alt="The ear on Mac: sounds sorted into families by listening, with a folder teaching the model a new word." caption="mac-ear.png" />
+        <Shot src="/mise/shots/mac-ear.png" kind="mac" alt="The sous on Mac: sounds sorted into families, with a folder teaching it a new word." caption="mac-ear.png" />
         <div class="pair pair--phones">
           <Shot src="/mise/shots/ios-library.png" kind="phone" alt="The library on iPhone with the chip row filtering to one family." caption="ios-library.png" />
           <Shot src="/mise/shots/ios-crates.png" kind="phone" alt="Crates on iPhone: named collections of sounds, ready for a project." caption="ios-crates.png" />
@@ -108,9 +109,9 @@ const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808'
       ]}
     >
       <Fragment slot="body">
-        <p>The tape is where a sound becomes yours. Pull it down an octave, flip it, stretch it over a bar, drive it a little. Print what you hear as a new sound in the library, and the library remembers where it came from.</p>
+        <p>The tape is where a sound becomes yours. Pull it down an octave, stretch it over a bar, drive it a little. Print what you hear as a new sound in the library, and the library remembers where it came from.</p>
       </Fragment>
-      <Shot src="/mise/shots/mac-tape.png" kind="mac" alt="The tape as a drawer on the Mac, with the ear’s page open under it." caption="mac-tape.png" />
+      <Shot src="/mise/shots/mac-tape.png" kind="mac" alt="The tape as a drawer on the Mac, with the sous’s page open under it." caption="mac-tape.png" />
       <div class="pair">
         <Shot src="/mise/shots/mac-resample.png" kind="mac" alt="Search by sound on the Mac: every kick in a library of 145,000, closest first, with how far the match drops off." caption="mac-resample.png" />
         <div class="pair pair--phones">
@@ -134,7 +135,7 @@ const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808'
           <p class="label label--dim">Private by design</p>
           <h2 class="h3">Your sounds stay yours.</h2>
           <p class="body">
-            The models that listen and sort run on the device. Your library syncs through your own iCloud. There is no account to make, no server to trust, and no upload you did not choose.
+            The models that analyze and sort run on the device. Your library syncs through your own iCloud. There is no account to make, no server to trust, and no upload you did not choose.
           </p>
           <ul class="two__facts mono">
             <li>on-device models</li>
@@ -153,8 +154,8 @@ const families = ['kick', 'snare', 'hat', 'clap', 'perc', 'tom', 'cymbal', '808'
       <div class="wrap close__grid">
         <h2 class="h2">One place for all of it.</h2>
         <div class="close__cta">
-          <a class="btn btn--limao" href="#">Get Mise for Mac</a>
-          <a class="btn btn--ghost" href="#">TestFlight for iPhone &amp; iPad</a>
+          <a class="btn btn--limao" href={URLS.invite}>Ask for an invite</a>
+          <a class="btn btn--ghost" href={URLS.support}>Support</a>
         </div>
       </div>
     </section>

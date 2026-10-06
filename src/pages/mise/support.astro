@@ -1,0 +1,64 @@
+---
+import Doc from '../../layouts/MiseDoc.astro';
+import { APP, CONTACT } from '../../mise/config.js';
+
+const answers = [
+  {
+    q: 'A Dropbox sound will not play',
+    a: 'A Dropbox sound is fetched the first time you play it, so it needs a connection. If none of them play, open Mise’s settings and check Dropbox is still connected; sign in again there if it says it is not.',
+  },
+  {
+    q: 'My devices show different libraries',
+    a: 'Every device has to be signed into the same Apple Account in iCloud, and using the same library home. Changes made offline arrive once the device is back online and Mise is open.',
+  },
+  {
+    q: 'A sound says Analyzing or Couldn’t analyze',
+    a: 'Mise analyzes each sound once, on the device, for its tempo, key and what kind of sound it is. Analyzing finishes on its own. Couldn’t analyze means the file could not be read, usually because it is damaged or in a format Mise cannot open.',
+  },
+  {
+    q: 'My phone cannot find my Mac, or a sesh',
+    a: 'Both have to be on the same Wi‑Fi with Mise open. On the phone, check Settings → Privacy & Security → Local Network, and turn Mise on.',
+  },
+  {
+    q: 'Recording makes no sound',
+    a: 'Check Settings → Privacy & Security → Microphone and turn Mise on. Mise only uses the microphone while you are on the Record page.',
+  },
+];
+---
+
+<Doc
+  title="Support"
+  label="Mise · Help"
+  description="Help with Mise on iPhone, iPad and Mac, and how to reach the person who makes it."
+  lede="One person reads this inbox and answers it."
+>
+  <div class="card">
+    <p class="mono" style="color: var(--faint)">Email</p>
+    <p style="margin-top: 0.5rem; font-size: 1.5rem; font-weight: 700"><a href={`mailto:${CONTACT}?subject=Mise`}>{CONTACT}</a></p>
+    <p style="margin-top: 0.75rem">
+      Say which device and system version you are on, and what you were doing when it went wrong. A screenshot helps.
+    </p>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><span>Runs on</span><b>{APP.requires}</b></div>
+    <div class="fact"><span>Price</span><b>{APP.price}</b></div>
+    <div class="fact"><span>Account</span><b>None needed</b></div>
+  </div>
+
+  <h2>Common fixes</h2>
+  <div>
+    {answers.map((x) => (
+      <details>
+        <summary>{x.q}</summary>
+        <p>{x.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <h2>Your data</h2>
+  <p>
+    Mise has no account and keeps nothing on our side, so there is nothing to recover from us and nothing to delete.
+    The <a href="/mise/privacy">privacy policy</a> says where everything lives.
+  </p>
+</Doc>

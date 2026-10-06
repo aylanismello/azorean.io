@@ -1,4 +1,5 @@
 ---
+import { URLS } from '../../mise/config.js';
 import Shot from './Shot.astro';
 ---
 
@@ -37,8 +38,8 @@ import Shot from './Shot.astro';
       Native on Mac, iPhone and iPad. Your library lives in iCloud; nothing is uploaded to us.
     </p>
     <div class="hero__cta">
-      <a class="btn btn--limao" href="#">Get Mise for Mac</a>
-      <a class="btn btn--ghost" href="#">TestFlight for iPhone &amp; iPad</a>
+      <a class="btn btn--limao" href={URLS.invite}>Ask for an invite</a>
+      <a class="btn btn--ghost" href={URLS.support}>Support</a>
     </div>
   </div>
 

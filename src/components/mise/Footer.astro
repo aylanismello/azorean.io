@@ -1,4 +1,5 @@
 ---
+import { URLS, CONTACT } from '../../mise/config.js';
 const year = 2026;
 ---
 
@@ -6,9 +7,9 @@ const year = 2026;
   <div class="wrap foot__row">
     <p class="foot__copy mono">© {year} Azorean Studios · Mise</p>
     <ul class="foot__links mono">
-      <li><a href="#">Privacy</a></li>
-      <li><a href="#">Support</a></li>
-      <li><a href="#">Press</a></li>
+      <li><a href={URLS.privacy}>Privacy</a></li>
+      <li><a href={URLS.support}>Support</a></li>
+      <li><a href={`mailto:${CONTACT}`}>Contact</a></li>
     </ul>
   </div>
 </footer>
