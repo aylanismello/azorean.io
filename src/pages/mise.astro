@@ -14,15 +14,19 @@ const faq = [
   },
   {
     q: 'What does it need?',
-    a: 'macOS 26 on the Mac. iOS 26 on iPhone and iPad. One iCloud account across them; that is the whole setup.',
+    a: 'macOS 26 on the Mac. iOS 26 on iPhone and iPad. The same Apple Account signed in on each, and a Dropbox if you want one library on all of them.',
   },
   {
     q: 'Do I need Dropbox?',
-    a: 'No. Dropbox is one source among several. Connect it if your sounds are there; skip it if they are not.',
+    a: 'Not on one device: open Mise, record, bring in files, play. To have the same library on your Mac, iPhone and iPad, it has to be a folder in your Dropbox. That is the one shared home in this version.',
   },
   {
     q: 'Where does my library live?',
-    a: 'In your iCloud, as ordinary files. Mise keeps its index next to them. There is no Mise account and nothing leaves your devices for us.',
+    a: 'In a folder of your Dropbox, as ordinary files, or on the device if you keep it to one. Mise keeps its index in a <code>.mise</code> folder next to them. There is no Mise account and nothing leaves your devices for us.',
+  },
+  {
+    q: 'What about iCloud Drive?',
+    a: 'Not in this version. Mise does not read or keep a library in iCloud Drive. Your Apple Account is used only to carry what you do — stars, crates, marks, what each sound is — between your own devices, in its private database.',
   },
   {
     q: 'Does the Mac have to stay on?',
@@ -45,7 +49,7 @@ const families = ['kicks', 'snares', 'claps', 'hats & shakers', 'cymbals', 'toms
       tone="limao"
       headline="Every sound you own, in one list."
       bullets={[
-        'iCloud, Dropbox, Voice Memos, Ableton projects, any local folder.',
+        'Dropbox, Voice Memos, Ableton projects, Rekordbox, any folder on your Mac.',
         'Dropbox sounds are listed from Dropbox&rsquo;s own index. Nothing downloads until you press play.',
         'Every sound gets an id off its own bytes, so the same sample under three names is known as one sound.',
         'Every sound is analyzed once. The phone carries the results, not the files.',
@@ -104,7 +108,9 @@ const families = ['kicks', 'snares', 'claps', 'hats & shakers', 'cymbals', 'toms
         'Pitch as tape or keep the pitch. Reverse, stretch, saturate.',
         'Resample the whole thing, the loop, a slice at your marks, or 8 and 16 even slices.',
         'Every new sound keeps its lineage back to the parent.',
-        'Drag into Ableton or Logic as the file. Build OP-XY kits. Stage crates for MPC and hardware.',
+        'Cut ten seconds of any sound into sixteen pads, by stem.',
+        'Keep your Rekordbox playlists as crates, and your crates as playlists.',
+        'Drag into Ableton or Logic as the file. Kits for OP-XY and crates for MPC, in testing.',
         'Hand a sound to another device and it is there.',
       ]}
     >
@@ -135,11 +141,11 @@ const families = ['kicks', 'snares', 'claps', 'hats & shakers', 'cymbals', 'toms
           <p class="label label--dim">Private by design</p>
           <h2 class="h3">Your sounds stay yours.</h2>
           <p class="body">
-            The models that analyze and sort run on the device. Your library syncs through your own iCloud. There is no account to make, no server to trust, and no upload you did not choose.
+            The models that analyze and sort run on the device. Your library is a folder in your own Dropbox; what you do to a sound travels between your devices through your own Apple Account. There is no account to make, no server to trust, and no upload you did not choose.
           </p>
           <ul class="two__facts mono">
             <li>on-device models</li>
-            <li>iCloud sync</li>
+            <li>your Dropbox</li>
             <li>no account</li>
             <li>no server</li>
           </ul>
