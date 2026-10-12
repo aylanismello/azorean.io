@@ -7,7 +7,7 @@ import { COMPANY, CONTACT, LEGAL_UPDATED } from '../../mise/config.js';
   title="Privacy Policy"
   label="Mise · Legal"
   description="What Mise does with your sounds and your information: it keeps them on your devices and in your own Dropbox, and carries what you do between your devices through your own Apple Account."
-  lede="Mise has no account with us, no server of ours and no analytics. Your sounds and everything about them stay on your devices and in storage you own."
+  lede="Mise has no account with us and no analytics. Your sounds and everything about them stay on your devices and in storage you own. The one thing that reaches us is a report when the app crashes."
   updated={LEGAL_UPDATED}
 >
   <p>
@@ -20,6 +20,7 @@ import { COMPANY, CONTACT, LEGAL_UPDATED } from '../../mise/config.js';
     <li><strong>We never receive your sounds,</strong> their names, your tags, ratings, notes or recordings.</li>
     <li><strong>There is no Mise account.</strong> We hold no email, password or profile for you.</li>
     <li><strong>No analytics, no ads, no tracking,</strong> and nothing is sold or shared with advertisers.</li>
+    <li><strong>When Mise crashes or freezes,</strong> it sends us a crash report through Sentry. It says where in Mise’s code it failed and on what kind of device, and never holds a sound or its name.</li>
     <li>Your library lives on your devices and, if you connect it, in <strong>your own Dropbox</strong>. What you do to a sound travels between your devices through <strong>your own Apple Account</strong>.</li>
   </ul>
 
@@ -65,7 +66,16 @@ import { COMPANY, CONTACT, LEGAL_UPDATED } from '../../mise/config.js';
 
   <h2>Crash reports and TestFlight</h2>
   <p>
-    If you have chosen in your device’s settings to share analytics with app developers, Apple may pass us crash
+    When Mise crashes, or stops responding for a couple of seconds, it sends a crash report to us through
+    <a href="https://sentry.io">Sentry</a>, a service that collects crash reports for developers and keeps them on our
+    behalf. A report holds where in Mise’s code the problem happened, the device model, the system version, Mise’s
+    version, and what the app was doing in general terms, such as moving to the background. It never holds your
+    sounds, their names, folders, tags or anything else in your library, and never your name, email or IP address.
+    Crash reports are used only to fix Mise, are not linked to you, and are not used to track you. Sentry’s privacy
+    policy covers how it stores them.
+  </p>
+  <p>
+    Separately, if you have chosen in your device’s settings to share analytics with app developers, Apple may pass us crash
     reports for Mise. They describe the device and what the app was doing when it failed, and they contain no
     sounds. If you test Mise through TestFlight, Apple shares with us what TestFlight collects and any feedback you
     send. Apple’s privacy policy covers both.
@@ -78,8 +88,8 @@ import { COMPANY, CONTACT, LEGAL_UPDATED } from '../../mise/config.js';
   <p>
     Because everything is on your devices and in accounts you own, you are in control of all of it. Deleting Mise
     removes its data from that device. Mise’s data in iCloud can be deleted from your device’s settings, under your
-    Apple Account’s iCloud storage. Files in your Dropbox stay yours to keep or delete. There is nothing held by us
-    to ask us to delete.
+    Apple Account’s iCloud storage. Files in your Dropbox stay yours to keep or delete. The only thing we hold is crash
+    reports, which carry nothing that identifies you.
   </p>
 
   <h2>Changes</h2>
