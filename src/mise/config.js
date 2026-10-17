@@ -12,7 +12,7 @@ export const COMPANY = {
 export const CONTACT = 'connect@azorean.io'
 
 /** Effective date of the privacy policy. Change it whenever the policy changes. */
-export const LEGAL_UPDATED = 'October 16, 2026'
+export const LEGAL_UPDATED = 'October 17, 2026'
 
 export const APP = {
   requires: 'iOS 26 · iPadOS 26 · macOS 26',
