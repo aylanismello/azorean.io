@@ -1,0 +1,10 @@
+---
+/** The App Store link once there is one; until then a plain label, never a dead link. */
+import { APP } from '../../onething/config.js';
+---
+
+{APP.appStoreUrl ? (
+  <a class="btn" href={APP.appStoreUrl}>Get it on the App Store</a>
+) : (
+  <span class="soon">Coming to the App Store</span>
+)}

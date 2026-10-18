@@ -1,0 +1,66 @@
+---
+import Doc from '../../layouts/OneThingDoc.astro';
+import { APP, CONTACT, URLS } from '../../onething/config.js';
+
+const answers = [
+  {
+    q: 'My devices don’t show the same session or diary',
+    a: 'Every device has to be signed into the same Apple Account, with iCloud turned on. A device that was offline catches up once it is back online.',
+  },
+  {
+    q: 'One Thing isn’t on my Apple Watch',
+    a: 'The watch app comes with the iPhone app and needs it. Install One Thing on your iPhone first. If it still isn’t on the watch, open the Watch app on your iPhone, find One Thing under Available Apps, and tap Install.',
+  },
+  {
+    q: 'No “time’s up” alert',
+    a: 'One Thing asks to send notifications the first time a session starts. If you said no, turn them on in Settings → Notifications → One Thing, or System Settings → Notifications on a Mac. On iPhone and iPad, the gear in the Diary has a shortcut there.',
+  },
+  {
+    q: 'Show the welcome again',
+    a: 'On iPhone and iPad: open the Diary, tap the gear at the top right, then Welcome to One Thing. On the Mac: click the gear at the top right of the window, or choose One Thing → Settings, then Show the welcome again.',
+  },
+  {
+    q: 'Delete a diary entry',
+    a: 'On iPhone and iPad, swipe the entry left, or touch and hold it, then Delete. On the Mac, swipe it left with two fingers, or right-click it, then Delete. It is removed on all your devices.',
+  },
+];
+---
+
+<Doc
+  title="Support"
+  label="One Thing · Help"
+  description="Help with One Thing on Mac, iPhone, iPad and Apple Watch, and how to reach us."
+  lede="Questions, problems and ideas all go to one inbox."
+>
+  <div class="card">
+    <p class="mono" style="color: var(--faint)">Email</p>
+    <p style="margin-top: 0.5rem; font-size: 1.5rem; font-weight: 700"><a href={`mailto:${CONTACT}?subject=One%20Thing`}>{CONTACT}</a></p>
+    <p style="margin-top: 0.75rem">
+      Say which device and system version you are on, and what you were doing when it went wrong. A screenshot helps.
+    </p>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><span>Runs on</span><b>{APP.requires}</b></div>
+    <div class="fact"><span>Account</span><b>None needed</b></div>
+    <div class="fact"><span>Sync</span><b>Your own iCloud</b></div>
+  </div>
+
+  <h2>Common fixes</h2>
+  <div>
+    {answers.map((x) => (
+      <details>
+        <summary>{x.q}</summary>
+        <p>{x.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <h2>Your data</h2>
+  <p>
+    One Thing has no account and keeps nothing on our side, so there is nothing to recover from us and nothing for us
+    to delete. Your diary is on your devices and in your own iCloud. To delete all of it, go to Settings, tap your name,
+    then iCloud → Manage Storage, and delete One Thing’s data; deleting the app removes what is on that device. The
+    <a href={URLS.privacy}>privacy policy</a> says where everything lives.
+  </p>
+</Doc>

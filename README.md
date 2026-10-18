@@ -183,3 +183,10 @@ Built with mindful intention for conscious technology.
 The standalone Mise marketing site lives at `/mise`. Its layout, components,
 styles, fonts, screenshots, favicon, and social card are namespaced under
 `mise` so its product theme does not affect the Azorean or SoMi pages.
+
+## One Thing (`/onething`)
+
+The marketing, privacy and support pages for One Thing. `/onething/privacy` and
+`/onething/support` are its App Store Connect URLs, so keep those routes stable.
+The inbox, the legal date and the App Store link live in `src/onething/config.js`;
+the layouts, components, styles and icons are namespaced under `onething`.

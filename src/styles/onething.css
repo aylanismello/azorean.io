@@ -1,0 +1,259 @@
+/* One Thing — paper, black poster bars, Performance Blue.
+   Tokens mirror one-thing/Shared/Brand.swift and UI/Theme.swift. Paper by day, the same paper at night.
+   The type is the app's own: Helvetica Neue Condensed Black for bars, Didot italic for the human bits,
+   American Typewriter for labels. All three ship with macOS and iOS; elsewhere the fallbacks stand in. */
+
+:root {
+  color-scheme: light;
+  --paper: #F0EDE8;
+  --paper-raised: #FAF9F6;
+  --ink: #121212;
+  --dim: #55565B;
+  --faint: #7A7B80;
+  --line: rgba(0, 0, 0, 0.12);
+  --wash: rgba(0, 0, 0, 0.04);
+  --link: #4A6EA3;
+
+  /* Fixed, whatever the appearance. */
+  --blue: #9EBADE;        /* Veloster N Performance Blue */
+  --blue-deep: #4A6EA3;   /* the same blue in shadow */
+  --blue-light: #CCDEF5;  /* the pale highlight */
+  --stripe: #E0302B;      /* the red pinstripe — sparingly */
+  --bar: #0F0F0F;         /* poster bars */
+  --scrap: #FAFAFA;       /* white magazine paper */
+
+  --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Helvetica Neue', Arial, sans-serif;
+  --poster: 'HelveticaNeue-CondensedBlack', 'Helvetica Neue', 'Arial Narrow', 'Roboto Condensed', Impact, sans-serif;
+  --serif: 'Didot', 'Bodoni 72', 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+  --mono: 'American Typewriter', 'Courier Prime', 'Courier New', ui-monospace, monospace;
+
+  --r-md: 14px;
+  --r-lg: 20px;
+
+  --measure: 34rem;
+  --wrap: 72rem;
+  --gutter: clamp(1rem, 5vw, 3.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #121419;
+    --paper-raised: #1C1F24;
+    --ink: #F2F2F2;
+    --dim: #A3A6AD;
+    --faint: #7C8088;
+    --line: rgba(255, 255, 255, 0.10);
+    --wash: rgba(255, 255, 255, 0.05);
+    --link: #9EBADE;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 100%;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p, ul, ol, figure, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+::selection { background: var(--blue); color: var(--bar); }
+
+:focus-visible {
+  outline: 2px solid var(--blue-deep);
+  outline-offset: 3px;
+}
+
+/* ---- layout */
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--wrap));
+  margin-inline: auto;
+}
+.section { padding-block: clamp(4rem, 11vw, 8rem); }
+.section + .section { border-top: 1px solid var(--line); }
+
+/* ---- type */
+
+/* `● label` in typewriter, like the app's Label2. */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: var(--dim);
+}
+.label::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--stripe);
+  flex: none;
+}
+
+.poster {
+  font-family: var(--poster);
+  font-weight: 900;
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+.serif {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+}
+.mono {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  color: var(--dim);
+}
+
+.h2 {
+  font-family: var(--poster);
+  font-weight: 900;
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+}
+.h3 {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+}
+.lede {
+  font-weight: 500;
+  font-size: clamp(1.125rem, 1.9vw, 1.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.body {
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.55;
+  color: var(--dim);
+  max-width: var(--measure);
+}
+.body strong { color: var(--ink); font-weight: 600; }
+
+/* ---- collage pieces (always light paper and black bars, as in the app) */
+
+/* A full-width bar with knocked-out type, like a magazine cover. */
+.bar {
+  display: inline-block;
+  font-family: var(--poster);
+  font-weight: 900;
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  padding: 0.1em 0.3em 0.04em;
+  background: var(--bar);
+  color: var(--blue);
+  white-space: nowrap;
+}
+.bar--paper { background: var(--scrap); color: var(--blue-deep); }
+.bar--blue { background: var(--blue); color: var(--bar); }
+/* On dark paper a black bar needs an edge to be seen. */
+@media (prefers-color-scheme: dark) {
+  .bar:not(.bar--paper):not(.bar--blue) { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16); }
+}
+
+/* A scrap of white paper with italic serif on it. */
+.scrap {
+  position: relative;
+  display: inline-block;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--bar);
+  background: var(--scrap);
+  padding: 0.2em 0.55em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Masking tape. */
+.tape {
+  position: absolute;
+  width: 3.6rem;
+  height: 1.05rem;
+  background: rgba(240, 230, 200, 0.75);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- buttons: black bar, blue type, red stripe under it */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.6em 1.05em 0.5em;
+  font-family: var(--poster);
+  font-weight: 900;
+  font-stretch: condensed;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  background: var(--bar);
+  color: var(--blue);
+  box-shadow: inset 0 -3px 0 var(--stripe), 0 3px 4px rgba(0, 0, 0, 0.12);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  white-space: nowrap;
+}
+.btn:hover {
+  transform: rotate(-1.5deg) scale(1.03);
+  box-shadow: inset 0 -3px 0 var(--stripe), 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.btn:active { transform: scale(0.97); }
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+.btn--ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink), 0 8px 12px rgba(0, 0, 0, 0.12); }
+
+/* The App Store link before there is one: a scrap of paper, not a button. */
+.soon {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--bar);
+  background: var(--scrap);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  transform: rotate(-1.5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn:hover, .btn:active { transition: none; transform: none; }
+}

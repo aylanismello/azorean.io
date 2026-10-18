@@ -1,0 +1,482 @@
+---
+import Base from '../layouts/OneThingBase.astro';
+import Wordmark from '../components/onething/Wordmark.astro';
+import AppStore from '../components/onething/AppStore.astro';
+import Footer from '../components/onething/Footer.astro';
+import { APP, URLS } from '../onething/config.js';
+
+const outcomes = [
+  { emoji: '🔥', title: 'Locked in' },
+  { emoji: '🪴', title: 'Solid' },
+  { emoji: '🌀', title: 'Scattered' },
+  { emoji: '🌧️', title: 'Derailed' },
+];
+
+const devices = [
+  {
+    name: 'Mac',
+    items: [
+      'Full-screen lock-in in its own Space. ⌘L.',
+      'A sticky note that stays on top, on every Space.',
+      'The countdown in the menu bar.',
+      'Desktop widgets.',
+    ],
+  },
+  {
+    name: 'iPhone and iPad',
+    items: [
+      'A dial for the length.',
+      'Full-screen lock-in.',
+      'Widgets on the Home Screen and Lock Screen, and buttons in Control Center.',
+      'A Live Activity: pause, add time, wrap up and rate from the Lock Screen, or the Dynamic Island on iPhone.',
+    ],
+  },
+  {
+    name: 'Apple Watch',
+    items: [
+      'The Digital Crown sets the length.',
+      'A ring counts down.',
+      'Double tap to pause.',
+      'Rate it on your wrist. Complications.',
+    ],
+  },
+  {
+    name: 'All of them',
+    items: [
+      'Rate a session from the time’s-up notification.',
+      'Siri and Shortcuts: “Lock in with One Thing”.',
+    ],
+  },
+];
+
+const faq = [
+  {
+    q: 'What does it need?',
+    a: `${APP.requires}. To share a session and the diary between devices, the same Apple Account on each, with iCloud on.`,
+  },
+  {
+    q: 'Is there an account?',
+    a: 'No. There is nothing to sign up for. Your devices find each other through your Apple Account.',
+  },
+  {
+    q: 'Does the watch app need the iPhone?',
+    a: 'It comes with the iPhone app and needs it installed.',
+  },
+  {
+    q: 'Where is my diary kept?',
+    a: 'On your devices, and in the private iCloud database of your own Apple Account, so every device has the same one. We can’t read it.',
+  },
+];
+---
+
+<Base>
+  <header class="hero">
+    <nav class="wrap hero__nav" aria-label="Primary">
+      <a href={URLS.home} class="hero__brand">
+        <img src="/onething/icon.png" width="28" height="28" alt="" />
+        <span>One Thing</span>
+      </a>
+      <ul class="hero__links mono">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#everywhere">Everywhere</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href={URLS.support}>Support</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="label">focus timer · {APP.platforms.toLowerCase()}</p>
+        <h1 class="hero__title"><Wordmark size="clamp(2.6rem, 7.5vw, 5rem)" /></h1>
+        <p class="lede hero__pitch">
+          Name the one thing you’re doing, set a timer and lock in. When time’s up, say how it went.
+        </p>
+        <p class="body">
+          On Mac, iPhone, iPad and Apple Watch. A session started on one shows on all of them.
+        </p>
+        <div class="hero__cta">
+          <AppStore />
+          <a class="btn btn--ghost" href={URLS.support}>Support</a>
+        </div>
+      </div>
+
+      <figure class="board">
+        <div class="board__sheet" aria-label="Science and Amerie both say you can only do one thing, well, at a time." role="img">
+          <p class="scrap board__says" aria-hidden="true"><span class="tape board__tape"></span>science and amerie both say</p>
+          <div class="board__bars" aria-hidden="true">
+            <span class="bar board__b1">you can only do</span>
+            <span class="bar board__b2">one thing</span>
+            <span class="board__row">
+              <span class="serif board__well">(well)</span>
+              <span class="bar bar--paper board__b3">at a time.</span>
+            </span>
+          </div>
+        </div>
+        <figcaption class="mono board__cap">
+          From the welcome screen. *Science claims, citations not provided.
+          <a href={URLS.amerie}>Amerie</a>.
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <!-- How it works -->
+    <section id="how" class="section">
+      <div class="wrap">
+        <p class="label">how it works</p>
+        <h2 class="h2 how__head">Three steps. Then again.</h2>
+
+        <ol class="steps">
+          <li class="step">
+            <div class="step__art" aria-hidden="true">
+              <span class="scrap step__q">what are you doing?</span>
+              <span class="bar step__intent">write the essay</span>
+              <span class="step__time poster">25:00</span>
+            </div>
+            <p class="step__n mono">01</p>
+            <h3 class="h3">Name it.</h3>
+            <p class="body">
+              Type what you’re about to do, in your own words. Pick how long, any length. Set a reward for after, if
+              you want one.
+            </p>
+          </li>
+
+          <li class="step">
+            <div class="step__art step__art--poster" aria-hidden="true">
+              <span class="scrap step__q">i am focusing on:</span>
+              <span class="bar step__line">write the</span>
+              <span class="bar step__line step__line--2">essay</span>
+              <span class="bar bar--paper step__now">right now.</span>
+            </div>
+            <p class="step__n mono">02</p>
+            <h3 class="h3">Lock in.</h3>
+            <p class="body">
+              The screen says what you’re doing and nothing else. Pause when you have to, add time if you need it,
+              or wrap up early.
+            </p>
+          </li>
+
+          <li class="step">
+            <div class="step__art" aria-hidden="true">
+              <span class="scrap step__q">how’d it go?</span>
+              <span class="chips">
+                {outcomes.map((o) => (
+                  <span class="chip"><span class="chip__e">{o.emoji}</span>{o.title}</span>
+                ))}
+              </span>
+            </div>
+            <p class="step__n mono">03</p>
+            <h3 class="h3">Say how it went.</h3>
+            <p class="body">
+              When time’s up, One Thing asks: locked in, solid, scattered or derailed. Add a line if you like. It goes
+              in the diary.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Everywhere -->
+    <section id="everywhere" class="section">
+      <div class="wrap">
+        <p class="label">everywhere</p>
+        <h2 class="h2 every__head">Start on the Mac.<br />Pause from your wrist.</h2>
+        <p class="body every__body">
+          The session follows you. Your devices share it, and the diary, through your own iCloud.
+        </p>
+        <div class="devices">
+          {devices.map((d) => (
+            <div class="device">
+              <h3 class="device__name"><span class="bar">{d.name}</span></h3>
+              <ul class="device__list">
+                {d.items.map((i) => <li>{i}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Diary + Private -->
+    <section class="section">
+      <div class="wrap two">
+        <div class="two__col">
+          <p class="label">the diary</p>
+          <h2 class="h3">Every session, by day.</h2>
+          <p class="body">
+            What it was, how long, how it went. Your streak, the last seven days as a chart, and how often you locked
+            in. Tap an entry to change it.
+          </p>
+        </div>
+        <div class="two__col">
+          <p class="label">private</p>
+          <h2 class="h3">Your diary stays yours.</h2>
+          <p class="body">
+            It lives on your devices and in your own iCloud. There is no account to make, no server of ours, no
+            analytics and no ads. <a class="two__link" href={URLS.privacy}>Privacy policy</a>.
+          </p>
+          <ul class="two__facts mono">
+            <li>no account</li>
+            <li>no server</li>
+            <li>no analytics</li>
+            <li>no ads</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="wrap faq">
+        <div class="faq__head">
+          <p class="label">faq</p>
+          <h2 class="h3">The short answers.</h2>
+        </div>
+        <dl class="faq__list">
+          {faq.map(({ q, a }) => (
+            <div class="faq__item">
+              <dt>{q}</dt>
+              <dd>{a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Close -->
+    <section class="section">
+      <div class="wrap close">
+        <h2 class="close__bars">
+          <span class="bar bar--blue">so pick one thing</span>
+          <span class="bar bar--blue close__b2">— and finish it.</span>
+        </h2>
+        <div class="hero__cta">
+          <AppStore />
+          <a class="btn btn--ghost" href={URLS.support}>Support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ---- hero */
+  .hero {
+    padding-top: 1rem;
+    padding-bottom: clamp(4rem, 10vw, 7rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.75rem;
+  }
+  .hero__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.0625rem;
+    letter-spacing: -0.01em;
+  }
+  .hero__brand img { border-radius: 7px; }
+  .hero__links { display: flex; gap: clamp(1rem, 3vw, 2rem); }
+  .hero__links a { color: var(--dim); }
+  .hero__links a:hover { color: var(--ink); }
+
+  .hero__grid {
+    padding-top: clamp(3rem, 9vw, 6.5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .hero__text { display: grid; gap: 1.5rem; justify-items: start; }
+  .hero__title { margin-top: 0.25rem; }
+  .hero__pitch { max-width: 34rem; }
+  .hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; margin-top: 0.5rem; }
+
+  /* The welcome, pasted onto Performance Blue graph paper (the icon's ground). */
+  .board { display: grid; gap: 0.9rem; }
+  .board__sheet {
+    position: relative;
+    display: grid;
+    gap: 1.6rem;
+    padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.25rem, 3.5vw, 2.5rem) clamp(2rem, 4.5vw, 3rem);
+    border-radius: var(--r-lg);
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px) 0 0 / 2.5rem 2.5rem,
+      linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px) 0 0 / 2.5rem 2.5rem,
+      linear-gradient(180deg, var(--blue-light), var(--blue) 55%, #8DA8CF);
+    box-shadow: 0 18px 40px -18px rgba(30, 50, 90, 0.45);
+    overflow: hidden;
+  }
+  .board__says {
+    justify-self: start;
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    transform: rotate(-2.5deg);
+  }
+  .board__tape { top: -0.55rem; left: -1.1rem; transform: rotate(-30deg); }
+  .board__bars { display: grid; gap: 0.4rem; justify-items: start; }
+  .board__b1 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); transform: rotate(0.6deg); }
+  .board__b2 { font-size: clamp(3rem, 7.5vw, 4.9rem); transform: rotate(-0.8deg); }
+  .board__row { display: inline-flex; align-items: center; gap: 0.6rem; }
+  .board__well { color: var(--stripe); font-size: clamp(1.4rem, 2.8vw, 1.9rem); }
+  .board__b3 { font-size: clamp(1.3rem, 2.8vw, 1.9rem); transform: rotate(1.2deg); }
+  .board__cap { font-size: 0.8125rem; color: var(--faint); }
+  .board__cap a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---- how it works */
+  .how__head { margin-top: 1rem; max-width: 40rem; }
+  .steps {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .step { display: grid; gap: 0.75rem; align-content: start; }
+  .step__art {
+    min-height: 16rem;
+    margin-bottom: 0.75rem;
+    padding: 1.5rem 1.25rem;
+    display: grid;
+    gap: 0.6rem;
+    align-content: center;
+    justify-items: start;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .step__q { font-size: 1.25rem; transform: rotate(-2deg); margin-bottom: 0.3rem; }
+  .step__intent { font-size: 1.9rem; transform: rotate(0.5deg); }
+  .step__time { font-size: 3.4rem; color: var(--ink); }
+  .step__line { font-size: 2.3rem; transform: rotate(0.4deg); }
+  .step__line--2 { transform: rotate(-0.3deg); }
+  .step__now { font-size: 1.6rem; transform: rotate(-0.8deg); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+  .step__n { color: var(--faint); }
+
+  .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; width: 100%; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.7rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--wash);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .chip__e { font-size: 1.05rem; }
+
+  /* ---- everywhere */
+  .every__head { margin-top: 1rem; }
+  .every__body { margin-top: 1.25rem; }
+  .devices {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .device { display: grid; gap: 1rem; align-content: start; }
+  .device__name { font-size: 1.6rem; }
+  .device__name .bar { transform: rotate(-0.8deg); }
+  .device:nth-child(even) .device__name .bar { transform: rotate(0.7deg); }
+  .device__list {
+    display: grid;
+    gap: 0.6rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--dim);
+    line-height: 1.45;
+  }
+  .device__list li { display: grid; grid-template-columns: 0.75rem 1fr; gap: 0.6rem; }
+  .device__list li::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-top: 0.5em;
+    border-radius: 999px;
+    background: var(--blue-deep);
+  }
+
+  /* ---- diary + private */
+  .two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+  .two__col { display: grid; gap: 1.1rem; align-content: start; }
+  .two__link { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+  .two__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    color: var(--faint);
+  }
+  .two__facts li::before {
+    content: '';
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: var(--blue-deep);
+    margin-right: 0.5rem;
+    transform: translateY(-0.1em);
+  }
+
+  /* ---- faq */
+  .faq {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .faq__head { display: grid; gap: 1rem; }
+  .faq__list { display: grid; border-top: 1px solid var(--line); }
+  .faq__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 0.5rem 2rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .faq__item dt { font-weight: 600; }
+  .faq__item dd { color: var(--dim); line-height: 1.5; }
+
+  /* ---- close */
+  .close { display: grid; gap: 2.25rem; justify-items: start; }
+  .close__bars {
+    display: grid;
+    gap: 0.4rem;
+    justify-items: start;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+  }
+  .close__bars .bar { transform: rotate(-1deg); }
+  .close__bars .close__b2 { margin-left: clamp(1rem, 3vw, 2rem); transform: rotate(0.8deg); box-shadow: inset 0 -4px 0 var(--stripe); }
+
+  /* ---- small screens */
+  @media (max-width: 980px) {
+    .devices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 860px) {
+    .hero__grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; max-width: 30rem; }
+    .two, .faq { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .hero__links li:not(:last-child) { display: none; }
+    .devices { grid-template-columns: 1fr; }
+    .faq__item { grid-template-columns: 1fr; }
+    .hero__cta :global(.btn), .hero__cta :global(.soon) { font-size: 1.1rem; }
+  }
+</style>

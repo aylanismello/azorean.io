@@ -1,0 +1,120 @@
+---
+import Doc from '../../layouts/OneThingDoc.astro';
+import { COMPANY, CONTACT, LEGAL_UPDATED } from '../../onething/config.js';
+---
+
+<Doc
+  title="Privacy Policy"
+  label="One Thing · Legal"
+  description="What One Thing does with your information: it keeps your diary on your devices and in your own iCloud, and sends nothing to us."
+  lede="One Thing has no account with us, no server of ours and no analytics. Your diary stays on your devices and in your own iCloud, and none of it reaches us."
+  updated={LEGAL_UPDATED}
+>
+  <p>
+    This policy covers the One Thing app for Mac, iPhone, iPad and Apple Watch, made by {COMPANY.name} (“we”, “us”),
+    and these pages on azorean.io. It applies to nothing else.
+  </p>
+
+  <h2>The short version</h2>
+  <ul>
+    <li><strong>We never receive your diary:</strong> what you focus on, how it went, your notes.</li>
+    <li><strong>There is no account with us.</strong> We hold no email, password or profile for you.</li>
+    <li><strong>No analytics, no ads, no tracking and no crash reporting</strong> in the app. Nothing is sold or shared.</li>
+    <li><strong>The app talks to no server of ours.</strong> It makes no network requests of its own; your devices stay in step through your own iCloud.</li>
+    <li>Your diary lives on your devices and in the <strong>private iCloud database of your own Apple Account</strong>.</li>
+  </ul>
+
+  <h2>Where your information lives</h2>
+  <h3>On your devices</h3>
+  <p>
+    For each session, the diary keeps what you said you would focus on, when it started and ended, how long you
+    planned and how long you focused, how it went, an optional note, and whether it ran its full time. It is stored on
+    the device.
+  </p>
+  <h3>In your iCloud</h3>
+  <p>
+    So that your Mac, iPhone, iPad and Apple Watch show the same diary, it is mirrored to the private iCloud database of
+    your own Apple Account. The session running right now is one small record in the same database: what it is, the
+    reward you set for after if you set one, when it ends, and whether it is paused. That is how a session started on
+    your Mac shows on your phone and your watch. One Thing also keeps a small record there to measure how far your
+    device’s clock is from iCloud’s, so a timer reads the same on every screen.
+  </p>
+  <p>
+    When something changes, iCloud wakes your other devices with a silent notification, sent through Apple. Only
+    someone signed into your Apple Account can read any of this; we cannot. Apple’s privacy policy covers how iCloud
+    stores it.
+  </p>
+  <h3>Between your iPhone and Apple Watch</h3>
+  <p>
+    Your iPhone and Apple Watch also send the running session straight to each other, over the connection Apple keeps
+    between a phone and its watch. Nothing passes through us.
+  </p>
+  <h3>Widgets, the Live Activity and complications</h3>
+  <p>
+    These read a small summary of the session and your recent days, kept on the device where only One Thing and its
+    widgets can read it.
+  </p>
+  <h3>Settings</h3>
+  <p>
+    Settings such as the default length and the sticky note’s size, and the rewards you used recently, are kept in the
+    device’s own preferences.
+  </p>
+
+  <h2>What One Thing asks your device for</h2>
+  <ul>
+    <li>
+      <strong>Notifications</strong> — for the “time’s up” alert, which you can rate the session from. One Thing asks
+      the first time a session starts. The alert is scheduled on the device itself, not sent from a server.
+    </li>
+  </ul>
+  <p>That is the only permission it asks for.</p>
+
+  <h2>Links out of the app</h2>
+  <p>
+    The welcome screen links to a song on YouTube. It opens in your browser only if you tap it, and YouTube’s privacy
+    policy covers what happens there.
+  </p>
+
+  <h2>What reaches us</h2>
+  <p>
+    Nothing from the app. With no analytics, no crash reporting and no server of ours, we never see your diary, your
+    settings or how you use One Thing.
+  </p>
+  <p>
+    Separately, if you have chosen in your device’s settings to share analytics with app developers, Apple may pass us
+    crash reports for One Thing, which describe the device and what the app was doing when it failed. Apple also shows
+    us totals, such as how many people installed One Thing, which never name anyone. If you test One Thing through
+    TestFlight, Apple shares with us what TestFlight collects and any feedback you send. Apple’s privacy policy covers
+    all of it.
+  </p>
+
+  <h2>Children</h2>
+  <p>One Thing is not directed at children under 13. It sends us nothing from anyone, children included.</p>
+
+  <h2>Deleting your data</h2>
+  <p>Everything is on your devices and in your own iCloud, so you are in control of all of it.</p>
+  <ul>
+    <li><strong>One entry:</strong> delete it in the diary. It is removed on all your devices.</li>
+    <li>
+      <strong>Everything in iCloud:</strong> in Settings, tap your name, then iCloud → Manage Storage, and delete One
+      Thing’s data.
+    </li>
+    <li>
+      <strong>One device:</strong> deleting the app removes its data from that device. The copy in your iCloud stays
+      until you delete it there.
+    </li>
+  </ul>
+  <p>We hold nothing of yours, so there is nothing for us to delete.</p>
+
+  <h2>Changes</h2>
+  <p>
+    If this policy changes, the new version will be posted here with a new effective date. If One Thing ever starts
+    collecting something it does not today, this page will say so before the app does.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about privacy go to <a href={`mailto:${CONTACT}`}>{CONTACT}</a>. {COMPANY.name},
+    {COMPANY.addressLine}.
+  </p>
+</Doc>

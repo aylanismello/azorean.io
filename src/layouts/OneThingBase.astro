@@ -1,0 +1,47 @@
+---
+import '../styles/onething.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'One Thing — name it, lock in, say how it went',
+  description = 'A focus timer for Mac, iPhone, iPad and Apple Watch. Name the one thing you are doing, set a timer, lock in, then say how it went.',
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://azorean.io');
+const canonical = new URL(Astro.url.pathname, site);
+const ogImage = new URL('/onething/icon.png', site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/onething/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/onething/apple-touch-icon.png" />
+    <meta name="theme-color" content="#F0EDE8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121419" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="One Thing" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

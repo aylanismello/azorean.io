@@ -1,0 +1,36 @@
+---
+import { URLS, CONTACT } from '../../onething/config.js';
+const year = 2026;
+---
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <p class="foot__copy mono">© {year} Azorean Studios · One Thing</p>
+    <ul class="foot__links mono">
+      <li><a href={URLS.privacy}>Privacy</a></li>
+      <li><a href={URLS.support}>Support</a></li>
+      <li><a href={`mailto:${CONTACT}`}>Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    border-top: 1px solid var(--line);
+    padding-block: 2rem 3rem;
+  }
+  .foot__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .foot__copy { color: var(--faint); }
+  .foot__links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .foot__links a { color: var(--dim); }
+  .foot__links a:hover { color: var(--ink); }
+</style>

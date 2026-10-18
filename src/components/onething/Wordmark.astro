@@ -1,0 +1,58 @@
+---
+/**
+ * ONE THING as a ransom note: each letter cut from a different magazine.
+ * The letters, faces, colours and tilts are the app's RansomWordmark (one-thing/UI/Theme.swift).
+ */
+interface Props {
+  size?: string; // a CSS length for the letter size
+  class?: string;
+}
+const { size = '1.4rem', class: extra = '' } = Astro.props;
+
+const letters = [
+  { c: 'O', font: "'Didot', 'Bodoni 72', Georgia, serif", weight: 700, style: 'normal', bg: 'var(--scrap)', fg: 'var(--bar)', tilt: -6 },
+  { c: 'N', font: 'var(--poster)', weight: 900, style: 'normal', bg: 'var(--bar)', fg: 'var(--blue)', tilt: 4 },
+  { c: 'E', font: "'American Typewriter', 'Courier New', monospace", weight: 700, style: 'normal', bg: 'var(--bar)', fg: 'var(--scrap)', tilt: -3 },
+  { c: ' ' },
+  { c: 'T', font: "'Futura', 'Futura PT', 'Century Gothic', sans-serif", weight: 800, style: 'normal', bg: 'var(--blue)', fg: 'var(--bar)', tilt: 5 },
+  { c: 'H', font: "'Cochin', 'Baskerville', Georgia, serif", weight: 700, style: 'italic', bg: '#FFFFFF', fg: 'var(--stripe)', tilt: -4 },
+  { c: 'I', font: "'Rockwell', 'Roboto Slab', 'Courier New', serif", weight: 700, style: 'normal', bg: 'var(--bar)', fg: 'var(--scrap)', tilt: 3 },
+  { c: 'N', font: "Impact, 'Haettenschweiler', 'Arial Narrow', sans-serif", weight: 400, style: 'normal', bg: '#FFFFFF', fg: 'var(--blue-deep)', tilt: -5 },
+  { c: 'G', font: "'Didot', 'Bodoni 72', Georgia, serif", weight: 700, style: 'normal', bg: 'var(--blue)', fg: 'var(--bar)', tilt: 4 },
+];
+---
+
+<span class={`ransom ${extra}`} style={`--size: ${size}`} role="img" aria-label="One Thing">
+  {letters.map((l) =>
+    l.c === ' ' ? (
+      <span class="ransom__gap" aria-hidden="true" />
+    ) : (
+      <span
+        class="ransom__l"
+        aria-hidden="true"
+        style={`font-family: ${l.font}; font-weight: ${l.weight}; font-style: ${l.style}; background: ${l.bg}; color: ${l.fg}; transform: rotate(${l.tilt}deg)`}
+      >
+        {l.c}
+      </span>
+    )
+  )}
+</span>
+
+<style>
+  .ransom {
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+    font-size: var(--size);
+    line-height: 1;
+  }
+  .ransom__l {
+    display: inline-block;
+    padding: 0.04em 0.14em 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  }
+  .ransom__gap { display: inline-block; width: 0.3em; }
+  @media (prefers-color-scheme: dark) {
+    .ransom__l { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16); }
+  }
+</style>
